@@ -1,2 +1,2 @@
 # UnityGameProject
-Unknown name yet
+Unknown game name yet
