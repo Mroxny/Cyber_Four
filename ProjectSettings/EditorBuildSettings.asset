@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Maciek/Scenes/TEST.unity
     guid: 1ac0d4dfc41b8e04ab85bce3c8379740
+  - enabled: 1
+    path: Assets/Maciek/Scenes/Scene_Lobby.unity
+    guid: 06ec0b53150491a4fa4f62083c7c17ca
   m_configObjects: {}

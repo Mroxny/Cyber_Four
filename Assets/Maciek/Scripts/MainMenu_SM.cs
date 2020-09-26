@@ -44,7 +44,7 @@ public class MainMenu_SM : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
     public void LoadLevelMulti() {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
 
