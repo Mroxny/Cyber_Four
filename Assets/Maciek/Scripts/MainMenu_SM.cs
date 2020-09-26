@@ -34,7 +34,7 @@ public class MainMenu_SM : MonoBehaviour {
     }
 
 
-    public void LoadLevel() {
+    public void LoadLevelSingle() {
         if (!PlayerPrefs.HasKey("GameId")) {
             PlayerPrefs.SetInt("CharacterId", characterId);
         }
@@ -43,11 +43,14 @@ public class MainMenu_SM : MonoBehaviour {
         }
         SceneManager.LoadScene(1);
     }
+    public void LoadLevelMulti() {
+        SceneManager.LoadScene(2);
+    }
 
 
-    public void PlayButton() {
+    public void PlaySingle() {
         if (PlayerPrefs.HasKey("GameId")) {
-            LoadLevel();
+            LoadLevelMulti();
         }
         else {
             playerSelect.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
@@ -59,6 +62,9 @@ public class MainMenu_SM : MonoBehaviour {
             playerSelect.gameObject.SetActive(true);
             characterId = 0;
         }
+    }
+    public void PlayMulti() {
+        LoadLevelMulti();
     }
     public void SetCharacter(int id) {
         FindObjectOfType<MainMenu_SM>().characterId = id;
@@ -101,6 +107,6 @@ public class MainMenu_SM : MonoBehaviour {
     }
 
     void Update() {
-        print(characterId);
+        
 ;    }
 }
