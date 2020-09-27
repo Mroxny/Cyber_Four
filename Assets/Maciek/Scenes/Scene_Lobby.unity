@@ -419,9 +419,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Join
-
-'
+  m_Text: Join
 --- !u!222 &308797855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2057,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5128af5e2dc354488973fb15c512f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 0}
+  networkManager: {fileID: 1495594495}
   landingPagePanel: {fileID: 1933507966}
   ipAddressInputField: {fileID: 35812724}
   joinButton: {fileID: 1868397092}
@@ -2285,10 +2283,10 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs: []
   minPlayers: 2
-  menuScene: 
+  menuScene: Assets/Maciek/Scenes/Scene_Lobby.unity
   numberOfRounds: 1
   mapSet: {fileID: 0}
-  roomPlayerPrefab: {fileID: 0}
+  roomPlayerPrefab: {fileID: 124123052159803320, guid: f808a2290c75b244b8639aa0f1768194, type: 3}
   gamePlayerPrefab: {fileID: 0}
   playerSpawnSystem: {fileID: 0}
   roundSystem: {fileID: 0}

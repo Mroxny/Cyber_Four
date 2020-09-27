@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DapperDino.Mirror.Tutorials.Lobby {
+
     public class JoinLobbyMenu : MonoBehaviour {
-        [SerializeField] private NetworkManagerLobby networkManager = null;
+        [SerializeField] public NetworkManagerLobby networkManager = null;
 
         [Header("UI")]
         [SerializeField] private GameObject landingPagePanel = null;
@@ -41,4 +41,3 @@ namespace DapperDino.Mirror.Tutorials.Lobby {
             joinButton.interactable = true;
         }
     }
-}

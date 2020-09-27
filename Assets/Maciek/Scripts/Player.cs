@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Player : NetworkBehaviour {
+public class Player : MonoBehaviour {
 
 
     void Start() {
@@ -27,21 +27,14 @@ public class Player : NetworkBehaviour {
         }
 
     }
-    [Client]
+    
     void Update() {
-        if (!hasAuthority) { return; }
+        
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         transform.position = new Vector2(transform.position.x + x, transform.position.y + y);
 
-        CmdMove();
-    }
-    [Command]
-    private void CmdMove() {
-        RpcMove();
-    }
-    [ClientRpc]
-    private void RpcMove() {
         
     }
+    
 }
