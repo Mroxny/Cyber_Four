@@ -57,7 +57,7 @@ public class MainMenu_SM : MonoBehaviour {
             playerSelect.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
             playerSelect.transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(false);
             playerSelect.transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(false);
-            playerSelect.transform.GetChild(5).GetComponent<Button>().interactable = false;//enabled = false;
+            playerSelect.transform.GetChild(5).gameObject.SetActive(false);           //GetComponent<Button>().interactable = false;
             mainMenu.gameObject.SetActive(false);
             playerSelect.gameObject.SetActive(true);
             characterId = 0;
@@ -68,7 +68,7 @@ public class MainMenu_SM : MonoBehaviour {
     }
     public void SetCharacter(int id) {
         FindObjectOfType<MainMenu_SM>().characterId = id;
-        playerSelect.transform.GetChild(5).GetComponent<Button>().interactable = true;//enabled = true;
+        playerSelect.transform.GetChild(5).gameObject.SetActive(true); //GetComponent<Button>().interactable = true;
         switch (id) {
             case 1:
                 playerSelect.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
