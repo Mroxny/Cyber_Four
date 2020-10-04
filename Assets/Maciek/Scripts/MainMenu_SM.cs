@@ -11,6 +11,7 @@ public class MainMenu_SM : MonoBehaviour {
     public GameObject mainMenu;
     public GameObject playerSelect;
     public GameObject settings;
+    public GameObject single_ContinuePanel;
     int characterId;
 
 
@@ -29,6 +30,7 @@ public class MainMenu_SM : MonoBehaviour {
     public void Start() {
         mainMenu.gameObject.SetActive(true);
         playerSelect.gameObject.SetActive(false);
+        single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
 
     }
@@ -50,7 +52,10 @@ public class MainMenu_SM : MonoBehaviour {
 
     public void PlaySingle() {
         if (PlayerPrefs.HasKey("GameId")) {
-            LoadLevelMulti();
+            mainMenu.gameObject.SetActive(false);
+            playerSelect.gameObject.SetActive(false);
+            single_ContinuePanel.gameObject.SetActive(true);
+            settings.gameObject.SetActive(false);
         }
         else {
             playerSelect.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
@@ -100,6 +105,7 @@ public class MainMenu_SM : MonoBehaviour {
     public void Settings() {
         mainMenu.gameObject.SetActive(false);
         playerSelect.gameObject.SetActive(false);
+        single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(true);
     }
     public void Quit() {
