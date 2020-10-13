@@ -1878,7 +1878,7 @@ MonoBehaviour:
   mainMenu: {fileID: 899401134}
   playerSelect: {fileID: 1494730788}
   settings: {fileID: 263564588}
-  single_ContinuePanel: {fileID: 0}
+  single_ContinuePanel: {fileID: 1183437158}
 --- !u!4 &810363592
 Transform:
   m_ObjectHideFlags: 0
@@ -2608,7 +2608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1183437159
 Transform:
   m_ObjectHideFlags: 0
@@ -3138,7 +3138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1494730789
 Transform:
   m_ObjectHideFlags: 0
@@ -3777,6 +3777,10 @@ PrefabInstance:
     - target: {fileID: 7056999030346320724, guid: 848e41ef1740c36418ead64b4eb26a36, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056999031206889573, guid: 848e41ef1740c36418ead64b4eb26a36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7056999031438700025, guid: 848e41ef1740c36418ead64b4eb26a36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
