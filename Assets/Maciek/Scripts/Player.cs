@@ -6,15 +6,16 @@ using Mirror;
 public class Player : MonoBehaviour {
 
     public GameObject cam;
-    
+    public GameObject weapon;
     private Animator animator;
-    GameObject weaponRender;
+    public GameObject weaponRender;
 
     void Start() {
         if (cam == null) {
             cam = GameObject.Find("Main Camera");
         }
-        
+       weapon = GameObject.Find("TestGun");
+       
         SetChar();
 
     }
@@ -24,22 +25,26 @@ public class Player : MonoBehaviour {
             case 1:
                 transform.GetChild(1 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(1 - 1).transform.GetChild(0).GetComponent<Animator>();
-                weaponRender = transform.GetChild(1 - 1).transform.GetChild(0).GetComponent<GameObject>();
+                weaponRender = GameObject.Find("WeaponRender1");
+                //weaponRender = transform.GetChild(1 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
             case 2:
                 transform.GetChild(2 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<Animator>();
-                weaponRender = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<GameObject>();
+                weaponRender = GameObject.Find("WeaponRender2");
+                //weaponRender = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
             case 3:
                 transform.GetChild(3 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<Animator>();
-                weaponRender = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<GameObject>();
+                weaponRender = GameObject.Find("WeaponRender3");
+                //weaponRender = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
             case 4:
                 transform.GetChild(4 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<Animator>();
-                weaponRender = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<GameObject>();
+                weaponRender = GameObject.Find("WeaponRender4");
+                //weaponRender = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
         }
 
@@ -55,8 +60,13 @@ public class Player : MonoBehaviour {
         animator.SetFloat("Horizontal", x);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y,-10f), Time.deltaTime*5f);
-        weaponRender.transform.Rotate(1f, 0.0f, 0.0f, Space.Self);
-
+       
+        if (Input.GetKeyDown(KeyCode.F)) {
+            
+            weapon.transform.parent = weaponRender.transform;
+            //weapon.transform.position = new Vector3(weaponRender.transform.position.x, weaponRender.transform.position.y, -1);
+            weapon.transform.localPosition = new Vector3(0, 0, -1);
+        }
     }
     
 }
