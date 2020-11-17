@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.Assertions.Must;
+using UnityEngine.Events;
 
 public class MainMenu_SM : MonoBehaviour {
 
@@ -17,13 +19,19 @@ public class MainMenu_SM : MonoBehaviour {
     int characterId;
     public GameObject[] objects;
     public AudioMixer audioMixer;
+
+    public event EventHandler<OnSpacePressedEventArgs> OnColorChange;
+    public class OnSpacePressedEventArgs : EventArgs
+    {
+        public int ColorId;
+    }
     void Awake() {
 #if UNITY_IOS
         Advertisement.Initialize("3835253", false);
 #elif UNITY_ANDROID
         Advertisement.Initialize("3835252", false);
 #endif
-        objects = GameObject.FindGameObjectsWithTag("colorchange");
+        //objects = GameObject.FindGameObjectsWithTag("colorchange");
         Application.targetFrameRate = 60;
 
     }
@@ -35,6 +43,7 @@ public class MainMenu_SM : MonoBehaviour {
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        
     }
 
 
@@ -105,11 +114,17 @@ public class MainMenu_SM : MonoBehaviour {
         
     }
 
+   
+
     public void SetVolume(float volume) {
         audioMixer.SetFloat("Volume", volume);
     }
+
+    
     public void Setcolor(int color) {
-        PlayerPrefs.SetInt("ColorId",color);
+        //PlayerPrefs.SetInt("ColorId",color);
+        OnColorChange?.Invoke(this, new OnSpacePressedEventArgs { ColorId = color });
+
         //Wysyła event
         switch (color) {
             case 1:
@@ -172,6 +187,9 @@ public class MainMenu_SM : MonoBehaviour {
 
         }
     }
+
+    
+
     public void Settings() {
         mainMenu.gameObject.SetActive(false);
         playerSelect.gameObject.SetActive(false);
@@ -181,7 +199,9 @@ public class MainMenu_SM : MonoBehaviour {
     public void Quit() {
         Application.Quit();
     }
-
+  
+    
+  
     void Update() {
         
 ;    }
