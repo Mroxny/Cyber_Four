@@ -10,10 +10,15 @@ public class WeaponInfo : MonoBehaviour
     public GameObject weapon;
     public Transform firepoint;
     public bool IsGun;
+    public AudioClip shoot;
+    private AudioSource audioPlayer;
     private Player player;
     private bool inHand = false;
     private bool onetime = true;
 
+    void Start(){
+        audioPlayer = GetComponent<AudioSource>();
+    }
     private void trigger()
     {
         Vector2 mouse = player.mouse;
@@ -26,6 +31,7 @@ public class WeaponInfo : MonoBehaviour
         shot.GetComponent<Bullet>().damage = damage;
         Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
         rb.AddForce(firepoint.up * velocity, ForceMode2D.Impulse);
+        audioPlayer.PlayOneShot(shoot);
     }
 
     private void SetPlayer()

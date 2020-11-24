@@ -6,18 +6,31 @@ using UnityEngine;
 
 public class Bulid_Script : MonoBehaviour
 {
+    [Header("Room 1")]
+    [Space(0)]
+    public GameObject player;
+    public List<GameObject> bottomPlatform;
+    public List<GameObject> topPlatform;
+    public List<GameObject> leftPlatform;
+    public List<GameObject> rightPlatform;
+    public List<GameObject> crossPlatform;
+    public List<GameObject> Platform;
     public string[] enemies;
+    
+    
+
+
 
     void Start()
     {
         var init = GetComponent<Przepis>().init;
 
+        init.LoadPlatforms(bottomPlatform, topPlatform);
         init.BulidMap();
-        
-        for (int i=0; i<2; i++) {
-           enemies[i] = (i + 1).ToString();
-        }
         init.SpawnEnemies(enemies);
+        Instantiate(player, new Vector3(0,0,0), Quaternion.identity);
+
+
         switch (PlayerPrefs.GetInt("GameId")) {
 
             case 1:
