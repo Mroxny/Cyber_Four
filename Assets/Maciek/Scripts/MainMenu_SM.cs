@@ -122,70 +122,7 @@ public class MainMenu_SM : MonoBehaviour {
 
     
     public void Setcolor(int color) {
-        //PlayerPrefs.SetInt("ColorId",color);
         OnColorChange?.Invoke(this, new OnSpacePressedEventArgs { ColorId = color });
-
-        //Wysyła event
-        switch (color) {
-            case 1:
-                //Debug.Log(teksty);
-                foreach (GameObject j in objects)
-                {
-                    
-                    if (j.GetComponent<SpriteRenderer>() == true)
-                    {
-                        j.GetComponent<SpriteRenderer>().color = Color.green;
-                    }
-                    else if (j.GetComponent<Image>() == true)
-                    {
-                        j.GetComponent<Image>().color = Color.green;
-                    }
-                }
-                break;
-            case 2:
-                //Debug.Log(teksty);
-                foreach (GameObject j in objects){
-                    if (j.GetComponent<SpriteRenderer>() == true)
-                    {
-                        j.GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else if (j.GetComponent<Image>() == true)
-                    {
-                        j.GetComponent<Image>().color = Color.red;
-                    }
-                }
-                break;
-            case 3:
-                foreach (GameObject j in objects)
-                {
-
-                    if (j.GetComponent<SpriteRenderer>() == true)
-                    {
-                        j.GetComponent<SpriteRenderer>().color = Color.yellow;
-                    }
-                    else if (j.GetComponent<Image>() == true)
-                    {
-                        Debug.Log(j.name);
-                        j.GetComponent<Image>().color = Color.yellow;
-                    }
-                }
-                break;
-            case 4:
-                foreach (GameObject j in objects)
-                {
-
-                    if (j.GetComponent<SpriteRenderer>() == true)
-                    {
-                        j.GetComponent<SpriteRenderer>().color = Color.blue;
-                    }
-                    else if (j.GetComponent<Image>() == true)
-                    {
-                        j.GetComponent<Image>().color = Color.blue;
-                    }
-                }
-                break;
-
-        }
     }
 
     
