@@ -20,9 +20,8 @@ public class Przepis : MonoBehaviour
             x = maxX;
             y = maxY;
             GameObject panelPart = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Maciek/Prefabs/PanelPart.prefab", typeof(GameObject));
-            GameObject corridor = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Maciek/Prefabs/Corridor.prefab", typeof(GameObject));
             float posX = 0;
-            float posY = 5;
+            float posY = 0;
             int countX = 1;
             int countY = 1;
             for (int i = 1; i <= (x*y); i++) {
@@ -31,12 +30,12 @@ public class Przepis : MonoBehaviour
                 spawnedPart.name = "PanelPart_" + countX + "-" + countY;
 
                 if (x > countX) {
-                    posX += 22.8f;
+                    posX += 38.75f;
                     countX += 1;
                 }
                 else {
                     posX = 0;
-                    posY -= 26.8f;
+                    posY -= 38.75f;
                     countX = 1;
                     countY += 1;
                 }
@@ -51,9 +50,7 @@ public class Przepis : MonoBehaviour
             int i = 0;
 
             while (onBottom == false) {
-                for (int z = 0; z < selectedParts.Count; z++) {
-                    print(selectedParts[z]);
-                }
+               
                 int coX = int.Parse(selectedParts[i].name.Substring((selectedParts[i].name.IndexOf("_") + 1), 1));
                 int coY = int.Parse(selectedParts[i].name.Substring((selectedParts[i].name.IndexOf("-") + 1), 1));
 
@@ -240,18 +237,22 @@ public class Przepis : MonoBehaviour
             }
             foreach (GameObject J in spawnedPlatforms) {
                 if (J.GetComponent<PlatformInfo>().platformKey.Contains("r")) {
-                    Instantiate(cX[Random.Range(0, cX.Count)], J.transform.GetChild(1).transform.GetChild(0).transform.position, Quaternion.identity);
+                    Instantiate(cX[Random.Range(0, cX.Count)], new Vector2(J.transform.position.x + 19.375f, J.transform.position.y), Quaternion.identity);
                 }
                 if (J.GetComponent<PlatformInfo>().platformKey.Contains("b")) {
-                    Instantiate(cY[Random.Range(0, cY.Count)], J.transform.GetChild(1).transform.GetChild(1).transform.position, Quaternion.identity);
+                    Instantiate(cY[Random.Range(0, cY.Count)], new Vector2(J.transform.position.x, J.transform.position.y - 19.375f), Quaternion.identity);
                 }
             }
         }
         public void SpawnEnemies(List<GameObject> e) {
             foreach (GameObject J in spawnedPlatforms) {
                 if (J.GetComponent<PlatformInfo>().withEnemies) {
-                    foreach (Transform K in J.transform.GetChild(2).transform) {
-                        Instantiate(e[Random.Range(0, e.Count)],K);
+                    int enemiesNum = Random.Range(3,6);
+                    for(int i =0; i<=enemiesNum; i++) {
+                        Instantiate(
+                            e[Random.Range(0, e.Count)],
+                            new Vector2(J.transform.position.x+Random.Range(-5,6), J.transform.position.y + Random.Range(-5, 6)),
+                            Quaternion.identity);
                     }
                 }
             }
@@ -275,38 +276,50 @@ public class Przepis : MonoBehaviour
                     spawnedPlayerPanel= Instantiate(pPanel, new Vector2(0,0), Quaternion.identity);
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().platformKey = "t";
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().OpenExits();
-                    spawnedBossPanel = Instantiate(bPanel, new Vector2(0, 20), Quaternion.identity);
+                    spawnedBossPanel = Instantiate(bPanel, new Vector2(0, 43.75f), Quaternion.identity);
                     spawnedBossPanel.GetComponent<PlatformInfo>().platformKey = "b";
                     spawnedBossPanel.GetComponent<PlatformInfo>().OpenExits();
-                    Instantiate(cY[Random.Range(0, cY.Count)],new Vector2( spawnedPlayerPanel.transform.GetChild(1).transform.GetChild(1).transform.position.x, spawnedPlayerPanel.transform.GetChild(1).transform.GetChild(1).transform.position.y+10), Quaternion.identity);
+                    Instantiate(
+                        cY[Random.Range(0, cY.Count)],
+                        new Vector2( spawnedPlayerPanel.transform.position.x, spawnedPlayerPanel.transform.position.y+19.375f),
+                        Quaternion.identity);
 
                     break;
                 case 1:
                     spawnedPlayerPanel = Instantiate(pPanel, new Vector2(0, 0), Quaternion.identity);
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().platformKey = "r";
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().OpenExits();
-                    spawnedBossPanel = Instantiate(bPanel, new Vector2(20, 0), Quaternion.identity);
+                    spawnedBossPanel = Instantiate(bPanel, new Vector2(43.75f, 0), Quaternion.identity);
                     spawnedBossPanel.GetComponent<PlatformInfo>().platformKey = "l";
                     spawnedBossPanel.GetComponent<PlatformInfo>().OpenExits();
-                    Instantiate(cX[Random.Range(0, cX.Count)], spawnedPlayerPanel.transform.GetChild(1).transform.GetChild(0).transform.position, Quaternion.identity);
+                    Instantiate(
+                        cX[Random.Range(0, cX.Count)],
+                        new Vector2(spawnedPlayerPanel.transform.position.x + 19.375f, spawnedPlayerPanel.transform.position.y ),
+                        Quaternion.identity);
                     break;
                 case 2:
                     spawnedPlayerPanel = Instantiate(pPanel, new Vector2(0, 0), Quaternion.identity);
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().platformKey = "b";
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().OpenExits();
-                    spawnedBossPanel = Instantiate(bPanel, new Vector2(0, -20), Quaternion.identity);
+                    spawnedBossPanel = Instantiate(bPanel, new Vector2(0, -43.75f), Quaternion.identity);
                     spawnedBossPanel.GetComponent<PlatformInfo>().platformKey = "t";
                     spawnedBossPanel.GetComponent<PlatformInfo>().OpenExits();
-                    Instantiate(cY[Random.Range(0, cY.Count)], spawnedPlayerPanel.transform.GetChild(1).transform.GetChild(1).transform.position, Quaternion.identity);
+                    Instantiate(
+                        cY[Random.Range(0, cY.Count)],
+                        new Vector2(spawnedPlayerPanel.transform.position.x, spawnedPlayerPanel.transform.position.y - 19.375f),
+                        Quaternion.identity);
                     break;
                 case 3:
                     spawnedPlayerPanel = Instantiate(pPanel, new Vector2(0, 0), Quaternion.identity);
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().platformKey = "l";
                     spawnedPlayerPanel.GetComponent<PlatformInfo>().OpenExits();
-                    spawnedBossPanel = Instantiate(bPanel, new Vector2(-20, 0), Quaternion.identity);
+                    spawnedBossPanel = Instantiate(bPanel, new Vector2(-43.75f, 0), Quaternion.identity);
                     spawnedBossPanel.GetComponent<PlatformInfo>().platformKey = "r";
                     spawnedBossPanel.GetComponent<PlatformInfo>().OpenExits();
-                    Instantiate(cX[Random.Range(0, cX.Count)], new Vector2(spawnedPlayerPanel.transform.GetChild(1).transform.GetChild(0).transform.position.x-10, spawnedPlayerPanel.transform.GetChild(1).transform.GetChild(0).transform.position.y), Quaternion.identity);
+                    Instantiate(
+                        cX[Random.Range(0, cX.Count)],
+                        new Vector2(spawnedPlayerPanel.transform.position.x - 19.375f, spawnedPlayerPanel.transform.position.y),
+                        Quaternion.identity);
                     break;
             }
             playerSpawnPoint = spawnedPlayerPanel.transform.position;
@@ -316,6 +329,102 @@ public class Przepis : MonoBehaviour
         public void SpawnBoss(GameObject boss) {
             Instantiate(boss, bossSpawnPoint, Quaternion.identity);
         }
+        public void BulidFinalPhase(List<GameObject> smallPlatform, GameObject bigPlatform, List<GameObject> corridors) {
+            GameObject spawnedBigPlatform = null;
+            List<GameObject> spawnedSmallPlatforms = new List<GameObject>();
+            List<GameObject> cX = new List<GameObject>();
+            List<GameObject> cY = new List<GameObject>();
+            string pKey = "";
+            foreach (GameObject J in corridors) {
+                if (J.name.Contains("X")) {
+                    cX.Add(J);
+                }
+                if (J.name.Contains("Y")) {
+                    cY.Add(J);
+                }
+            }
+            spawnedBigPlatform =  Instantiate(bigPlatform, new Vector2(0,0), Quaternion.identity);
+            spawnedBigPlatform.name = "Big Panel";
+            switch (Random.Range(0, 4)) {
+                case 0:
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)],new Vector2(0,26.25f),Quaternion.identity));
+                    spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "b";
+                    spawnedSmallPlatforms[0].name = "Platform_1";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(26.25f, 0), Quaternion.identity));
+                    spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "l";
+                    spawnedSmallPlatforms[1].name = "Platform_2";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(-26.25f, 0), Quaternion.identity));
+                    spawnedSmallPlatforms[2].GetComponent<PlatformInfo>().platformKey = "r";
+                    spawnedSmallPlatforms[2].name = "Platform_3";
+                    pKey = "trl";
+                    break;
+                case 1:
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, 26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "b";
+                    spawnedSmallPlatforms[0].name = "Platform_1";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(26.25f, 0), Quaternion.identity));
+                    spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "l";
+                    spawnedSmallPlatforms[1].name = "Platform_2";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms[2].GetComponent<PlatformInfo>().platformKey = "t";
+                    spawnedSmallPlatforms[2].name = "Platform_3";
+                    pKey = "trb";
+                    break;
+                case 2:
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(26.25f, 0), Quaternion.identity));
+                    spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "l";
+                    spawnedSmallPlatforms[0].name = "Platform_1";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "t";
+                    spawnedSmallPlatforms[1].name = "Platform_2";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(-26.25f, 0), Quaternion.identity));
+                    spawnedSmallPlatforms[2].GetComponent<PlatformInfo>().platformKey = "r";
+                    spawnedSmallPlatforms[2].name = "Platform_3";
+                    pKey = "rbl";
+                    break;
+                case 3:
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "t";
+                    spawnedSmallPlatforms[0].name = "Platform_1";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(-26.25f, 0), Quaternion.identity));
+                    spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "r";
+                    spawnedSmallPlatforms[1].name = "Platform_2";
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, 26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms[2].GetComponent<PlatformInfo>().platformKey = "b";
+                    spawnedSmallPlatforms[2].name = "Platform_3";
+                    pKey = "blt";
+                    break;
+            }
+            playerSpawnPoint = spawnedSmallPlatforms[Random.Range(0, spawnedSmallPlatforms.Count)].transform.position;
+
+            spawnedBigPlatform.GetComponent<PlatformInfo>().platformKey=pKey;
+            spawnedBigPlatform.GetComponent<PlatformInfo>().OpenExits();
+
+            foreach (GameObject J in spawnedSmallPlatforms) {
+                J.GetComponent<PlatformInfo>().OpenExits();
+            }
+            
+        }
+
+
+        public void StartFinalPhase(List<GameObject> enemies) {
+            List<GameObject> platforms = new List<GameObject>();
+            for (int i = 1; i <= 3; i++) {
+                platforms.Add(GameObject.Find("Platform_"+i));
+                Debug.Log(platforms[i - 1]);
+            }
+            int enemiesNum = Random.Range(20, 31);
+            for (int i = 0; i <= enemiesNum; i++) {
+                int platformId = Random.Range(0, platforms.Count);
+                Instantiate(
+                    enemies[Random.Range(0,enemies.Count)],
+                    new Vector2(platforms[platformId].transform.position.x + Random.Range(-5,5)
+                                ,platforms[platformId].transform.position.y + Random.Range(-5, 5)),
+                    Quaternion.identity
+                    );
+            }
+        }
+
         public void SpawnPlayer(GameObject player) {
             Instantiate(player, playerSpawnPoint,Quaternion.identity);
         }
