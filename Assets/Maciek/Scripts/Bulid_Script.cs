@@ -9,14 +9,16 @@ public class Bulid_Script : MonoBehaviour
     [Header("Player Prefab")]
     [Space(0)]
     public GameObject player;
-    
-    
+    public GameObject panelPart;
+    public event Action<int> OnColorChange;
+
     [Header("Room 1")]
     public List<GameObject> platforms1;
     public List<GameObject> corridors1;
     public List<GameObject> enemies1;
     public GameObject bigPlatform1;
     public GameObject boss1;
+    public GameObject light;
 
 
     [Header("Panel Size")]
@@ -57,11 +59,12 @@ public class Bulid_Script : MonoBehaviour
                 init.SpawnBoss(boss1);
                 break;
             case 2:
-                init.BulidPanel(maxX, maxY);
+                init.BulidPanel(maxX, maxY,panelPart);
                 init.FindPlatfromPlaces();
                 init.PlacePlatforms(platforms1);
                 init.PlaceCorridors(corridors1);
                 init.SpawnEnemies(enemies1);
+                //init.SpawnLights(light);
                 break;
             case 3:
                 init.BulidFinalPhase(platforms1, bigPlatform1, corridors1);

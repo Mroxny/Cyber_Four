@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6630854714108316364, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: -6100053648054333766, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.006885797
@@ -346,10 +350,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3362601850741230308, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: -2531062808300903608, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2531062808300903608, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 1911869109040691058, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7091759
@@ -374,6 +386,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2114445692830971180, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 2815611284597487294, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7020913
@@ -462,6 +478,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7451093385744107342, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -1122214327416486631, guid: 8e2e6559afe3ed64abbf217a114cf1a3, type: 3}
 --- !u!1 &5588554868164984926 stripped

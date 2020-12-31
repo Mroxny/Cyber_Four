@@ -20,11 +20,8 @@ public class MainMenu_SM : MonoBehaviour {
     public GameObject[] objects;
     public AudioMixer audioMixer;
 
-    public event EventHandler<OnSpacePressedEventArgs> OnColorChange;
-    public class OnSpacePressedEventArgs : EventArgs
-    {
-        public int ColorId;
-    }
+    public event Action<int> OnColorChange;
+
     void Awake() {
 #if UNITY_IOS
         Advertisement.Initialize("3835253", false);
@@ -54,7 +51,7 @@ public class MainMenu_SM : MonoBehaviour {
         else {
 
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(4);
     }
     public void LoadLevelMulti() {
         SceneManager.LoadScene(3);
@@ -122,7 +119,9 @@ public class MainMenu_SM : MonoBehaviour {
 
     
     public void Setcolor(int color) {
-        OnColorChange?.Invoke(this, new OnSpacePressedEventArgs { ColorId = color });
+        OnColorChange?.Invoke( color );
+        PlayerPrefs.SetInt("ColorId",color);
+
     }
 
     

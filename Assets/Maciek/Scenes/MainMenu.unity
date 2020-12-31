@@ -3258,7 +3258,7 @@ MonoBehaviour:
   settings: {fileID: 263564588}
   single_ContinuePanel: {fileID: 1183437158}
   objects: []
-  audioMixer: {fileID: 24100000, guid: 6e5a41995bd7f234ab93344817eafd09, type: 2}
+  audioMixer: {fileID: 0}
 --- !u!4 &810363592
 Transform:
   m_ObjectHideFlags: 0

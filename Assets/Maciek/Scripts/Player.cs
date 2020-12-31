@@ -6,7 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.UIElements;
 using Mirror.Examples.Additive;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     public GameObject weaponRender;
     private float MoveSpeed;
     private int ability;
-    public Camera camera;
+    public Camera camera = new Camera();
     public Rigidbody2D rb;
 
     public Vector2 movement;

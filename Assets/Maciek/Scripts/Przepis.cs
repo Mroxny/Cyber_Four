@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 public class Przepis : MonoBehaviour
 {
@@ -16,10 +16,10 @@ public class Przepis : MonoBehaviour
         private Vector2 playerSpawnPoint;
         private Vector2 bossSpawnPoint;
 
-        public void BulidPanel(int maxX, int maxY) {
+        public void BulidPanel(int maxX, int maxY,GameObject panelPart) {
             x = maxX;
             y = maxY;
-            GameObject panelPart = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Maciek/Prefabs/PanelPart.prefab", typeof(GameObject));
+            
             float posX = 0;
             float posY = 0;
             int countX = 1;
@@ -245,13 +245,13 @@ public class Przepis : MonoBehaviour
             }
         }
         public void SpawnEnemies(List<GameObject> e) {
-            foreach (GameObject J in spawnedPlatforms) {
-                if (J.GetComponent<PlatformInfo>().withEnemies) {
-                    int enemiesNum = Random.Range(3,6);
+            for (int j = 1; j <= spawnedPlatforms.Count-2; j++) {
+                if (spawnedPlatforms[j].GetComponent<PlatformInfo>().withEnemies) {
+                    int enemiesNum = Random.Range(3,7);
                     for(int i =0; i<=enemiesNum; i++) {
                         Instantiate(
                             e[Random.Range(0, e.Count)],
-                            new Vector2(J.transform.position.x+Random.Range(-5,6), J.transform.position.y + Random.Range(-5, 6)),
+                            new Vector2(spawnedPlatforms[j].transform.position.x+Random.Range(-5,6), spawnedPlatforms[j].transform.position.y + Random.Range(-5, 6)),
                             Quaternion.identity);
                     }
                 }
@@ -347,7 +347,7 @@ public class Przepis : MonoBehaviour
             spawnedBigPlatform.name = "Big Panel";
             switch (Random.Range(0, 4)) {
                 case 0:
-                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)],new Vector2(0,26.25f),Quaternion.identity));
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)],new Vector2(0,25f),Quaternion.identity));
                     spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "b";
                     spawnedSmallPlatforms[0].name = "Platform_1";
                     spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(26.25f, 0), Quaternion.identity));
@@ -359,13 +359,13 @@ public class Przepis : MonoBehaviour
                     pKey = "trl";
                     break;
                 case 1:
-                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, 26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, 25f), Quaternion.identity));
                     spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "b";
                     spawnedSmallPlatforms[0].name = "Platform_1";
                     spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(26.25f, 0), Quaternion.identity));
                     spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "l";
                     spawnedSmallPlatforms[1].name = "Platform_2";
-                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -25f), Quaternion.identity));
                     spawnedSmallPlatforms[2].GetComponent<PlatformInfo>().platformKey = "t";
                     spawnedSmallPlatforms[2].name = "Platform_3";
                     pKey = "trb";
@@ -374,7 +374,7 @@ public class Przepis : MonoBehaviour
                     spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(26.25f, 0), Quaternion.identity));
                     spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "l";
                     spawnedSmallPlatforms[0].name = "Platform_1";
-                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -25f), Quaternion.identity));
                     spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "t";
                     spawnedSmallPlatforms[1].name = "Platform_2";
                     spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(-26.25f, 0), Quaternion.identity));
@@ -383,13 +383,13 @@ public class Przepis : MonoBehaviour
                     pKey = "rbl";
                     break;
                 case 3:
-                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, -25f), Quaternion.identity));
                     spawnedSmallPlatforms[0].GetComponent<PlatformInfo>().platformKey = "t";
                     spawnedSmallPlatforms[0].name = "Platform_1";
                     spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(-26.25f, 0), Quaternion.identity));
                     spawnedSmallPlatforms[1].GetComponent<PlatformInfo>().platformKey = "r";
                     spawnedSmallPlatforms[1].name = "Platform_2";
-                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, 26.25f), Quaternion.identity));
+                    spawnedSmallPlatforms.Add(Instantiate(smallPlatform[Random.Range(0, smallPlatform.Count)], new Vector2(0, 25f), Quaternion.identity));
                     spawnedSmallPlatforms[2].GetComponent<PlatformInfo>().platformKey = "b";
                     spawnedSmallPlatforms[2].name = "Platform_3";
                     pKey = "blt";
@@ -427,6 +427,9 @@ public class Przepis : MonoBehaviour
 
         public void SpawnPlayer(GameObject player) {
             Instantiate(player, playerSpawnPoint,Quaternion.identity);
+        }
+        public void SpawnLights(GameObject  light) {
+            Instantiate(light, new Vector2(0,0), Quaternion.identity);
         }
     }
 
