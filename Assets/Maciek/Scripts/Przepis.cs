@@ -428,8 +428,8 @@ public class Przepis : MonoBehaviour
         public void SpawnPlayer(GameObject player) {
             Instantiate(player, playerSpawnPoint,Quaternion.identity);
         }
-        public void SpawnLights(GameObject  light) {
-            Instantiate(light, new Vector2(0,0), Quaternion.identity);
+        public void SetBackground(Color  c) {
+            Camera.main.backgroundColor = c;
         }
     }
 

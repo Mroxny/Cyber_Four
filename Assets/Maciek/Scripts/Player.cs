@@ -6,7 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.UIElements;
 using Mirror.Examples.Additive;
-//using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -17,6 +17,10 @@ public class Player : MonoBehaviour {
     private int ability;
     public Camera camera = new Camera();
     public Rigidbody2D rb;
+    public List<GameObject> disabledInHome;
+
+    public Joystick joystick;
+ 
 
     public Vector2 movement;
     public Vector2 mouse;
@@ -31,7 +35,11 @@ public class Player : MonoBehaviour {
             camera = Camera.main;
         }
         SetChar();
-
+        if (SceneManager.GetActiveScene().buildIndex == 1) {
+            foreach (GameObject j in disabledInHome) {
+                j.SetActive(false);
+            }
+        }
     }
     void SetChar() {
         
@@ -39,6 +47,7 @@ public class Player : MonoBehaviour {
             case 1:
                 transform.GetChild(1 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(1 - 1).transform.GetChild(0).GetComponent<Animator>();
+                GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(1 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender1");
                 MoveSpeed = 0.1f;
                 ability = 1;
@@ -47,7 +56,9 @@ public class Player : MonoBehaviour {
             case 2:
                 transform.GetChild(2 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<Animator>();
+                GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(2 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender2");
+                GameObject.Find("CharProf2").SetActive(true);
                 MoveSpeed = 0.1f;
                 ability = 2;
                 //weaponRender = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<GameObject>();
@@ -55,7 +66,9 @@ public class Player : MonoBehaviour {
             case 3:
                 transform.GetChild(3 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<Animator>();
+                GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(3 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender3");
+                GameObject.Find("CharProf3").SetActive(true);
                 MoveSpeed = 0.1f;
                 ability = 3;
                 //weaponRender = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<GameObject>();
@@ -63,7 +76,9 @@ public class Player : MonoBehaviour {
             case 4:
                 transform.GetChild(4 - 1).gameObject.SetActive(true);
                 animator = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<Animator>();
+                GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(4 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender4");
+                GameObject.Find("CharProf4").SetActive(true);
                 MoveSpeed = 0.1f;
                 ability = 4;
                 //weaponRender = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<GameObject>();
@@ -90,10 +105,15 @@ public class Player : MonoBehaviour {
 
     void Update() {
             
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = joystick.Horizontal;
+        movement.y = joystick.Vertical;
         mouse = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         lookDir = mouse - new Vector2(transform.position.x, transform.position.y);
+
+        // -- Maciek was here
+        int fps = (int)(1f / Time.unscaledDeltaTime); ;
+        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString(); ;
+        // -- 
 
         if (Input.GetKeyDown(KeyCode.Space)) {
                 switch (ability) {
@@ -117,7 +137,7 @@ public class Player : MonoBehaviour {
     private void FixedUpdate()
     {
         rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
-        animator.SetFloat("Horizontal", lookDir.x);
+        animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
     }

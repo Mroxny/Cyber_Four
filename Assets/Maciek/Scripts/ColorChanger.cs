@@ -10,13 +10,13 @@ public class ColorChanger : MonoBehaviour
 {
     public List<GameObject> targets = new List<GameObject>();
     private void Start() {
-        GameObject sceneMenager=GameObject.FindWithTag("SceneMenager");
-        
+        GameObject sceneMenager = GameObject.FindWithTag("SceneMenager");
+
         if (SceneManager.GetActiveScene().buildIndex == 0) {                            //MainMenu
             MainMenu_SM Events = sceneMenager.GetComponent<MainMenu_SM>();
             Events.OnColorChange += Events_OnColorChange;
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 4) {                        //MissionScene
+        else if (SceneManager.GetActiveScene().buildIndex == 4) {                        //MissionScene
             Bulid_Script Events = sceneMenager.GetComponent<Bulid_Script>();
             Events.OnColorChange += Events_OnColorChange;
         }
@@ -28,11 +28,11 @@ public class ColorChanger : MonoBehaviour
             par = transform;
         }
 
-            DetectAllChildren(par,targets);
+        DetectAllChildren(par, targets);
         if (PlayerPrefs.HasKey("ColorId")) {
             Events_OnColorChange(PlayerPrefs.GetInt("ColorId"));
         }
-        
+
     }
     public class OnSpacePressedEventArgs : EventArgs
     {
@@ -40,15 +40,15 @@ public class ColorChanger : MonoBehaviour
     }
     private void DetectAllChildren(Transform parent, List<GameObject> list) {
         foreach (Transform child in parent) {
-                list.Add(child.gameObject);
+            list.Add(child.gameObject);
             DetectAllChildren(child, list);
         }
-      
+
     }
 
-    
+
     private void Events_OnColorChange(int e) {
-        
+
         switch (e) {
             case 1:
                 if (transform.parent != null) {
@@ -76,7 +76,7 @@ public class ColorChanger : MonoBehaviour
                 }
                 break;
             case 2:
-                if (transform.parent!=null) {
+                if (transform.parent != null) {
                     if (transform.parent.GetComponent<SpriteRenderer>() != null) {
                         transform.parent.GetComponent<SpriteRenderer>().color = Color.red;
                     }

@@ -11,14 +11,16 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
 
 public class MainMenu_SM : MonoBehaviour {
-
+   
     public GameObject mainMenu;
     public GameObject playerSelect;
     public GameObject settings;
     public GameObject single_ContinuePanel;
+    public GameObject loadingScreen;
     int characterId;
     public GameObject[] objects;
     public AudioMixer audioMixer;
+    public Animator animator;
 
     public event Action<int> OnColorChange;
 
@@ -40,6 +42,7 @@ public class MainMenu_SM : MonoBehaviour {
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        loadingScreen.gameObject.SetActive(false);
         
     }
 
@@ -51,10 +54,20 @@ public class MainMenu_SM : MonoBehaviour {
         else {
 
         }
-        SceneManager.LoadScene(4);
+        mainMenu.gameObject.SetActive(false);
+        playerSelect.gameObject.SetActive(false);
+        single_ContinuePanel.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        loadingScreen.gameObject.SetActive(true);
+        GetComponent<LevelLoader>().LoadLevel(1);
     }
     public void LoadLevelMulti() {
-        SceneManager.LoadScene(3);
+        mainMenu.gameObject.SetActive(false);
+        playerSelect.gameObject.SetActive(false);
+        single_ContinuePanel.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        loadingScreen.gameObject.SetActive(true);
+        GetComponent<LevelLoader>().LoadLevel(2);
     }
 
 
@@ -73,6 +86,7 @@ public class MainMenu_SM : MonoBehaviour {
             playerSelect.transform.GetChild(5).gameObject.SetActive(false);           //GetComponent<Button>().interactable = false;
             mainMenu.gameObject.SetActive(false);
             playerSelect.gameObject.SetActive(true);
+            animator.SetTrigger("PlayCharacterSelect");
             characterId = 0;
         }
     }

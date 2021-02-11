@@ -24,6 +24,6 @@ public class Boss1 : MonoBehaviour
 
     private void die() {
         Destroy(this.gameObject);
-        bulidScript.BossDied();
+        //bulidScript.BossDied();
     }
 }

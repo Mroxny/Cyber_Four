@@ -18,7 +18,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies1;
     public GameObject bigPlatform1;
     public GameObject boss1;
-    public GameObject light;
+    public Color bgColor1;
 
 
     [Header("Panel Size")]
@@ -71,7 +71,7 @@ public class Bulid_Script : MonoBehaviour
                 init.StartFinalPhase(enemies1);
                 break;
         }
-        
+        init.SetBackground(bgColor1);
         init.SpawnPlayer(player);
         //Instantiate(player,new Vector2(0,0),Quaternion.identity);
 
