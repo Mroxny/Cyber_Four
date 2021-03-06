@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &145423746 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8699133690854399125, guid: 089c9223b89b1884d895c55e0054e5f4, type: 3}
+  m_PrefabInstance: {fileID: 1966416140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146329299
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +438,7 @@ GameObject:
   - component: {fileID: 821463148}
   - component: {fileID: 821463147}
   - component: {fileID: 821463146}
+  - component: {fileID: 821463149}
   m_Layer: 0
   m_Name: SceneMenager
   m_TagString: SceneMenager
@@ -483,9 +489,28 @@ MonoBehaviour:
   bigPlatform1: {fileID: 1539236688871127370, guid: e1d50f882ccb7464f89fa535af4069f7, type: 3}
   boss1: {fileID: 426513312050003032, guid: 6cdc11a5d3061784ca113d8965204da8, type: 3}
   bgColor1: {r: 0.04952831, g: 0, b: 0.13207549, a: 1}
+  platforms2:
+  - {fileID: 1539236688871127370, guid: 32b79d8fd473e0b4a9ce0e9aada640e6, type: 3}
+  - {fileID: 1539236688871127370, guid: bc1aa221eb0edd5408dd6634667428f1, type: 3}
+  - {fileID: 1539236688871127370, guid: 78e8d82832890634ba2dfff5bf8558c4, type: 3}
+  - {fileID: 1539236688871127370, guid: 61692fbe61067924a849e0cf5a65d0a1, type: 3}
+  - {fileID: 1539236688871127370, guid: 61692fbe61067924a849e0cf5a65d0a1, type: 3}
+  corridors2:
+  - {fileID: 2297744040911436736, guid: 3fe2b04d90d9ee745aa353b383a991af, type: 3}
+  - {fileID: 4221403339254713401, guid: 64cf81a1812752b459b87dba16d636ac, type: 3}
+  - {fileID: 2297744040911436736, guid: d952ce549ec8a734d9eb66626dd6df26, type: 3}
+  - {fileID: 4221403339254713401, guid: 7bf14907bdf05b9429eeb7a1f060cead, type: 3}
+  enemies2:
+  - {fileID: 1815296528031747696, guid: 440c9a8ac1ea695469e6ae7c052906bc, type: 3}
+  - {fileID: 1815296528031747696, guid: 2261f7599b48d3b4a90f25361584797c, type: 3}
+  - {fileID: 1815296528031747696, guid: 9e78cb372809adb4286a657277a077ab, type: 3}
+  bigPlatform2: {fileID: 1539236688871127370, guid: 2116b6fb06939b24da1fa98410f53723, type: 3}
+  boss2: {fileID: 4996216605736617930, guid: e14019b63d8977a469bc8d6e21d17b17, type: 3}
+  bgColor2: {r: 0.09803922, g: 0.11939785, b: 0.16862746, a: 0}
   maxX: 4
   maxY: 4
-  mode: 2
+  mode: 1
+  room: 1
 --- !u!114 &821463147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +538,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &821463149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821463145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82f99ad21f335f45978015460987a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  transition: {fileID: 145423746}
+  animationTime: 1
 --- !u!1001 &910295016
 PrefabInstance:
   m_ObjectHideFlags: 0

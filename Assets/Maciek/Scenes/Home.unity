@@ -917,6 +917,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1725738157 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8699133690854399125, guid: 089c9223b89b1884d895c55e0054e5f4, type: 3}
+  m_PrefabInstance: {fileID: 1412381560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1930350781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8699133690854399121, guid: 089c9223b89b1884d895c55e0054e5f4, type: 3}
@@ -932,6 +937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1965493288}
   - component: {fileID: 1965493289}
+  - component: {fileID: 1965493290}
   m_Layer: 0
   m_Name: SceneMenager
   m_TagString: Untagged
@@ -971,3 +977,18 @@ MonoBehaviour:
   - {fileID: 553141432}
   - {fileID: 999161626}
   cloud: {fileID: 229698487807122526, guid: 3f005132bd374a94caac81973c454793, type: 3}
+--- !u!114 &1965493290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965493287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82f99ad21f335f45978015460987a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  transition: {fileID: 1725738157}
+  animationTime: 1

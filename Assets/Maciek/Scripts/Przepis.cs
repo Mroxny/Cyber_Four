@@ -249,10 +249,18 @@ public class Przepis : MonoBehaviour
                 if (spawnedPlatforms[j].GetComponent<PlatformInfo>().withEnemies) {
                     int enemiesNum = Random.Range(3,7);
                     for(int i =0; i<=enemiesNum; i++) {
-                        Instantiate(
-                            e[Random.Range(0, e.Count)],
-                            new Vector2(spawnedPlatforms[j].transform.position.x+Random.Range(-5,6), spawnedPlatforms[j].transform.position.y + Random.Range(-5, 6)),
-                            Quaternion.identity);
+                        if (Random.Range(0, 2) == 1) {
+                            Instantiate(
+                                e[Random.Range(0, e.Count)],
+                                new Vector2(spawnedPlatforms[j].transform.position.x + Random.Range(-5, 6), spawnedPlatforms[j].transform.position.y + Random.Range(-2, 3)),
+                                Quaternion.identity);
+                        }
+                        else {
+                            Instantiate(
+                                 e[Random.Range(0, e.Count)],
+                                 new Vector2(spawnedPlatforms[j].transform.position.x + Random.Range(-2, 3), spawnedPlatforms[j].transform.position.y + Random.Range(-5, 6)),
+                                 Quaternion.identity);
+                        }
                     }
                 }
             }

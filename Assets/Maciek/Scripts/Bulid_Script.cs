@@ -20,6 +20,14 @@ public class Bulid_Script : MonoBehaviour
     public GameObject boss1;
     public Color bgColor1;
 
+    [Header("Room 2")]
+    [Space(20)]
+    public List<GameObject> platforms2;
+    public List<GameObject> corridors2;
+    public List<GameObject> enemies2;
+    public GameObject bigPlatform2;
+    public GameObject boss2;
+    public Color bgColor2;
 
     [Header("Panel Size")]
     [Range(2, 9)]
@@ -31,7 +39,9 @@ public class Bulid_Script : MonoBehaviour
     [Range(1, 3)]
     public int mode;
 
-
+    [Header("Room")]
+    [Range(1, 2)]
+    public int room;
 
 
 
@@ -40,50 +50,71 @@ public class Bulid_Script : MonoBehaviour
         var init = GetComponent<Przepis>().init;
         BulidLevel();
 
+        
 
-        switch (PlayerPrefs.GetInt("GameId")) {
-
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-        }
     }
     public void BulidLevel() {
+        if (PlayerPrefs.HasKey("GameId")) {
+            room = PlayerPrefs.GetInt("GameId");
+        }
+        if (PlayerPrefs.HasKey("ModeId")) {
+            mode = PlayerPrefs.GetInt("ModeId");
+        }
         var init = GetComponent<Przepis>().init;
         switch (mode) {
             case 1:
-                init.SpawnBossLair(platforms1[1], bigPlatform1, corridors1);
-                init.SpawnBoss(boss1);
+                switch (room) {
+                    case 1:
+                        init.SpawnBossLair(platforms1[0], bigPlatform1, corridors1);
+                        init.SpawnBoss(boss1);
+                        break;
+                    case 2:
+                        init.SpawnBossLair(platforms2[0], bigPlatform2, corridors2);
+                        init.SpawnBoss(boss2);
+                        break;
+                }
                 break;
             case 2:
-                init.BulidPanel(maxX, maxY,panelPart);
+                init.BulidPanel(maxX, maxY, panelPart);
                 init.FindPlatfromPlaces();
-                init.PlacePlatforms(platforms1);
-                init.PlaceCorridors(corridors1);
-                init.SpawnEnemies(enemies1);
-                //init.SpawnLights(light);
+                switch (room) {
+                    case 1:
+                        init.PlacePlatforms(platforms1);
+                        init.PlaceCorridors(corridors1);
+                        init.SpawnEnemies(enemies1);
+                        break;
+                    case 2:
+                        init.PlacePlatforms(platforms2);
+                        init.PlaceCorridors(corridors2);
+                        init.SpawnEnemies(enemies2);
+                        break;
+                }
                 break;
             case 3:
-                init.BulidFinalPhase(platforms1, bigPlatform1, corridors1);
-                init.StartFinalPhase(enemies1);
+                switch (room) {
+                    case 1:
+                        init.BulidFinalPhase(platforms1, bigPlatform1, corridors1);
+                        init.StartFinalPhase(enemies1);
+                        break;
+                    case 2:
+                        init.BulidFinalPhase(platforms2, bigPlatform2, corridors2);
+                        init.StartFinalPhase(enemies2);
+                        break;
+                }
+                
                 break;
         }
-        init.SetBackground(bgColor1);
-        init.SpawnPlayer(player);
-        //Instantiate(player,new Vector2(0,0),Quaternion.identity);
-
-        switch (PlayerPrefs.GetInt("GameId")) {
-
+        switch (room) {
             case 1:
-
+                init.SetBackground(bgColor1);
                 break;
             case 2:
-
+                init.SetBackground(bgColor2);
                 break;
         }
+
+        init.SpawnPlayer(player);
+       
     }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;

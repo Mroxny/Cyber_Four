@@ -46,8 +46,18 @@ public class MainMenu_SM : MonoBehaviour {
         
     }
 
+    public void NewGame() {
+        Start();
+        PlayerPrefs.DeleteKey("ModeId");
+        PlayerPrefs.DeleteKey("GameId");
+        PlayerPrefs.DeleteKey("CharacterId");
+    }
 
-    public void LoadLevelSingle() {
+        public void ContinueSingle() {
+        GetComponent<LevelLoader>().LoadLevel(2);
+    }
+
+        public void LoadLevelSingle() {
         if (!PlayerPrefs.HasKey("GameId")) {
             PlayerPrefs.SetInt("CharacterId", characterId);
         }
@@ -59,6 +69,7 @@ public class MainMenu_SM : MonoBehaviour {
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
         loadingScreen.gameObject.SetActive(true);
+        PlayerPrefs.SetInt("ModeId", 1);
         GetComponent<LevelLoader>().LoadLevel(1);
     }
     public void LoadLevelMulti() {

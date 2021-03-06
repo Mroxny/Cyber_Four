@@ -542,7 +542,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6767605914906851546, guid: d2c48baee1dc7fb4ea7fae90dd5f1109, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1069,7 +1069,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.88, y: 1.5}
+  m_Size: {x: 5.08, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &2038645483081072171
 GameObject:
@@ -1492,7 +1492,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.3, y: 1.25}
+  m_Size: {x: 7.2, y: 1.25}
   m_EdgeRadius: 0
 --- !u!1 &2359626045813316442
 GameObject:
@@ -1994,7 +1994,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.3, y: 1.25}
+  m_Size: {x: 7.2, y: 1.25}
   m_EdgeRadius: 0
 --- !u!1 &3193911641786523028
 GameObject:
@@ -2133,7 +2133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.88, y: 1.5}
+  m_Size: {x: 5.08, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &3329745782754026422
 GameObject:
@@ -3452,7 +3452,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.3, y: 1.25}
+  m_Size: {x: 7.2, y: 1.25}
   m_EdgeRadius: 0
 --- !u!1 &5778901826362647727
 GameObject:
@@ -4796,7 +4796,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.3, y: 1.25}
+  m_Size: {x: 7.2, y: 1.25}
   m_EdgeRadius: 0
 --- !u!1 &8891084889067357864
 GameObject:
@@ -4868,7 +4868,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6767605914906851546, guid: d2c48baee1dc7fb4ea7fae90dd5f1109, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

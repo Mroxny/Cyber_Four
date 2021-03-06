@@ -21,8 +21,10 @@ public class LevelLoader : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         while (!operation.isDone){
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            slider.value = progress;
-            Debug.Log(progress);
+            if (slider != null) {
+                slider.value = progress;
+            }
+            //Debug.Log(progress);
             yield return null;
         }
     }
