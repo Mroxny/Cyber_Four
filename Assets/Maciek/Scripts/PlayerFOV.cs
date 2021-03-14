@@ -4,49 +4,34 @@ using UnityEngine;
 
 public class PlayerFOV : MonoBehaviour
 {
-    public float viewRadius;
-    [Range (0, 360)]
-    public float viewAngle;
-
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
-
-
-    [HideInInspector]
-    public List<Transform> visibleTargets = new List<Transform>();
-
+    public float radius = 5;
     private void Start()
     {
-        StartCoroutine("FindTargetsWithDelay", 0.2f);
+        Physics2D.CircleCast(new Vector2(transform.position.x, transform.position.y), radius, transform.position);
     }
 
-    IEnumerator FindTargetsWithDelay(float delay) {
-        while (true) {
-            yield return new WaitForSeconds(delay);
-            FindVisibleTargets();
-        }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.GetComponent<Interactable>()) DoInteract(collision.collider.GetComponent<Interactable>());
     }
 
-    void FindVisibleTargets() {
-        visibleTargets.Clear();
-        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-
-        for (int i = 0; i < targetsInViewRadius.Length; i++) {
-            Transform target = targetsInViewRadius[i].transform;
-            Vector3 DirToTarget = (target.position - transform.position).normalized;
-            float dstToTarget = Vector3.Distance(transform.position, target.position);
-            if (!Physics.Raycast(transform.position, DirToTarget, dstToTarget, obstacleMask)) {
-                visibleTargets.Add(target);
-            }
-        }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Interactable>()) DoInteract(collision.GetComponent<Interactable>());
     }
-    public Vector3 DirFromAngle(float AngleInDeg, bool angleIsGlobal) {
 
-        if (!angleIsGlobal) {
-            AngleInDeg += transform.eulerAngles.y;
-        }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.GetComponent<Interactable>()) collision.collider.GetComponent<Interactable>().DestroyInteract();
+    }
 
-        return new Vector3(Mathf.Sin(AngleInDeg * Mathf.Deg2Rad), Mathf.Cos(AngleInDeg * Mathf.Deg2Rad), 0);
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Interactable>()) collision.GetComponent<Interactable>().DestroyInteract();
+    }
+
+    private void DoInteract(Interactable interakcja) {
+        Debug.Log("AAAAA");
+        interakcja.DoFunc();
     }
 }

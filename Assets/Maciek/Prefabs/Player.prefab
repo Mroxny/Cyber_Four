@@ -1294,15 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87deeaceae5350441ac46f7b46293061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 0
-  viewAngle: 0
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  visibleTargets: []
+  radius: 5
 --- !u!50 &4033826011533351026
 Rigidbody2D:
   serializedVersion: 4

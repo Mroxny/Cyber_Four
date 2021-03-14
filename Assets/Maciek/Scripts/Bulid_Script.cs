@@ -29,6 +29,15 @@ public class Bulid_Script : MonoBehaviour
     public GameObject boss2;
     public Color bgColor2;
 
+    [Header("Room 3")]
+    [Space(20)]
+    public List<GameObject> platforms3;
+    public List<GameObject> corridors3;
+    public List<GameObject> enemies3;
+    public GameObject bigPlatform3;
+    public GameObject boss3;
+    public Color bgColor3;
+
     [Header("Panel Size")]
     [Range(2, 9)]
     public int maxX;
@@ -40,7 +49,7 @@ public class Bulid_Script : MonoBehaviour
     public int mode;
 
     [Header("Room")]
-    [Range(1, 2)]
+    [Range(1, 3)]
     public int room;
 
 
@@ -72,6 +81,10 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnBossLair(platforms2[0], bigPlatform2, corridors2);
                         init.SpawnBoss(boss2);
                         break;
+                    case 3:
+                        init.SpawnBossLair(platforms3[0], bigPlatform3, corridors3);
+                        init.SpawnBoss(boss3);
+                        break;
                 }
                 break;
             case 2:
@@ -88,6 +101,11 @@ public class Bulid_Script : MonoBehaviour
                         init.PlaceCorridors(corridors2);
                         init.SpawnEnemies(enemies2);
                         break;
+                    case 3:
+                        init.PlacePlatforms(platforms3);
+                        init.PlaceCorridors(corridors3);
+                        init.SpawnEnemies(enemies3);
+                        break;
                 }
                 break;
             case 3:
@@ -100,6 +118,10 @@ public class Bulid_Script : MonoBehaviour
                         init.BulidFinalPhase(platforms2, bigPlatform2, corridors2);
                         init.StartFinalPhase(enemies2);
                         break;
+                    case 3:
+                        init.BulidFinalPhase(platforms3, bigPlatform3, corridors3);
+                        init.StartFinalPhase(enemies3);
+                        break;
                 }
                 
                 break;
@@ -110,6 +132,9 @@ public class Bulid_Script : MonoBehaviour
                 break;
             case 2:
                 init.SetBackground(bgColor2);
+                break;
+            case 3:
+                init.SetBackground(bgColor3);
                 break;
         }
 

@@ -15,9 +15,9 @@ public class LevelLoader : MonoBehaviour
     }
 
     IEnumerator LoadAsync(int sceneIndex) {
-        yield return new WaitForSeconds(animationTime/2);
+        yield return new WaitForSecondsRealtime(animationTime/2);
         transition.SetTrigger("Start");
-        yield return new WaitForSeconds(animationTime/2);
+        yield return new WaitForSecondsRealtime(animationTime/2);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         while (!operation.isDone){
             float progress = Mathf.Clamp01(operation.progress / .9f);

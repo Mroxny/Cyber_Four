@@ -87,6 +87,9 @@ public class MainMenu_SM : MonoBehaviour {
             mainMenu.gameObject.SetActive(false);
             playerSelect.gameObject.SetActive(false);
             single_ContinuePanel.gameObject.SetActive(true);
+            if (PlayerPrefs.GetInt("ModeId") == 1) {
+                single_ContinuePanel.transform.Find("Continue").gameObject.SetActive(false);
+            }
             settings.gameObject.SetActive(false);
         }
         else {

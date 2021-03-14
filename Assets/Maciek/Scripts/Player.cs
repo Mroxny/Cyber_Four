@@ -146,7 +146,7 @@ public class Player : MonoBehaviour {
         if (movement.x!=0) {
             lookDir = movement.x;                                                        //mouse - new Vector2(transform.position.x, transform.position.y);
         }
-        //mprint(lookDir);
+        
 
         // -- Maciek was here
         int fps = (int)(1f / Time.unscaledDeltaTime); ;
