@@ -19,17 +19,22 @@ public class Player : MonoBehaviour {
     public Rigidbody2D rb;
     public List<GameObject> disabledInHome;
     public List<GameObject> HUDElements;
-    public GameObject sceneMenu;
+    public GameObject pauseMenu;
+    public GameObject taskNotifier;
+    public GameObject spawnDust;
 
-    public Joystick joystick;
- 
+    public Joystick movementJoystick;
+    public Joystick aimJoystick;
+    public bool test = false;
+
 
     public Vector2 movement;
     public Vector2 mouse;
     public bool withJoystick=true;
     private float lookDir;
 
-    GameObject s;
+    GameObject pauseMenuHandler;
+    GameObject taskNotifierHandler;
     void Start() {
         if (cam == null) {
             cam = GameObject.Find("Main Camera");
@@ -37,16 +42,27 @@ public class Player : MonoBehaviour {
         if (camera == null) {
             camera = Camera.main;
         }
-        SetChar();
         if (SceneManager.GetActiveScene().buildIndex == 1) {
             foreach (GameObject j in disabledInHome) {
                 j.SetActive(false);
             }
         }
-        s = Instantiate(sceneMenu, new Vector2(0, 0), Quaternion.identity);
+        pauseMenuHandler = Instantiate(pauseMenu, new Vector2(0, 0), Quaternion.identity);
+        print("set value");
+        taskNotifierHandler = Instantiate(taskNotifier, new Vector2(0, 0), Quaternion.identity);
+        taskNotifierHandler.SetActive(false);
+        SetChar();
     }
+
+
     void SetChar() {
-        
+        StartCoroutine(SpawnPlayer());
+    }
+    IEnumerator SpawnPlayer() {
+        yield return new WaitForSecondsRealtime(0.8f);
+        if (PlayerPrefs.GetInt("Vibrations") == 1) {
+            Handheld.Vibrate();
+        }
         switch (PlayerPrefs.GetInt("CharacterId")) {
             case 1:
                 transform.GetChild(1 - 1).gameObject.SetActive(true);
@@ -87,8 +103,10 @@ public class Player : MonoBehaviour {
                 ability = 4;
                 //weaponRender = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
+                
         }
-
+        Instantiate(spawnDust, new Vector2(0, 0), Quaternion.identity);
+        StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f));
     }
 
     void isDodging() {
@@ -122,14 +140,27 @@ public class Player : MonoBehaviour {
             }
         }
     }
-    public void FindScene() {
-        s.SetActive(true);
-        
+    public void Pause() {
+        pauseMenuHandler.SetActive(true);
 
     }
+    public void TestButton() {
+        if (!test) {
+            test = true;
+        }
+        else{
+            test = false;
+        }
+        
+    }
+    public void ShowTask() {
+        Notify(PlayerPrefs.GetString("CurrentTask"), 5);
+    }
 
-
-
+    public void Notify(string text, float duration) {
+        taskNotifierHandler.SetActive(true);
+        taskNotifierHandler.GetComponent<TaskHandler>().Notify(text, duration);
+    }
 
     void Update() {
             
@@ -139,16 +170,21 @@ public class Player : MonoBehaviour {
             movement.y = Input.GetAxisRaw("Vertical");
         }
         else {
-            movement.x = joystick.Horizontal;
-            movement.y = joystick.Vertical;
+            movement.x = movementJoystick.Horizontal;
+            movement.y = movementJoystick.Vertical;
         }
         mouse = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         if (movement.x!=0) {
-            lookDir = movement.x;                                                        //mouse - new Vector2(transform.position.x, transform.position.y);
+            if (aimJoystick.Horizontal == 0) {
+                lookDir = movement.x;                                                        //mouse - new Vector2(transform.position.x, transform.position.y);
+            }
+            else {
+                lookDir = aimJoystick.Horizontal;
+            }
         }
         
 
-        // -- Maciek was here
+        // -- Maciek was here (FPS)
         int fps = (int)(1f / Time.unscaledDeltaTime); ;
         GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString(); ;
         // -- 
@@ -175,9 +211,12 @@ public class Player : MonoBehaviour {
     private void FixedUpdate()
     {
         rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
-        animator.SetFloat("Horizontal", lookDir);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        if (animator != null) {
+            animator.SetFloat("Horizontal", lookDir);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+        }
         cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
+        
     }
 
 }

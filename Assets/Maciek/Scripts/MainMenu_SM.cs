@@ -32,6 +32,7 @@ public class MainMenu_SM : MonoBehaviour {
 #endif
         //objects = GameObject.FindGameObjectsWithTag("colorchange");
         Application.targetFrameRate = 60;
+        
 
     }
 
@@ -152,14 +153,28 @@ public class MainMenu_SM : MonoBehaviour {
 
     }
 
-    
+    public void Vibrations(bool v) {
+        if (v == true) {
+            PlayerPrefs.SetInt("Vibrations", 1);
+        }
+        else {
+            PlayerPrefs.SetInt("Vibrations", 0);
+        }
+    }
 
     public void Settings() {
         mainMenu.gameObject.SetActive(false);
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(true);
+        if (PlayerPrefs.GetInt("Vibrations") == 1) {
+            GameObject.Find("Vibrations_Toggle").GetComponent<Toggle>().SetIsOnWithoutNotify(true);
+        }
+        else {
+            GameObject.Find("Vibrations_Toggle").GetComponent<Toggle>().SetIsOnWithoutNotify(false);
+        }
     }
+    
     public void Quit() {
         Application.Quit();
     }

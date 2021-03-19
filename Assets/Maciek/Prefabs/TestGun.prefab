@@ -106,10 +106,10 @@ MonoBehaviour:
   bullet: {fileID: 13993696069608544, guid: 0251cce0a06836b4a9892a03b028b94c, type: 3}
   velocity: 10
   damage: 20
+  fireRate: 0.3
   weapon: {fileID: 2325824214476225457}
   firepoint: {fileID: 748338482627609493}
   IsGun: 0
-  shoot: {fileID: 8300000, guid: 8e592007c598e7b4a8e355e4d4307b05, type: 3}
 --- !u!82 &1231238326993579043
 AudioSource:
   m_ObjectHideFlags: 0

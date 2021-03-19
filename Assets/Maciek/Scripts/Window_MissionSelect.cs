@@ -21,6 +21,9 @@ public class Window_MissionSelect : MonoBehaviour
         if (sceneMenager == null) {
             sceneMenager = GameObject.Find("/SceneMenager");
         }
+        if (GameObject.Find("TaskNotifier(Clone)") != null) {
+            GameObject.Find("TaskNotifier(Clone)").GetComponent<TaskHandler>().HideNote();
+        }
         Time.timeScale = 0;
     }
     public void LoadLevel(int gameId) {

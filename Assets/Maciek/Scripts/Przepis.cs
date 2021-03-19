@@ -433,8 +433,8 @@ public class Przepis : MonoBehaviour
             }
         }
 
-        public void SpawnPlayer(GameObject player) {
-            Instantiate(player, playerSpawnPoint,Quaternion.identity);
+        public GameObject SpawnPlayer(GameObject player) {
+           return Instantiate(player, playerSpawnPoint,Quaternion.identity);
         }
         public void SetBackground(Color  c) {
             Camera.main.backgroundColor = c;

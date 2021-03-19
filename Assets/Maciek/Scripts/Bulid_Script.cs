@@ -16,7 +16,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> platforms1;
     public List<GameObject> corridors1;
     public List<GameObject> enemies1;
-    public GameObject bigPlatform1;
+    public List<GameObject> bigPlatform1;
     public GameObject boss1;
     public Color bgColor1;
 
@@ -25,7 +25,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> platforms2;
     public List<GameObject> corridors2;
     public List<GameObject> enemies2;
-    public GameObject bigPlatform2;
+    public List<GameObject> bigPlatform2;
     public GameObject boss2;
     public Color bgColor2;
 
@@ -34,7 +34,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> platforms3;
     public List<GameObject> corridors3;
     public List<GameObject> enemies3;
-    public GameObject bigPlatform3;
+    public List<GameObject> bigPlatform3;
     public GameObject boss3;
     public Color bgColor3;
 
@@ -47,6 +47,9 @@ public class Bulid_Script : MonoBehaviour
     [Header("Mode")]
     [Range(1, 3)]
     public int mode;
+    public string task1;
+    public string task2;
+    public string task3;
 
     [Header("Room")]
     [Range(1, 3)]
@@ -74,15 +77,15 @@ public class Bulid_Script : MonoBehaviour
             case 1:
                 switch (room) {
                     case 1:
-                        init.SpawnBossLair(platforms1[0], bigPlatform1, corridors1);
+                        init.SpawnBossLair(platforms1[0], bigPlatform1[0], corridors1);
                         init.SpawnBoss(boss1);
                         break;
                     case 2:
-                        init.SpawnBossLair(platforms2[0], bigPlatform2, corridors2);
+                        init.SpawnBossLair(platforms2[0], bigPlatform2[0], corridors2);
                         init.SpawnBoss(boss2);
                         break;
                     case 3:
-                        init.SpawnBossLair(platforms3[0], bigPlatform3, corridors3);
+                        init.SpawnBossLair(platforms3[0], bigPlatform3[0], corridors3);
                         init.SpawnBoss(boss3);
                         break;
                 }
@@ -111,15 +114,15 @@ public class Bulid_Script : MonoBehaviour
             case 3:
                 switch (room) {
                     case 1:
-                        init.BulidFinalPhase(platforms1, bigPlatform1, corridors1);
+                        init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         init.StartFinalPhase(enemies1);
                         break;
                     case 2:
-                        init.BulidFinalPhase(platforms2, bigPlatform2, corridors2);
+                        init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
                         init.StartFinalPhase(enemies2);
                         break;
                     case 3:
-                        init.BulidFinalPhase(platforms3, bigPlatform3, corridors3);
+                        init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         init.StartFinalPhase(enemies3);
                         break;
                 }
@@ -138,8 +141,27 @@ public class Bulid_Script : MonoBehaviour
                 break;
         }
 
-        init.SpawnPlayer(player);
-       
+        player = init.SpawnPlayer(player);
+        print("player spawned");
+        StartCoroutine(Notify());
+        
+    }
+    IEnumerator Notify() {
+        yield return new WaitForEndOfFrame();
+        switch (mode) {
+            case 1:
+                PlayerPrefs.SetString("CurrentTask", task1);
+                player.GetComponent<Player>().Notify(task1, 4);
+                break;
+            case 2:
+                PlayerPrefs.SetString("CurrentTask", task2);
+                player.GetComponent<Player>().Notify(task2, 4);
+                break;
+            case 3:
+                PlayerPrefs.SetString("CurrentTask", task3);
+                player.GetComponent<Player>().Notify(task3, 4);
+                break;
+        }
     }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;
