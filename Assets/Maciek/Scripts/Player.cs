@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     public GameObject weaponRender;
     private float MoveSpeed;
     private int ability;
+    public int cyberCoin;
     public Camera camera = new Camera();
     public Rigidbody2D rb;
     public List<GameObject> disabledInHome;
@@ -47,10 +48,12 @@ public class Player : MonoBehaviour {
                 j.SetActive(false);
             }
         }
-        pauseMenuHandler = Instantiate(pauseMenu, new Vector2(0, 0), Quaternion.identity);
-        print("set value");
         taskNotifierHandler = Instantiate(taskNotifier, new Vector2(0, 0), Quaternion.identity);
-        taskNotifierHandler.SetActive(false);
+        if (!SaveSystem.IsValid()) {
+            SaveSystem.SavePlayer(this);
+        }
+            taskNotifierHandler.SetActive(false);
+        cyberCoin = SaveSystem.LoadPlayer().cyberCoin;
         SetChar();
     }
 
@@ -59,7 +62,7 @@ public class Player : MonoBehaviour {
         StartCoroutine(SpawnPlayer());
     }
     IEnumerator SpawnPlayer() {
-        yield return new WaitForSecondsRealtime(0.8f);
+        yield return new WaitForSecondsRealtime(1f);
         if (PlayerPrefs.GetInt("Vibrations") == 1) {
             Handheld.Vibrate();
         }
@@ -105,8 +108,8 @@ public class Player : MonoBehaviour {
                 break;
                 
         }
-        Instantiate(spawnDust, new Vector2(0, 0), Quaternion.identity);
-        StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f));
+        Instantiate(spawnDust, transform.position, Quaternion.identity);
+        StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f,transform.position));
     }
 
     void isDodging() {
@@ -141,8 +144,16 @@ public class Player : MonoBehaviour {
         }
     }
     public void Pause() {
-        pauseMenuHandler.SetActive(true);
-
+        //musze zmienic sorki
+        if (pauseMenuHandler)
+        {
+            pauseMenuHandler.SetActive(true);
+        }
+        else
+        {
+            pauseMenuHandler = Instantiate(pauseMenu, new Vector2(0, 0), Quaternion.identity);
+            pauseMenuHandler.SetActive(true);
+        }
     }
     public void TestButton() {
         if (!test) {
@@ -151,8 +162,13 @@ public class Player : MonoBehaviour {
         else{
             test = false;
         }
-        
+        SaveSystem.SavePlayer(this);
+        //PlayerData data = SaveSystem.LoadPlayer();
+
+
     }
+
+
     public void ShowTask() {
         Notify(PlayerPrefs.GetString("CurrentTask"), 5);
     }
@@ -186,7 +202,10 @@ public class Player : MonoBehaviour {
 
         // -- Maciek was here (FPS)
         int fps = (int)(1f / Time.unscaledDeltaTime); ;
-        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString(); ;
+        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString();
+        if (GameObject.Find("CC_Count") != null) {
+            GameObject.Find("CC_Count").GetComponent<TextMeshProUGUI>().text = cyberCoin.ToString();
+        }
         // -- 
 
         if (Input.GetKeyDown(KeyCode.Space)) {

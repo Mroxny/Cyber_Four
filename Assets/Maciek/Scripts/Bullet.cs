@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public float damage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
+        EnemyAI enemy = collision.GetComponent<EnemyAI>();
         Player player = collision.GetComponent<Player>();
 
         /* Na sciany ktore zapewne będą w pokoju
@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
 
         if (enemy != null) {
             Debug.Log(damage);
-            enemy.takeDamage(damage);
+            enemy.TakeDamage(damage);
         }
         if (player == null) {
             GameObject.Destroy(this.gameObject);

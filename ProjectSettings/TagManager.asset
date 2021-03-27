@@ -6,6 +6,7 @@ TagManager:
   tags:
   - colorchange
   - SceneMenager
+  - MissionSelect
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Minimap
   - Background
-  - 
-  - 
+  - Interactable
+  - Obstacle
   - 
   - 
   - 

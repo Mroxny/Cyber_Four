@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4935149726479954954}
   - component: {fileID: 4933205846813392277}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458116645335529853}
   - component: {fileID: 2225186974196848921}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2413254566716863114}
   - component: {fileID: 2206524137308899187}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5397330501228235627}
   - component: {fileID: 5609056665385480061}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_8 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 338959378339649258}
   - component: {fileID: 4956803113525662121}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4718453557584395495}
   - component: {fileID: 7986871239751284661}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +919,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7833032025079131691}
   - component: {fileID: 954372785002033551}
-  m_Layer: 0
+  - component: {fileID: 7461290009285203347}
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_7 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,6 +993,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7461290009285203347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001273294349438531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed4b7b2810573240891fddb607d9a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  tekst: 
 --- !u!1 &1016266288909906238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6490667618409250676}
   - component: {fileID: 2253452688394276276}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,7 +1210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2498753608744365390}
   - component: {fileID: 6629135227863213330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1277,7 +1292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3076206593308797092}
   - component: {fileID: 1725622470286791835}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3558082356819836116}
   - component: {fileID: 4910681830445171877}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,7 +1526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6193208756425774828}
   - component: {fileID: 4849157899473111889}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1593,7 +1608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 685331087794353753}
   - component: {fileID: 173742591931871877}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_9 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,7 +1691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6806687171439260187}
   - component: {fileID: 5439357292926520715}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1831,7 +1846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101487602065485872}
   - component: {fileID: 3959049398391790615}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1917,7 +1932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333720213304475926}
   - component: {fileID: 7241979105942606091}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2193,7 +2208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5511534241507507577}
   - component: {fileID: 600426146399188347}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2332,7 +2347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100563155090210651}
   - component: {fileID: 5267903924158574386}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2523,7 +2538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3052814591721904945}
   - component: {fileID: 983299813038006375}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2688,7 +2703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6154515019802327280}
   - component: {fileID: 5584986670591002962}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2745,7 +2760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1319909410421946709}
   - component: {fileID: 4093535452943528835}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2827,7 +2842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970310078086718342}
   - component: {fileID: 4723028169262256545}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2910,7 +2925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252529049492262760}
   - component: {fileID: 5667114062350430753}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2992,7 +3007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4739360563041414294}
   - component: {fileID: 4760487822509076948}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3049,7 +3064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 773598190429475831}
   - component: {fileID: 1795704686836006731}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3193,7 +3208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4628040405395993145}
   - component: {fileID: 6009447659563333637}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3446,7 +3461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5056430405112822112}
   - component: {fileID: 3467546129490079089}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3560,7 +3575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4750123005683164705}
   - component: {fileID: 2233682177468713564}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3699,7 +3714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15686139846868366}
   - component: {fileID: 777891997590757839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3782,7 +3797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6129646220011193185}
   - component: {fileID: 8452658131934797701}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3864,7 +3879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337889334821691457}
   - component: {fileID: 7012369915119195823}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3946,7 +3961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3904274911968763237}
   - component: {fileID: 8886480206640941213}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4003,7 +4018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1013533020943523486}
   - component: {fileID: 405041302341086432}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4086,7 +4101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1525507210492997784}
   - component: {fileID: 4546887187917366559}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4204,7 +4219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2783853750472534101}
   - component: {fileID: 3173931036030312336}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_9 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4370,7 +4385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4848141515288655272}
   - component: {fileID: 2248131311484705034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4586,7 +4601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6654810191406290143}
   - component: {fileID: 6052322164383207194}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4668,7 +4683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2496487019283031654}
   - component: {fileID: 9031664575803740052}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4750,7 +4765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1712153923238086753}
   - component: {fileID: 3892274683963542130}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4833,7 +4848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3441372603164734744}
   - component: {fileID: 7823922138263430398}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4997,7 +5012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3595120681297862415}
   - component: {fileID: 2808423468711012331}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5079,7 +5094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1439380782887392966}
   - component: {fileID: 5822275527174196183}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5161,7 +5176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386181464059574618}
   - component: {fileID: 12398603745392297}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5275,7 +5290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716155624183478095}
   - component: {fileID: 983560489720747035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5332,7 +5347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5037640244274266940}
   - component: {fileID: 758592131284707363}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5414,7 +5429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2089867804845278646}
   - component: {fileID: 2584259448280620842}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5496,7 +5511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6605499919819177584}
   - component: {fileID: 530834244302499316}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5787,6 +5802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed4b7b2810573240891fddb607d9a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
   tekst: LOLOOL
 --- !u!1 &5015425068733524108
 GameObject:
@@ -5798,7 +5814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2121242403025871645}
   - component: {fileID: 2135659149747052190}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5881,7 +5897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7344578988110130693}
   - component: {fileID: 1572377158686877060}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6052,7 +6068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037854219532921526}
   - component: {fileID: 3935680144206155415}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6134,7 +6150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6592630249460400370}
   - component: {fileID: 8801052684430593221}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6289,7 +6305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4746668001226587882}
   - component: {fileID: 4041302360954132141}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6429,7 +6445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8814360947961242304}
   - component: {fileID: 4268793346010736397}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6511,7 +6527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1688567322895497489}
   - component: {fileID: 2535264060101854102}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6593,7 +6609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875856239416783364}
   - component: {fileID: 2393404518636592719}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_8 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6758,7 +6774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5721245292537657003}
   - component: {fileID: 1899425757958832276}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7006,7 +7022,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8406191463467301379}
   - component: {fileID: 2044720403011042823}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7088,7 +7104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8951510521748184561}
   - component: {fileID: 1380238716764290388}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7346,7 +7362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 58681484622688046}
   - component: {fileID: 7921309777462494811}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7428,7 +7444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289397476694264107}
   - component: {fileID: 2634447228943410999}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7485,7 +7501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3287427807987555367}
   - component: {fileID: 7979692009735427035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_9 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7625,7 +7641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3918609187085147467}
   - component: {fileID: 2250733437649999033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7707,7 +7723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370200296321431939}
   - component: {fileID: 6369595862578354361}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7790,7 +7806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5852492208351004202}
   - component: {fileID: 2715681588244223060}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7872,7 +7888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4008053657586023666}
   - component: {fileID: 3254225101086578909}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7929,7 +7945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5268221829044408959}
   - component: {fileID: 7404691672701489871}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8012,7 +8028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6244787929801621360}
   - component: {fileID: 8988431458704202009}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8151,7 +8167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4102485963293563447}
   - component: {fileID: 5633687000974358249}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8265,7 +8281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7464665650095479788}
   - component: {fileID: 4331597075359145883}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8347,7 +8363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077939762332914150}
   - component: {fileID: 533000949364275070}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8512,7 +8528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699226402204366122}
   - component: {fileID: 2687628998714756893}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8569,7 +8585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4877814272336573030}
   - component: {fileID: 6215873680370026085}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8626,7 +8642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1858869617677759812}
   - component: {fileID: 8490589126154957372}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8709,7 +8725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5810489427913146012}
   - component: {fileID: 7204727550532913527}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_9 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8909,7 +8925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560281079931650272}
   - component: {fileID: 872065623932297858}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8991,7 +9007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3922205813639334293}
   - component: {fileID: 7208842765693406128}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9048,7 +9064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2453545908432286057}
   - component: {fileID: 2474930541573055250}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9130,7 +9146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384342322240716533}
   - component: {fileID: 7263308709059594522}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9187,7 +9203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8040139931073390721}
   - component: {fileID: 3606063072595646996}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9269,7 +9285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5020149074275467441}
   - component: {fileID: 6897863199946824499}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9352,7 +9368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6409575950812928729}
   - component: {fileID: 8465859637992248599}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9434,7 +9450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5396099136648663171}
   - component: {fileID: 469464334654014274}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9516,7 +9532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 46409130860146441}
   - component: {fileID: 8699593364915364606}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9655,7 +9671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9027349869896880521}
   - component: {fileID: 4154281192146279732}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9737,7 +9753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3641663466628670105}
   - component: {fileID: 1402515560466995749}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9794,7 +9810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477215721104224983}
   - component: {fileID: 7886661797603986658}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_9 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9934,7 +9950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8643908560303133446}
   - component: {fileID: 457634083784376506}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10073,7 +10089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1577969468649702387}
   - component: {fileID: 5648202611849213134}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10212,7 +10228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1980340594944003117}
   - component: {fileID: 6328800614258172253}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10269,7 +10285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3236452857281979276}
   - component: {fileID: 2531891918093197795}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10440,7 +10456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944347109358579059}
   - component: {fileID: 7490571630413129980}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_4 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10663,7 +10679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053138708924573917}
   - component: {fileID: 7356535125095570279}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10745,7 +10761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5522409450089277814}
   - component: {fileID: 8934443343529953872}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10828,7 +10844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4694585871786946661}
   - component: {fileID: 6818919679601615951}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10885,7 +10901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5979867800057667943}
   - component: {fileID: 1117169505627449141}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_walls_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11107,7 +11123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7251646519817474116}
   - component: {fileID: 5600791653474875638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HomeTruck_enviroment_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11234,6 +11250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_light (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
 --- !u!4 &4314402566428280015 stripped
@@ -11299,6 +11319,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
@@ -11394,6 +11418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_light (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
       value: 1
@@ -11481,6 +11509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_light (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
 --- !u!4 &2269700920357723006 stripped
@@ -11546,6 +11578,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
@@ -11613,6 +11649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_engine (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9006507332958324547, guid: 3722c80dd5ff8e94785653c5710771d6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3722c80dd5ff8e94785653c5710771d6, type: 3}
 --- !u!4 &6248478601851168313 stripped
@@ -11678,6 +11718,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
@@ -11769,6 +11813,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_engine
       objectReference: {fileID: 0}
+    - target: {fileID: 9006507332958324547, guid: 3722c80dd5ff8e94785653c5710771d6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3722c80dd5ff8e94785653c5710771d6, type: 3}
 --- !u!4 &5073859478396549500 stripped
@@ -11830,6 +11878,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
@@ -11905,6 +11957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_engine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9006507332958324547, guid: 3722c80dd5ff8e94785653c5710771d6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3722c80dd5ff8e94785653c5710771d6, type: 3}
 --- !u!4 &3613405570523853107 stripped
@@ -11966,6 +12022,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
@@ -12032,6 +12092,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
@@ -12124,6 +12188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_light (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
       value: 0
@@ -12214,6 +12282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTruck_doorPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6295351160847983950, guid: 5c3f1b2f423d73741a0fae83e71b21e8, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c3f1b2f423d73741a0fae83e71b21e8, type: 3}
 --- !u!4 &4755488449326946333 stripped
@@ -12275,6 +12347,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b
@@ -12353,6 +12429,10 @@ PrefabInstance:
     - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: m_Name
       value: HomeTruck_light (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053021541004253206, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4053021541004253207, guid: 24bf1e98f79381545a97358fca2ca080, type: 3}
       propertyPath: color.b

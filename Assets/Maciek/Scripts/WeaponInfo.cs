@@ -49,7 +49,6 @@ public class WeaponInfo : MonoBehaviour
         float odleglosc = Vector2.Distance(player.transform.position, transform.position);
         if (odleglosc < 0.7f) {
             if (Input.GetKeyDown(KeyCode.F) || player.GetComponent<Player>().test) {
-                Debug.Log("mam bron");
                 weapon.transform.parent = player.weaponRender.transform;
                 //weapon.transform.position = new Vector3(weaponRender.transform.position.x, weaponRender.transform.position.y, -1);
                 weapon.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.2f);

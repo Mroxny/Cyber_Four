@@ -16,36 +16,25 @@ AnimationClip:
   m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
-  m_FloatCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_FlipX
-    path: 
-    classID: 212
-    script: {fileID: 0}
+  m_FloatCurves: [{curve: {serializedVersion: 2, m_Curve: [{serializedVersion: 3,
+            time: 0, value: 1, inSlope: Infinity, outSlope: Infinity, tangentMode: 103,
+            weightedMode: 0, inWeight: 0, outWeight: 0}], m_PreInfinity: 2, m_PostInfinity: 2,
+        m_RotationOrder: 4}, attribute: m_FlipX, path: '', classID: 212, script: {
+        fileID: 0}}]
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3293228296167246505, guid: 7ce9777b937909341b34c2c05a320cf1, type: 3}
+      value: {fileID: -3293228296167246505, guid: 7ce9777b937909341b34c2c05a320cf1,
+        type: 3}
     - time: 0.41666666
-      value: {fileID: 2901049658317708148, guid: 7ce9777b937909341b34c2c05a320cf1, type: 3}
+      value: {fileID: 2901049658317708148, guid: 7ce9777b937909341b34c2c05a320cf1,
+        type: 3}
     - time: 0.5
-      value: {fileID: -1334422173855888564, guid: 7ce9777b937909341b34c2c05a320cf1, type: 3}
+      value: {fileID: -1334422173855888564, guid: 7ce9777b937909341b34c2c05a320cf1,
+        type: 3}
     - time: 0.9166667
-      value: {fileID: 8171350661185558318, guid: 7ce9777b937909341b34c2c05a320cf1, type: 3}
+      value: {fileID: 8171350661185558318, guid: 7ce9777b937909341b34c2c05a320cf1,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -96,26 +85,11 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_FlipX
-    path: 
-    classID: 212
-    script: {fileID: 0}
+  m_EditorCurves: [{curve: {serializedVersion: 2, m_Curve: [{serializedVersion: 3,
+            time: 0, value: 1, inSlope: Infinity, outSlope: Infinity, tangentMode: 103,
+            weightedMode: 0, inWeight: 0, outWeight: 0}], m_PreInfinity: 2, m_PostInfinity: 2,
+        m_RotationOrder: 4}, attribute: m_FlipX, path: '', classID: 212, script: {
+        fileID: 0}}]
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0

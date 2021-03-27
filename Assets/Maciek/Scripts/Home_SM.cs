@@ -21,7 +21,10 @@ public class Home_SM : MonoBehaviour {
     public List<GameObject> backgrounds;
     public GameObject cloud;
 
+    private PathFinding pathFinding;
+
     void Awake() {
+        pathFinding = new PathFinding(10, 10);
 #if UNITY_IOS
         Advertisement.Initialize("3835253", false);
 #elif UNITY_ANDROID

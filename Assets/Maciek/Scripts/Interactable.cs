@@ -5,7 +5,6 @@ using TMPro;
 
 public class Interactable : InteractFunc
 {
-
     public string tekst;
     public override void GetText(string tekst)
     {
@@ -13,12 +12,7 @@ public class Interactable : InteractFunc
     }
     public override void MainFunction()
     {
-        throw new System.NotImplementedException();
-
+        base.MainFunction();
     }
 
-    public void DoFunc() {
-        GetText(tekst);
-        MainFunction();
-    }
 }

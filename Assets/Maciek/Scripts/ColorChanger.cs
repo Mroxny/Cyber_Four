@@ -48,109 +48,185 @@ public class ColorChanger : MonoBehaviour
 
 
     private void Events_OnColorChange(int e) {
+        if (e <= 6) {
+            switch (e) {
+                case 1:
+                    if (transform.parent != null) {
+                        if (transform.parent.GetComponent<SpriteRenderer>() == true) {
+                            transform.parent.GetComponent<SpriteRenderer>().color = Color.green;
+                        }
+                        else if (transform.parent.GetComponent<Image>() == true) {
+                            transform.parent.GetComponent<Image>().color = Color.green;
+                        }
+                        else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
+                            transform.parent.GetComponent<TextMeshProUGUI>().color = Color.green;
+                        }
+                    }
+                    foreach (GameObject j in targets) {
 
-        switch (e) {
-            case 1:
-                if (transform.parent != null) {
-                    if (transform.parent.GetComponent<SpriteRenderer>() == true) {
-                        transform.parent.GetComponent<SpriteRenderer>().color = Color.green;
+                        if (j.GetComponent<SpriteRenderer>() == true) {
+                            j.GetComponent<SpriteRenderer>().color = Color.green;
+                        }
+                        else if (j.GetComponent<Image>() == true) {
+                            j.GetComponent<Image>().color = Color.green;
+                        }
+                        else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                            j.GetComponent<TextMeshProUGUI>().color = Color.green;
+                        }
                     }
-                    else if (transform.parent.GetComponent<Image>() == true) {
-                        transform.parent.GetComponent<Image>().color = Color.green;
+                    break;
+                case 2:
+                    if (transform.parent != null) {
+                        if (transform.parent.GetComponent<SpriteRenderer>() != null) {
+                            transform.parent.GetComponent<SpriteRenderer>().color = Color.red;
+                        }
+                        else if (transform.parent.GetComponent<Image>() != null) {
+                            transform.parent.GetComponent<Image>().color = Color.red;
+                        }
+                        else if (transform.parent.GetComponent<TextMeshProUGUI>() != null) {
+                            transform.parent.GetComponent<TextMeshProUGUI>().color = Color.red;
+                        }
                     }
-                    else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
-                        transform.parent.GetComponent<TextMeshProUGUI>().color = Color.green;
-                    }
-                }
-                foreach (GameObject j in targets) {
+                    foreach (GameObject j in targets) {
 
-                    if (j.GetComponent<SpriteRenderer>() == true) {
-                        j.GetComponent<SpriteRenderer>().color = Color.green;
+                        if (j.GetComponent<SpriteRenderer>() == true) {
+                            j.GetComponent<SpriteRenderer>().color = Color.red;
+                        }
+                        else if (j.GetComponent<Image>() == true) {
+                            j.GetComponent<Image>().color = Color.red;
+                        }
+                        else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                            j.GetComponent<TextMeshProUGUI>().color = Color.red;
+                        }
                     }
-                    else if (j.GetComponent<Image>() == true) {
-                        j.GetComponent<Image>().color = Color.green;
+                    break;
+                case 3:
+                    if (transform.parent != null) {
+                        if (transform.parent.GetComponent<SpriteRenderer>() == true) {
+                            transform.parent.GetComponent<SpriteRenderer>().color = Color.yellow;
+                        }
+                        else if (transform.parent.GetComponent<Image>() == true) {
+                            transform.parent.GetComponent<Image>().color = Color.yellow;
+                        }
+                        else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
+                            transform.parent.GetComponent<TextMeshProUGUI>().color = Color.yellow;
+                        }
                     }
-                    else if (j.GetComponent<TextMeshProUGUI>() == true) {
-                        j.GetComponent<TextMeshProUGUI>().color = Color.green;
-                    }
-                }
-                break;
-            case 2:
-                if (transform.parent != null) {
-                    if (transform.parent.GetComponent<SpriteRenderer>() != null) {
-                        transform.parent.GetComponent<SpriteRenderer>().color = Color.red;
-                    }
-                    else if (transform.parent.GetComponent<Image>() != null) {
-                        transform.parent.GetComponent<Image>().color = Color.red;
-                    }
-                    else if (transform.parent.GetComponent<TextMeshProUGUI>() != null) {
-                        transform.parent.GetComponent<TextMeshProUGUI>().color = Color.red;
-                    }
-                }
-                foreach (GameObject j in targets) {
+                    foreach (GameObject j in targets) {
 
-                    if (j.GetComponent<SpriteRenderer>() == true) {
-                        j.GetComponent<SpriteRenderer>().color = Color.red;
+                        if (j.GetComponent<SpriteRenderer>() == true) {
+                            j.GetComponent<SpriteRenderer>().color = Color.yellow;
+                        }
+                        else if (j.GetComponent<Image>() == true) {
+                            j.GetComponent<Image>().color = Color.yellow;
+                        }
+                        else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                            j.GetComponent<TextMeshProUGUI>().color = Color.yellow;
+                        }
                     }
-                    else if (j.GetComponent<Image>() == true) {
-                        j.GetComponent<Image>().color = Color.red;
+                    break;
+                case 4:
+                    if (transform.parent != null) {
+                        if (transform.parent.GetComponent<SpriteRenderer>() == true) {
+                            transform.parent.GetComponent<SpriteRenderer>().color = new Color(0, 0.3f, 1);
+                        }
+                        else if (transform.parent.GetComponent<Image>() == true) {
+                            transform.parent.GetComponent<Image>().color = new Color(0, 0.3f, 1);
+                        }
+                        else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
+                            transform.parent.GetComponent<TextMeshProUGUI>().color = new Color(0, 0.3f, 1);
+                        }
                     }
-                    else if (j.GetComponent<TextMeshProUGUI>() == true) {
-                        j.GetComponent<TextMeshProUGUI>().color = Color.red;
-                    }
-                }
-                break;
-            case 3:
-                if (transform.parent != null) {
-                    if (transform.parent.GetComponent<SpriteRenderer>() == true) {
-                        transform.parent.GetComponent<SpriteRenderer>().color = Color.yellow;
-                    }
-                    else if (transform.parent.GetComponent<Image>() == true) {
-                        transform.parent.GetComponent<Image>().color = Color.yellow;
-                    }
-                    else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
-                        transform.parent.GetComponent<TextMeshProUGUI>().color = Color.yellow;
-                    }
-                }
-                foreach (GameObject j in targets) {
+                    foreach (GameObject j in targets) {
 
-                    if (j.GetComponent<SpriteRenderer>() == true) {
-                        j.GetComponent<SpriteRenderer>().color = Color.yellow;
+                        if (j.GetComponent<SpriteRenderer>() == true) {
+                            j.GetComponent<SpriteRenderer>().color = new Color(0, 0.3f, 1);
+                        }
+                        else if (j.GetComponent<Image>() == true) {
+                            j.GetComponent<Image>().color = new Color(0, 0.3f, 1);
+                        }
+                        else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                            j.GetComponent<TextMeshProUGUI>().color = new Color(0, 0.3f, 1);
+                        }
                     }
-                    else if (j.GetComponent<Image>() == true) {
-                        j.GetComponent<Image>().color = Color.yellow;
+                    break;
+                case 5:
+                    if (transform.parent != null) {
+                        if (transform.parent.GetComponent<SpriteRenderer>() == true) {
+                            transform.parent.GetComponent<SpriteRenderer>().color = new Color(0.6f, 0, 1);
+                        }
+                        else if (transform.parent.GetComponent<Image>() == true) {
+                            transform.parent.GetComponent<Image>().color =  new Color(0.6f, 0, 1);
+                        }
+                        else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
+                            transform.parent.GetComponent<TextMeshProUGUI>().color =  new Color(0.6f, 0, 1);
+                        }
                     }
-                    else if (j.GetComponent<TextMeshProUGUI>() == true) {
-                        j.GetComponent<TextMeshProUGUI>().color = Color.yellow;
-                    }
-                }
-                break;
-            case 4:
-                if (transform.parent != null) {
-                    if (transform.parent.GetComponent<SpriteRenderer>() == true) {
-                        transform.parent.GetComponent<SpriteRenderer>().color = Color.blue;
-                    }
-                    else if (transform.parent.GetComponent<Image>() == true) {
-                        transform.parent.GetComponent<Image>().color = Color.blue;
-                    }
-                    else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
-                        transform.parent.GetComponent<TextMeshProUGUI>().color = Color.blue;
-                    }
-                }
-                foreach (GameObject j in targets) {
+                    foreach (GameObject j in targets) {
 
-                    if (j.GetComponent<SpriteRenderer>() == true) {
-                        j.GetComponent<SpriteRenderer>().color = Color.blue;
+                        if (j.GetComponent<SpriteRenderer>() == true) {
+                            j.GetComponent<SpriteRenderer>().color =  new Color(0.6f, 0, 1);
+                        }
+                        else if (j.GetComponent<Image>() == true) {
+                            j.GetComponent<Image>().color =  new Color(0.6f, 0, 1);
+                        }
+                        else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                            j.GetComponent<TextMeshProUGUI>().color =  new Color(0.6f, 0, 1);
+                        }
                     }
-                    else if (j.GetComponent<Image>() == true) {
-                        j.GetComponent<Image>().color = Color.blue;
+                    break;
+                case 6:
+                    if (transform.parent != null) {
+                        if (transform.parent.GetComponent<SpriteRenderer>() == true) {
+                            transform.parent.GetComponent<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+                        }
+                        else if (transform.parent.GetComponent<Image>() == true) {
+                            transform.parent.GetComponent<Image>().color = new Color(0.1f, 0.1f, 0.1f);
+                        }
+                        else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
+                            transform.parent.GetComponent<TextMeshProUGUI>().color = new Color(0.1f, 0.1f, 0.1f);
+                        }
                     }
-                    else if (j.GetComponent<TextMeshProUGUI>() == true) {
-                        j.GetComponent<TextMeshProUGUI>().color = Color.blue;
+                    foreach (GameObject j in targets) {
+
+                        if (j.GetComponent<SpriteRenderer>() == true) {
+                            j.GetComponent<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+                        }
+                        else if (j.GetComponent<Image>() == true) {
+                            j.GetComponent<Image>().color = new Color(0.1f, 0.1f, 0.1f);
+                        }
+                        else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                            j.GetComponent<TextMeshProUGUI>().color = new Color(0.1f, 0.1f, 0.1f);
+                        }
                     }
-                }
-                break;
+                    break;
+            }
+
         }
+        else {
+            if (transform.parent != null) {
+                if (transform.parent.GetComponent<SpriteRenderer>() == true) {
+                    transform.parent.GetComponent<SpriteRenderer>().color = Color.green;
+                }
+                else if (transform.parent.GetComponent<Image>() == true) {
+                    transform.parent.GetComponent<Image>().color = Color.green;
+                }
+                else if (transform.parent.GetComponent<TextMeshProUGUI>() == true) {
+                    transform.parent.GetComponent<TextMeshProUGUI>().color = Color.green;
+                }
+            }
+            foreach (GameObject j in targets) {
 
+                if (j.GetComponent<SpriteRenderer>() == true) {
+                    j.GetComponent<SpriteRenderer>().color = Color.green;
+                }
+                else if (j.GetComponent<Image>() == true) {
+                    j.GetComponent<Image>().color = Color.green;
+                }
+                else if (j.GetComponent<TextMeshProUGUI>() == true) {
+                    j.GetComponent<TextMeshProUGUI>().color = Color.green;
+                }
+            }
+        }
     }
 }

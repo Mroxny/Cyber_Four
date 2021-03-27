@@ -55,11 +55,11 @@ public class Bulid_Script : MonoBehaviour
     [Range(1, 3)]
     public int room;
 
-
+    private GameObject pathFinder;
 
     void Start()
     {
-        var init = GetComponent<Przepis>().init;
+        
         BulidLevel();
 
         
@@ -97,6 +97,7 @@ public class Bulid_Script : MonoBehaviour
                     case 1:
                         init.PlacePlatforms(platforms1);
                         init.PlaceCorridors(corridors1);
+                        AstarPath.active.Scan();
                         init.SpawnEnemies(enemies1);
                         break;
                     case 2:
@@ -142,9 +143,9 @@ public class Bulid_Script : MonoBehaviour
         }
 
         player = init.SpawnPlayer(player);
-        print("player spawned");
         StartCoroutine(Notify());
         
+
     }
     IEnumerator Notify() {
         yield return new WaitForEndOfFrame();
@@ -166,16 +167,5 @@ public class Bulid_Script : MonoBehaviour
     public void BossDied() {
         var init = GetComponent<Przepis>().init;
         print("Boss Kaput");
-
-
-        switch (PlayerPrefs.GetInt("GameId")) {
-
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-        }
     }
 }
