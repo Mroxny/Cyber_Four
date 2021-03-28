@@ -10,8 +10,12 @@ public class EnemyAI : MonoBehaviour {
     public float nextWaypointDistance = 3f;
     public Animator animator;
     public EnemyType enemyType;
+    public GameObject noticedIcon;
+    public List<GameObject> weapons = new List<GameObject>();
 
     private GameObject player;
+    private GameObject weapon;
+    private GameObject weaponRender;
     private Vector2 target;
     private Vector2 startingPos;
     private State state = State.Roaming;
@@ -40,6 +44,9 @@ public class EnemyAI : MonoBehaviour {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         startingPos = transform.position;
+        weaponRender = gameObject.transform.Find("WeaponRender").gameObject;
+        weapon = Instantiate(weapons[Random.Range(0, weapons.Count)],weaponRender.transform.position,Quaternion.identity);
+        weapon.transform.parent = weaponRender.transform;
         InvokeRepeating("Updatepath", 0.1f, 0.2f);
 
         if (!staticSpeed) {
@@ -99,6 +106,11 @@ public class EnemyAI : MonoBehaviour {
         yield return new WaitForSeconds(time);
         canChangePos = true;
     }
+    private IEnumerator NoticePlayer(int time) {
+        noticedIcon.SetActive(true);
+        yield return new WaitForSeconds(time);
+        noticedIcon.SetActive(false);
+    }
     private void MoveTo() {
         if (path == null)
             return;
@@ -134,6 +146,7 @@ public class EnemyAI : MonoBehaviour {
         if (Vector2.Distance(transform.position, player.transform.position) < Random.Range(9.5f,11f)) {
             //player in range
             state = State.ChaseTarget;
+            StartCoroutine(NoticePlayer(3));
         }
     }
 

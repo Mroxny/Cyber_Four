@@ -31,7 +31,6 @@ public class Player : MonoBehaviour {
 
     public Vector2 movement;
     public Vector2 mouse;
-    public bool withJoystick=true;
     private float lookDir;
 
     GameObject pauseMenuHandler;
@@ -109,7 +108,7 @@ public class Player : MonoBehaviour {
                 
         }
         Instantiate(spawnDust, transform.position, Quaternion.identity);
-        StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f,transform.position));
+        StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f,transform));
     }
 
     void isDodging() {
@@ -181,7 +180,7 @@ public class Player : MonoBehaviour {
     void Update() {
             
         
-        if (!withJoystick) {
+        if (movementJoystick.Direction.sqrMagnitude == 0) {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
         }

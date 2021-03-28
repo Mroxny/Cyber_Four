@@ -55,7 +55,6 @@ public class Bulid_Script : MonoBehaviour
     [Range(1, 3)]
     public int room;
 
-    private GameObject pathFinder;
 
     void Start()
     {
