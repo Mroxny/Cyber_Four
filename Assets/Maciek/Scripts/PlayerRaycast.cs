@@ -24,7 +24,7 @@ public class PlayerRaycast : MonoBehaviour
     {
         prevTarget = this.gameObject;
         originalTarget = this.gameObject;
-        StartCoroutine("FindTargetsWithDelay", .2f);
+        StartCoroutine("FindTargetsWithDelay", 1f);
     }
     IEnumerator FindTargetsWithDelay(float delay) {
         while (true) {
@@ -44,16 +44,20 @@ public class PlayerRaycast : MonoBehaviour
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2){
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask) && (target.GetComponent<Interactable>() || target.GetComponentInParent<Interactable>())) {
+
+                // mozna dodać na sprawdzanie czy obiekt nie jest za sciana !Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)
+                if ((!target.GetComponentInParent<EnemyAI>() && !target.GetComponentInParent<Player>()) && (target.GetComponent<Interactable>() || target.GetComponentInParent<Interactable>() || target.GetComponent<WeaponInteract>() || target.GetComponentInParent<WeaponInteract>())) {
                     if (originalTarget == this.gameObject) {
                         originalTarget = target.gameObject;
                     }
-                    if (target.gameObject != originalTarget){
+                    if (target.gameObject != originalTarget) {
                         if (Vector2.Distance(transform.position, originalTarget.transform.position) > Vector2.Distance(transform.position, target.position))
                         {
+                            Debug.Log(target.gameObject.name);
                             originalTarget = target.gameObject;
                         }
                     }
+                    
                     visibleTargets.Add(target);
                 }
             }
@@ -71,10 +75,26 @@ public class PlayerRaycast : MonoBehaviour
         // sprawdza czy celem nie jest Player, oraz czy jest gotowy do zmiany
         if (originalTarget != this.gameObject && gotowy)
         {
+            Debug.Log(originalTarget.name);
             this.GetComponent<PlayerFOV>().inRange = true;
-            this.GetComponent<PlayerFOV>().interakcja = originalTarget.GetComponent<Interactable>();
-            if (originalTarget.GetComponent<Interactable>()) originalTarget.GetComponent<Interactable>().GetText(originalTarget.GetComponent<Interactable>().tekst);
-            else if (originalTarget.GetComponentInParent<Interactable>()) originalTarget.GetComponentInParent<Interactable>().GetText(originalTarget.GetComponentInParent<Interactable>().tekst);
+            if (originalTarget.GetComponent<Interactable>())
+            {
+                originalTarget.GetComponent<Interactable>().GetText(originalTarget.GetComponent<Interactable>().tekst);
+                this.GetComponent<PlayerFOV>().interakcja = originalTarget.GetComponent<Interactable>();
+            }
+            else if (originalTarget.GetComponentInParent<Interactable>())
+            {
+                originalTarget.GetComponentInParent<Interactable>().GetText(originalTarget.GetComponentInParent<Interactable>().tekst);
+                this.GetComponent<PlayerFOV>().interakcja = originalTarget.GetComponentInParent<Interactable>();
+            }
+            else if (originalTarget.GetComponent<WeaponInteract>())
+            {
+                this.GetComponent<PlayerFOV>().weapon = originalTarget.GetComponent<WeaponInteract>();
+            }
+            else if (originalTarget.GetComponentInParent<WeaponInteract>())
+            {
+                this.GetComponent<PlayerFOV>().weapon = originalTarget.GetComponentInParent<WeaponInteract>();
+            }
             if (prevTarget.GetComponent<Interactable>()) prevTarget.GetComponent<Interactable>().DestroyInteract();
             else if (prevTarget.GetComponentInParent<Interactable>()) prevTarget.GetComponentInParent<Interactable>().DestroyInteract();
         }

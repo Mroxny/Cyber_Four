@@ -14,7 +14,7 @@ public class LevelLoader : MonoBehaviour
         
     }
 
-    IEnumerator LoadAsync(int sceneIndex) {
+     IEnumerator LoadAsync(int sceneIndex) {
         yield return new WaitForSecondsRealtime(animationTime/2);
         transition.SetTrigger("Start");
         yield return new WaitForSecondsRealtime(animationTime/2);

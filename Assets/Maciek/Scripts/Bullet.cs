@@ -5,28 +5,40 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float damage;
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    public bool friendly;
+    private void OnTriggerEnter2D(Collider2D collision){
+
         EnemyAI enemy = collision.GetComponent<EnemyAI>();
         Player player = collision.GetComponent<Player>();
+        WeaponInteract owner = collision.GetComponent<WeaponInteract>();
 
-        /* Na sciany ktore zapewne będą w pokoju
-        
-        GameObject wall = collision.GetComponent<wall>();
-
-        if (wall != null)
-        {
-            Destroy(GameObject);
-        }*/
-
-        if (enemy != null) {
-            Debug.Log(damage);
-            enemy.TakeDamage(damage);
+        if (owner != null) {
+            return;
         }
-        if (player == null) {
-            GameObject.Destroy(this.gameObject);
+        else {
+            if (friendly) {
+                if (enemy != null) {
+                    print("Enemy Hit");
+                    enemy.TakeDamage(damage);
+                    GameObject.Destroy(gameObject);
+                }
+                if (collision.tag == "Boss") {
+                    return;
+                }
+                if (player != null) {
+                    return;
+                }
+            }
+            else {
+                if (player != null) {
+                    GameObject.Destroy(gameObject);
+                }
+                if (enemy != null) {
+                    return;
+                }
+            }
+            //print(collision.name);
+            GameObject.Destroy(gameObject);
         }
-        //GameObject.Destroy(this.gameObject);
-        Debug.Log(collision.name);
     }
 }

@@ -15,6 +15,7 @@ public class Przepis : MonoBehaviour
         private List<GameObject> hall = new List<GameObject>();
         private Vector2 playerSpawnPoint;
         private Vector2 bossSpawnPoint;
+        private Vector2 exitSpawnPoint;
 
         public void BulidPanel(int maxX, int maxY,GameObject panelPart) {
             x = maxX;
@@ -222,6 +223,7 @@ public class Przepis : MonoBehaviour
                 spawnedPlatforms[i].GetComponent<PlatformInfo>().platformKey = pKey;
                 spawnedPlatforms[i].GetComponent<PlatformInfo>().OpenExits();
             }
+            exitSpawnPoint = spawnedPlatforms[spawnedPlatforms.Count-1].transform.position;
         }
 
         public void PlaceCorridors(List<GameObject> corridors) {
@@ -332,11 +334,13 @@ public class Przepis : MonoBehaviour
             }
             playerSpawnPoint = spawnedPlayerPanel.transform.position;
             bossSpawnPoint = spawnedBossPanel.transform.position;
+            exitSpawnPoint = bossSpawnPoint;
 
         }
         public void SpawnBoss(GameObject boss) {
             Instantiate(boss, bossSpawnPoint, Quaternion.identity);
         }
+        
         public void BulidFinalPhase(List<GameObject> smallPlatform, GameObject bigPlatform, List<GameObject> corridors) {
             GameObject spawnedBigPlatform = null;
             List<GameObject> spawnedSmallPlatforms = new List<GameObject>();
@@ -404,6 +408,7 @@ public class Przepis : MonoBehaviour
                     break;
             }
             playerSpawnPoint = spawnedSmallPlatforms[Random.Range(0, spawnedSmallPlatforms.Count)].transform.position;
+            exitSpawnPoint = spawnedBigPlatform.transform.position;
 
             spawnedBigPlatform.GetComponent<PlatformInfo>().platformKey=pKey;
             spawnedBigPlatform.GetComponent<PlatformInfo>().OpenExits();
@@ -415,7 +420,7 @@ public class Przepis : MonoBehaviour
         }
 
 
-        public void StartFinalPhase(List<GameObject> enemies) {
+        public IEnumerator StartFinalPhase(List<GameObject> enemies) {
             List<GameObject> platforms = new List<GameObject>();
             for (int i = 1; i <= 3; i++) {
                 platforms.Add(GameObject.Find("Platform_"+i));
@@ -424,17 +429,27 @@ public class Przepis : MonoBehaviour
             int enemiesNum = Random.Range(20, 31);
             for (int i = 0; i <= enemiesNum; i++) {
                 int platformId = Random.Range(0, platforms.Count);
-                Instantiate(
+                GameObject enemy = Instantiate(
                     enemies[Random.Range(0,enemies.Count)],
                     new Vector2(platforms[platformId].transform.position.x + Random.Range(-5,5)
                                 ,platforms[platformId].transform.position.y + Random.Range(-5, 5)),
                     Quaternion.identity
                     );
+                enemy.GetComponent<EnemyAI>().TargetPlayer();
+                yield return new WaitForSeconds(Random.Range(.1f,.3f));
             }
         }
+       
 
         public GameObject SpawnPlayer(GameObject player) {
            return Instantiate(player, playerSpawnPoint,Quaternion.identity);
+        }
+        public void SpawnExit(GameObject exit,Sprite sprite, GameObject script) {
+            GameObject e = Instantiate(exit, exitSpawnPoint, Quaternion.identity);
+            e.AddComponent(typeof(SpriteRenderer));
+            e.transform.localScale = new Vector2(5, 5);
+            e.GetComponent<SpriteRenderer>().sprite = sprite;
+            e.GetComponent<Interactable>().prefab = script;
         }
         public void SetBackground(Color  c) {
             Camera.main.backgroundColor = c;

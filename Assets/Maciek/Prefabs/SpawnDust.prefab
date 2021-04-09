@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1015743963049768824}
   - component: {fileID: 3947829914382088255}
   - component: {fileID: 6521034439220174339}
+  - component: {fileID: 6040608687020314062}
   m_Layer: 0
   m_Name: SpawnDust
   m_TagString: Untagged
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6040608687020314062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859343781036784604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44466a0f226f08440b67f3efb8f03655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

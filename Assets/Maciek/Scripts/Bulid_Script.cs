@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class Bulid_Script : MonoBehaviour
 {
-    [Header("Player Prefab")]
+    [Header("General")]
     [Space(0)]
     public GameObject player;
     public GameObject panelPart;
+    public GameObject interaction;
+    public GameObject exitScript;
     public event Action<int> OnColorChange;
 
     [Header("Room 1")]
@@ -18,6 +20,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies1;
     public List<GameObject> bigPlatform1;
     public GameObject boss1;
+    public Sprite exit1;
     public Color bgColor1;
 
     [Header("Room 2")]
@@ -27,6 +30,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies2;
     public List<GameObject> bigPlatform2;
     public GameObject boss2;
+    public Sprite exit2;
     public Color bgColor2;
 
     [Header("Room 3")]
@@ -36,6 +40,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies3;
     public List<GameObject> bigPlatform3;
     public GameObject boss3;
+    public Sprite exit3;
     public Color bgColor3;
 
     [Header("Panel Size")]
@@ -77,6 +82,7 @@ public class Bulid_Script : MonoBehaviour
                 switch (room) {
                     case 1:
                         init.SpawnBossLair(platforms1[0], bigPlatform1[0], corridors1);
+                        AstarPath.active.Scan();
                         init.SpawnBoss(boss1);
                         break;
                     case 2:
@@ -97,16 +103,21 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms1);
                         init.PlaceCorridors(corridors1);
                         AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies1);
                         break;
                     case 2:
                         init.PlacePlatforms(platforms2);
                         init.PlaceCorridors(corridors2);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies2);
                         break;
                     case 3:
                         init.PlacePlatforms(platforms3);
                         init.PlaceCorridors(corridors3);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies3);
                         break;
                 }
@@ -115,15 +126,21 @@ public class Bulid_Script : MonoBehaviour
                 switch (room) {
                     case 1:
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
-                        init.StartFinalPhase(enemies1);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit1, exitScript);
+                        StartCoroutine(WaveSpawner(enemies1,3, 10));
                         break;
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
-                        init.StartFinalPhase(enemies2);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit1, exitScript);
+                        StartCoroutine(WaveSpawner(enemies2, 3, 30));
                         break;
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
-                        init.StartFinalPhase(enemies3);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit1, exitScript);
+                        StartCoroutine(WaveSpawner(enemies3, 3, 30));
                         break;
                 }
                 
@@ -163,8 +180,32 @@ public class Bulid_Script : MonoBehaviour
                 break;
         }
     }
+
+    IEnumerator WaveSpawner(List<GameObject> enemies, int waves, float delayTime) {
+        var init = GetComponent<Przepis>().init;
+        string text = "";
+        for (int i = 1; i <= waves; i++) {
+            yield return new WaitForSeconds(delayTime);
+            if (i == 1) {
+                text = "The first wave is coming";
+            }
+            else if (i == 2) {
+                text = "The second wave is coming";
+            }
+            else if (i == 3) {
+                text = "The third wave is coming";
+            }
+            else if (i > 3) {
+                text = "Another wave is coming";
+            }
+            player.GetComponent<Player>().Notify(text, 4);
+            StartCoroutine(init.StartFinalPhase(enemies));
+        }
+        
+    }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;
-        print("Boss Kaput");
+        init.SpawnExit(interaction,exit1,exitScript);
+        StartCoroutine(Notify());
     }
 }

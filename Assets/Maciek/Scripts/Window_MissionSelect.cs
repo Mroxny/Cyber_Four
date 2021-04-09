@@ -28,7 +28,7 @@ public class Window_MissionSelect : MonoBehaviour
     }
     public void LoadLevel(int gameId) {
         PlayerPrefs.SetInt("GameId", gameId);
-        PlayerPrefs.SetInt("ModeId", 2);
+        PlayerPrefs.SetInt("ModeId", 1);
         sceneMenager.GetComponent<LevelLoader>().LoadLevel(2);
         Time.timeScale = 1;
     }

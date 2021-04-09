@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     public GameObject cam;
     private Animator animator;
     public GameObject weaponRender;
+    public bool canMove = true;
     private float MoveSpeed;
     private int ability;
     public int cyberCoin;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour {
     public Vector2 movement;
     public Vector2 mouse;
     private float lookDir;
+    private GameObject weapon;
 
     GameObject pauseMenuHandler;
     GameObject taskNotifierHandler;
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour {
 
     void SetChar() {
         StartCoroutine(SpawnPlayer());
+        InvokeRepeating("FPS", 0.1f, 0.5f);
     }
     IEnumerator SpawnPlayer() {
         yield return new WaitForSecondsRealtime(1f);
@@ -177,6 +180,11 @@ public class Player : MonoBehaviour {
         taskNotifierHandler.GetComponent<TaskHandler>().Notify(text, duration);
     }
 
+    void FPS() {
+        int fps = (int)(1f / Time.unscaledDeltaTime); ;
+        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString();
+    }
+
     void Update() {
             
         
@@ -191,7 +199,7 @@ public class Player : MonoBehaviour {
         mouse = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         if (movement.x!=0) {
             if (aimJoystick.Horizontal == 0) {
-                lookDir = movement.x;                                                        //mouse - new Vector2(transform.position.x, transform.position.y);
+                lookDir = movement.x;
             }
             else {
                 lookDir = aimJoystick.Horizontal;
@@ -200,8 +208,7 @@ public class Player : MonoBehaviour {
         
 
         // -- Maciek was here (FPS)
-        int fps = (int)(1f / Time.unscaledDeltaTime); ;
-        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString();
+        
         if (GameObject.Find("CC_Count") != null) {
             GameObject.Find("CC_Count").GetComponent<TextMeshProUGUI>().text = cyberCoin.ToString();
         }
@@ -228,10 +235,22 @@ public class Player : MonoBehaviour {
     }
     private void FixedUpdate()
     {
-        rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
-        if (animator != null) {
+        if (canMove) {
+            rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
+        }
+        if (animator != null && (!GetComponentInChildren<WeaponInteract>() || GetComponentInChildren<WeaponInteract>().canFire))
+        {
             animator.SetFloat("Horizontal", lookDir);
             animator.SetFloat("Speed", movement.sqrMagnitude);
+            //print(lookDir);
+            if (GetComponentInChildren<WeaponInteract>()) {
+                weapon = GetComponentInChildren<WeaponInteract>().gameObject;
+                /*if (lookDir < 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);
+                else if (lookDir > 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);*/
+            }
+        }
+        else if (animator != null && !GetComponentInChildren<WeaponInteract>().canFire) {
+            animator.SetFloat("Horizontal", GetComponentInChildren<WeaponInteract>().lookDir.x);
         }
         cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
         

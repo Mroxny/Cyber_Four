@@ -7,6 +7,8 @@ TagManager:
   - colorchange
   - SceneMenager
   - MissionSelect
+  - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Background
   - Interactable
   - Obstacle
-  - 
+  - Enemy
   - 
   - 
   - 
