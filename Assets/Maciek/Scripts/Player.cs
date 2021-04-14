@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using TMPro;
 using System;
-using UnityEngine.UIElements;
-using Mirror.Examples.Additive;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
@@ -27,8 +26,7 @@ public class Player : MonoBehaviour {
 
     public Joystick movementJoystick;
     public Joystick aimJoystick;
-    public bool test = false;
-
+    private bool canDamage = true;
 
     public Vector2 movement;
     public Vector2 mouse;
@@ -59,9 +57,55 @@ public class Player : MonoBehaviour {
     }
 
 
-    void SetChar() {
+   public void SetChar() {
+        SetLife();
         StartCoroutine(SpawnPlayer());
         InvokeRepeating("FPS", 0.1f, 0.5f);
+    }
+    public void SetLife() {
+        int health = 0;
+        switch (PlayerPrefs.GetInt("CharacterId")) {
+            case 1:
+                health = 6;
+                break;
+            case 2:
+                health = 4;
+                break;
+            case 3:
+                health = 4;
+                break;
+            case 4:
+                health = 4;
+                break;
+        }
+
+        Slider slider = gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HealthBar").GetComponent<Slider>();
+        slider.maxValue = health;
+        slider.value = health;
+        gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HP").GetComponent<TextMeshProUGUI>().text = slider.value.ToString();
+    }
+    public void DamagePlayer() {
+        if (canDamage) {
+            Slider slider = gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HealthBar").GetComponent<Slider>();
+            slider.value = slider.value - 1;
+            gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HP").GetComponent<TextMeshProUGUI>().text = slider.value.ToString();
+            if (slider.value <= 0) {
+                StartCoroutine(Die());
+            }
+            canDamage = false;
+            StartCoroutine(DamageCooldown(.5f));
+        }
+    }
+    public IEnumerator DamageCooldown(float time) {
+        yield return new WaitForSeconds(time);
+        canDamage = true;
+    }
+    public void HealPlayer(int healthPoints) {
+
+    }
+    public IEnumerator Die() {
+        yield return new WaitForSeconds(0);
+        Destroy(gameObject);
     }
     IEnumerator SpawnPlayer() {
         yield return new WaitForSecondsRealtime(1f);
@@ -112,6 +156,7 @@ public class Player : MonoBehaviour {
         }
         Instantiate(spawnDust, transform.position, Quaternion.identity);
         StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f,transform));
+        
     }
 
     void isDodging() {
@@ -157,18 +202,6 @@ public class Player : MonoBehaviour {
             pauseMenuHandler.SetActive(true);
         }
     }
-    public void TestButton() {
-        if (!test) {
-            test = true;
-        }
-        else{
-            test = false;
-        }
-        SaveSystem.SavePlayer(this);
-        //PlayerData data = SaveSystem.LoadPlayer();
-
-
-    }
 
 
     public void ShowTask() {
@@ -207,12 +240,11 @@ public class Player : MonoBehaviour {
         }
         
 
-        // -- Maciek was here (FPS)
         
         if (GameObject.Find("CC_Count") != null) {
             GameObject.Find("CC_Count").GetComponent<TextMeshProUGUI>().text = cyberCoin.ToString();
         }
-        // -- 
+
 
         if (Input.GetKeyDown(KeyCode.Space)) {
                 switch (ability) {

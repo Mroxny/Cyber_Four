@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3914338020031066364}
   - component: {fileID: 5316727658636698244}
   - component: {fileID: 5068102782292253318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 3340052291445000809}
   - component: {fileID: 4187236210373530700}
   - component: {fileID: 58522771065406574}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8136786392911412803}
   - component: {fileID: 638152552916827841}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 4840979992238110838}
   - component: {fileID: 3326409476578497430}
   - component: {fileID: 5440412165710301316}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4669544833273851480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.999995, y: -9.374993, z: 0}
+  m_LocalPosition: {x: 5, y: -9.374993, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 6823509729390392752}
@@ -1218,7 +1218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576868111483665240}
   - component: {fileID: 3383753299206244478}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1930,7 +1930,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845078910639302956}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2128,7 +2128,7 @@ GameObject:
   - component: {fileID: 8390511096087640890}
   - component: {fileID: 7730379117373368667}
   - component: {fileID: 10807015468527349}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2703,7 +2703,7 @@ GameObject:
   - component: {fileID: 62552660390041832}
   - component: {fileID: 1939851576565102110}
   - component: {fileID: 6580124854121092523}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

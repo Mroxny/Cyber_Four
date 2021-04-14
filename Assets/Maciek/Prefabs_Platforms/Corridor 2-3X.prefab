@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1691422532423949957}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   - component: {fileID: 3049549832860297904}
   - component: {fileID: 4900944667194707700}
   - component: {fileID: 7241226472773246921}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (125)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 133943943372721931}
   - component: {fileID: 5848788122926935084}
   - component: {fileID: 2196623010064666542}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (127)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8293198835340863137}
   - component: {fileID: 2250364132785207799}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2802,7 +2802,7 @@ GameObject:
   - component: {fileID: 3855816725989024985}
   - component: {fileID: 4025158023651875525}
   - component: {fileID: 6183931819722942582}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (126)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2911,7 +2911,7 @@ GameObject:
   - component: {fileID: 8847054732448027617}
   - component: {fileID: 6309033246278311908}
   - component: {fileID: 5972569872133495489}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (123)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3348,7 +3348,7 @@ GameObject:
   - component: {fileID: 1457330705534161346}
   - component: {fileID: 3496271074385987839}
   - component: {fileID: 9003534667376347470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (124)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3456,7 +3456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3576686292535704348}
   - component: {fileID: 39298578791328769}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3596,7 +3596,7 @@ GameObject:
   - component: {fileID: 5486413158103850460}
   - component: {fileID: 7570032704300259967}
   - component: {fileID: 6099900604074550770}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enviroment1-1_0 (128)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

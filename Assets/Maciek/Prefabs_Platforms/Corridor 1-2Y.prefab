@@ -400,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8136786392911412803}
   - component: {fileID: 638152552916827841}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576868111483665240}
   - component: {fileID: 3383753299206244478}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845078910639302956}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

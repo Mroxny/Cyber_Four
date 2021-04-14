@@ -35,7 +35,8 @@ public class WeaponInteract : MonoBehaviour
     {
             collider = this.gameObject.AddComponent<BoxCollider2D>();
             collider.isTrigger = true;
-            RectTransform rt = (RectTransform)this.transform;
+            RectTransform rt = (RectTransform)gameObject.transform;
+ 
             collider.size = new Vector2(rt.rect.width / 2, rt.rect.height / 2);
     }
 

@@ -737,7 +737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1691422532423949957}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ Transform:
   - {fileID: 8293198835340863137}
   - {fileID: 3576686292535704348}
   m_Father: {fileID: 76992207839802454}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1394341295625906621
 GameObject:
@@ -934,7 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2885305836739209390}
   - component: {fileID: 5490791088460283705}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7085822990586125353}
   - component: {fileID: 4132702990178491531}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5953967585788926086}
   - component: {fileID: 6452928224744256563}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,10 +1288,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2556085591380721792}
+  - {fileID: 7727512296305633599}
   - {fileID: 1691422532423949957}
   - {fileID: 5551149275002863983}
   - {fileID: 4540098389068178844}
-  - {fileID: 7727512296305633599}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1562,7 +1562,7 @@ Transform:
   - {fileID: 4633118772512685788}
   - {fileID: 1754794071911302217}
   m_Father: {fileID: 76992207839802454}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2820256009542914415
 GameObject:
@@ -1574,7 +1574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5705171443913233499}
   - component: {fileID: 5350664747064737075}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1732,7 +1732,7 @@ Transform:
   m_LocalScale: {x: 125, y: 125, z: 1}
   m_Children: []
   m_Father: {fileID: 76992207839802454}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7495370986984210035
 SpriteRenderer:
@@ -2226,7 +2226,7 @@ Transform:
   m_Children:
   - {fileID: 5705171443913233499}
   m_Father: {fileID: 76992207839802454}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2127191229455394547
 SpriteRenderer:
@@ -2289,7 +2289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4362898741118812916}
   - component: {fileID: 4987991724319263432}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,7 +2429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8293198835340863137}
   - component: {fileID: 2250364132785207799}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2568,7 +2568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2500039107757906787}
   - component: {fileID: 2598428798495293081}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3200,7 +3200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4475984921267926912}
   - component: {fileID: 7780158156862748979}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3892,7 +3892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3576686292535704348}
   - component: {fileID: 39298578791328769}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
