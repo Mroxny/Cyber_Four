@@ -8,6 +8,7 @@ public class WeaponInteract : MonoBehaviour
     public float velocity;
     public float damage;
     public float fireRate;
+    public string soundName = "TestGunShoot";
     public Transform firepoint;
     public Animator animator;
     public bool IsGun;
@@ -15,6 +16,8 @@ public class WeaponInteract : MonoBehaviour
     public GameObject player;
     public bool inHand = false;
     public bool aimAtPlayer = false;
+    private AudioManager am;
+    private bool canHurt = false;
 
     [HideInInspector]
     public Vector2 lookDir;
@@ -52,24 +55,55 @@ public class WeaponInteract : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
         //firepoint.rotation = Quaternion.Euler(new Vector3(mouse.x,mouse.y,angle));
-        firepoint.rotation = Quaternion.Euler(new Vector3(lookDir.x, lookDir.y, angle));
+        
 
         canFire = false;
-
-        GameObject shot = Instantiate(bullet, new Vector2(firepoint.position.x, firepoint.position.y), Quaternion.Euler(new Vector3(0, 0, angle + 90f)));
-        animator.SetTrigger("Fire");
-        shot.GetComponent<Bullet>().damage = damage;
-        shot.GetComponent<Bullet>().friendly = friendly;
-        Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
-        rb.AddForce(firepoint.up * velocity, ForceMode2D.Impulse);
+        if (IsGun) {
+            firepoint.rotation = Quaternion.Euler(new Vector3(lookDir.x, lookDir.y, angle));
+            GameObject shot = Instantiate(bullet, new Vector2(firepoint.position.x, firepoint.position.y), Quaternion.Euler(new Vector3(0, 0, angle + 90f)));
+            animator.SetTrigger("Fire");
+            shot.GetComponent<Bullet>().damage = damage;
+            shot.GetComponent<Bullet>().friendly = friendly;
+            Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
+            rb.AddForce(firepoint.up * velocity, ForceMode2D.Impulse);
+            am.Play(soundName);
+        }
+        else {
+            animator.SetTrigger("Attack");
+            am.Play(soundName);
+            StartCoroutine(BladeHurt(1));
+        }
+        
 
         yield return new WaitForSeconds(fireRate);
         canFire = true;
+    }
+    private IEnumerator BladeHurt(float time) {
+        canHurt = true;
+        yield return new WaitForSeconds(time);
+        canHurt = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (canHurt) {
+            if (friendly) {
+                EnemyAI enemy = collision.GetComponent<EnemyAI>();
+                if (enemy != null) {
+                    enemy.TakeDamage(damage);
+                }
+            }
+            else {
+                Player player = collision.GetComponent<Player>();
+                if (player != null) {
+                    player.DamagePlayer();
+                }
+            }
+        }
     }
 
     private void Update() {
         if (player == null) {
             player = GameObject.Find("Player(Clone)");
+            am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
         if (friendly) {
             if (InPlayerHands) {
@@ -87,8 +121,9 @@ public class WeaponInteract : MonoBehaviour
                 }
                 if ((lookDir.x != 0 || lookDir.y != 0) && canFire) {                         //(Input.GetMouseButtonDown(0)) {
                     if (inHand) {
-                        StartCoroutine(trigger());
+                        Shoot();
                     }
+                    
                 }
             }
         }

@@ -17,7 +17,7 @@ public class Boss1 : MonoBehaviour
     private Vector2 target;
     private Vector2 startingPos;
     private Mode mode = Mode.Rest;
-    private float staticRandom;
+    private bool canDie = false;
     private bool canHurt = true;
     private float maxLife;
 
@@ -37,7 +37,7 @@ public class Boss1 : MonoBehaviour
     }
 
     private void Start() {
-
+        
         GameObject sceneMenager = GameObject.FindWithTag("SceneMenager");
         bs = sceneMenager.GetComponent<Bulid_Script>();
         seeker = GetComponent<Seeker>();
@@ -46,6 +46,7 @@ public class Boss1 : MonoBehaviour
         target = startingPos;
         maxLife = Life;
         InvokeRepeating("UpdatePath", 0.1f, 0.3f);
+        
 
     }
 
@@ -67,12 +68,11 @@ public class Boss1 : MonoBehaviour
         if (oneTime) {
             if (Vector2.Distance(transform.position, player.transform.position) < 7f) {
                 GetComponent<Animator>().SetTrigger("TurnOn");
+                GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("boss_1_sound");
                 StartCoroutine(WakeUp(1.5f));
                 oneTime = false;
             }
         }
-
-        //print(Vector2.Distance(transform.position, player.transform.position));
 
         switch (mode) {
             case Mode.ChaseTarget:
@@ -124,18 +124,22 @@ public class Boss1 : MonoBehaviour
 
 
     public void takeDamage(float damage) {
-        Life -= damage;
-        healthbar.transform.localScale = new Vector2(Mathf.Clamp(ExtensionMethods.Remap(Life, 0, maxLife, 0, 3), 0, 3), 45);
-        Debug.Log(Life);
-        if (Life <= 0) {
-            StartCoroutine(die());
+        if (canDie) {
+            Life -= damage;
+            healthbar.transform.localScale = new Vector2(Mathf.Clamp(ExtensionMethods.Remap(Life, 0, maxLife, 0, 3), 0, 3), 45);
+            GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("boss_1_hit");
+            if (Life <= 0) {
+                StartCoroutine(die());
+                canDie = false;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
+
         if (canHurt) {
             if (collision.tag == "Player") {
-                print("Player");
-
+                collision.GetComponent<Player>().DamagePlayer();
+                print("Bum");
             }
         }
         if (collision.tag == "Bullet") {
@@ -144,12 +148,16 @@ public class Boss1 : MonoBehaviour
                 collision.transform.Rotate(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180);
                 collision.GetComponent<Rigidbody2D>().AddForce(direction * 20, ForceMode2D.Impulse);
                 collision.GetComponent<Bullet>().friendly = false;
+                takeDamage(collision.GetComponent<Bullet>().damage * 0.1f);
             }
             else {
                 GameObject.Destroy(collision.gameObject);
                 takeDamage(collision.GetComponent<Bullet>().damage);
             }
         }
+    }
+    private void OnTriggerStay(Collider other) {
+        
     }
     public void StartHurting() {
         canHurt = true;
@@ -169,8 +177,8 @@ public class Boss1 : MonoBehaviour
         healthbar.SetActive(false);
         animator.SetTrigger("Die");
         transform.Find("MinimapIcon").gameObject.SetActive(false);
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("boss_1_sound");
         yield return new WaitForSeconds(.5f);
-        rb.gravityScale = 1;
         GameObject.Find("SceneMenager").GetComponent<Bulid_Script>().BossDied();
         yield return new WaitForSeconds(10);
         Destroy(gameObject);
@@ -187,9 +195,11 @@ public class Boss1 : MonoBehaviour
     IEnumerator WakeUp(float time) {
         yield return new WaitForSeconds(time);
         mode = Mode.ChaseTarget;
+        canDie = true;
         string text = "Defeat Opponent";
         PlayerPrefs.SetString("CurrentTask", text);
         player.GetComponent<Player>().Notify(text, 3);
+       
     }
 
 

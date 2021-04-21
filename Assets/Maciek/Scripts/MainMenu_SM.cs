@@ -10,8 +10,9 @@ using TMPro;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
 
-public class MainMenu_SM : MonoBehaviour {
-   
+public class MainMenu_SM : MonoBehaviour
+{
+
     public GameObject mainMenu;
     public GameObject playerSelect;
     public GameObject settings;
@@ -21,10 +22,12 @@ public class MainMenu_SM : MonoBehaviour {
     public GameObject[] objects;
     public AudioMixer audioMixer;
     public Animator animator;
+    private AudioManager am;
 
     public event Action<int> OnColorChange;
 
     void Awake() {
+
 #if UNITY_IOS
         Advertisement.Initialize("3835253", false);
 #elif UNITY_ANDROID
@@ -32,33 +35,57 @@ public class MainMenu_SM : MonoBehaviour {
 #endif
         //objects = GameObject.FindGameObjectsWithTag("colorchange");
         Application.targetFrameRate = 60;
-        
+
 
     }
-
+    bool oneTime = true;
 
     // Start is called before the first frame update
     public void Start() {
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         mainMenu.gameObject.SetActive(true);
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
         loadingScreen.gameObject.SetActive(false);
-        
+
+        if (oneTime) {
+            if (PlayerPrefs.HasKey("Music_Volume")) {
+                SetMusic(PlayerPrefs.GetFloat("Music_Volume"));
+            }
+            if (PlayerPrefs.HasKey("SFX_Volume")) {
+                SetSFX(PlayerPrefs.GetFloat("SFX_Volume"));
+            }
+            StopAll();
+            PlaySound("MainTheme");
+            oneTime = false;
+        }
+
     }
 
+    public void PlaySound(string soundName) {
+        am.Play(soundName);
+    }
+    public void StopAll()
+    {
+        am.StopAll();
+    }
     public void NewGame() {
         Start();
         PlayerPrefs.DeleteKey("ModeId");
         PlayerPrefs.DeleteKey("GameId");
         PlayerPrefs.DeleteKey("CharacterId");
+        PlayerPrefs.DeleteKey("ModeCounter");
+
     }
 
-        public void ContinueSingle() {
+    public void ContinueSingle() {
         GetComponent<LevelLoader>().LoadLevel(2);
+
+
     }
 
-        public void LoadLevelSingle() {
+    public void LoadLevelSingle() {
         if (!PlayerPrefs.HasKey("GameId")) {
             PlayerPrefs.SetInt("CharacterId", characterId);
         }
@@ -84,6 +111,7 @@ public class MainMenu_SM : MonoBehaviour {
 
 
     public void PlaySingle() {
+        
         if (PlayerPrefs.HasKey("GameId")) {
             mainMenu.gameObject.SetActive(false);
             playerSelect.gameObject.SetActive(false);
@@ -137,19 +165,25 @@ public class MainMenu_SM : MonoBehaviour {
                 playerSelect.transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(true);
                 break;
         }
-        
+
     }
 
-   
 
-    public void SetVolume(float volume) {
-        audioMixer.SetFloat("Volume", volume);
+
+    public void SetMusic(float volume) {
+        audioMixer.SetFloat("Volume_music", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("Music_Volume", volume);
     }
 
-    
+    public void SetSFX(float volume) {
+        audioMixer.SetFloat("Volume_sfx", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("SFX_Volume", volume);
+    }
+
+
     public void Setcolor(int color) {
-        OnColorChange?.Invoke( color );
-        PlayerPrefs.SetInt("ColorId",color);
+        OnColorChange?.Invoke(color);
+        PlayerPrefs.SetInt("ColorId", color);
 
     }
 
@@ -173,15 +207,22 @@ public class MainMenu_SM : MonoBehaviour {
         else {
             GameObject.Find("Vibrations_Toggle").GetComponent<Toggle>().SetIsOnWithoutNotify(false);
         }
+        if (PlayerPrefs.HasKey("Music_Volume")) {
+            GameObject.Find("Audio_Slider").transform.Find("SliderMusic").GetComponent<Slider>().value = PlayerPrefs.GetFloat("Music_Volume");
+        }
+        if (PlayerPrefs.HasKey("SFX_Volume")) {
+            GameObject.Find("Audio_Slider").transform.Find("SliderSFX").GetComponent<Slider>().value = PlayerPrefs.GetFloat("SFX_Volume");
+        }
     }
-    
+
     public void Quit() {
         Application.Quit();
     }
-  
-    
-  
+
+
+
     void Update() {
-        
-;    }
+
+        ;
+    }
 }

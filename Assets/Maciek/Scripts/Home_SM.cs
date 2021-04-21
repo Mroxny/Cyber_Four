@@ -33,9 +33,11 @@ public class Home_SM : MonoBehaviour {
 
     }
     void Start() {
-        Vector2 spawnPos = new Vector2(0, 0);
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().StopAll();
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("HomeTheme");
+        Vector2 spawnPos = new Vector2(12, 0);
         Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-        float color = Random.Range(115, 256);
+        float color = Random.Range(100, 256);
         color = color.Remap(0,255,0,1);
         foreach (GameObject j in backgrounds) {
             j.GetComponent<SpriteRenderer>().color = new Color(color, color, color);

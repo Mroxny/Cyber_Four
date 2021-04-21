@@ -23,6 +23,8 @@ public class Player : MonoBehaviour {
     public GameObject pauseMenu;
     public GameObject taskNotifier;
     public GameObject spawnDust;
+    private AudioManager am;
+
 
     public Joystick movementJoystick;
     public Joystick aimJoystick;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour {
     GameObject pauseMenuHandler;
     GameObject taskNotifierHandler;
     void Start() {
+
         if (cam == null) {
             cam = GameObject.Find("Main Camera");
         }
@@ -53,7 +56,9 @@ public class Player : MonoBehaviour {
         }
             taskNotifierHandler.SetActive(false);
         cyberCoin = SaveSystem.LoadPlayer().cyberCoin;
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         SetChar();
+
     }
 
 
@@ -89,6 +94,7 @@ public class Player : MonoBehaviour {
             Slider slider = gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HealthBar").GetComponent<Slider>();
             slider.value = slider.value - 1;
             gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HP").GetComponent<TextMeshProUGUI>().text = slider.value.ToString();
+            PlaySound("hit_player");
             if (slider.value <= 0) {
                 StartCoroutine(Die());
             }
@@ -96,7 +102,7 @@ public class Player : MonoBehaviour {
             StartCoroutine(DamageCooldown(.5f));
         }
     }
-    public IEnumerator DamageCooldown(float time) {
+    private IEnumerator DamageCooldown(float time) {
         yield return new WaitForSeconds(time);
         canDamage = true;
     }
@@ -104,8 +110,11 @@ public class Player : MonoBehaviour {
 
     }
     public IEnumerator Die() {
-        yield return new WaitForSeconds(0);
-        Destroy(gameObject);
+        canMove = false;
+        animator.SetFloat("Speed", 0);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("SceneMenager").GetComponent<LevelLoader>().LoadLevel(1);
+        
     }
     IEnumerator SpawnPlayer() {
         yield return new WaitForSecondsRealtime(1f);
@@ -213,32 +222,44 @@ public class Player : MonoBehaviour {
         taskNotifierHandler.GetComponent<TaskHandler>().Notify(text, duration);
     }
 
+    public void PlaySound(string soundName) {
+        am.Play(soundName);
+    }
+
     void FPS() {
         int fps = (int)(1f / Time.unscaledDeltaTime); ;
         GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString();
     }
-
+    bool oneTime = true;
     void Update() {
+
+        if (canMove) {
             
-        
-        if (movementJoystick.Direction.sqrMagnitude == 0) {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
-        }
-        else {
-            movement.x = movementJoystick.Horizontal;
-            movement.y = movementJoystick.Vertical;
-        }
-        mouse = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-        if (movement.x!=0) {
-            if (aimJoystick.Horizontal == 0) {
-                lookDir = movement.x;
+            if (movementJoystick.Direction.sqrMagnitude == 0) {
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
+                am.StopPlaying("Footstep_Player");
+                oneTime = true;
             }
             else {
-                lookDir = aimJoystick.Horizontal;
+                if (oneTime) {
+                    PlaySound("Footstep_Player");
+                    oneTime = false;
+                }
+                movement.x = movementJoystick.Horizontal;
+                movement.y = movementJoystick.Vertical;
+
+            }
+            mouse = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+            if (movement.x != 0) {
+                if (aimJoystick.Horizontal == 0) {
+                    lookDir = movement.x;
+                }
+                else {
+                    lookDir = aimJoystick.Horizontal;
+                }
             }
         }
-        
 
         
         if (GameObject.Find("CC_Count") != null) {
@@ -269,23 +290,22 @@ public class Player : MonoBehaviour {
     {
         if (canMove) {
             rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
-        }
-        if (animator != null && (!GetComponentInChildren<WeaponInteract>() || GetComponentInChildren<WeaponInteract>().canFire))
-        {
-            animator.SetFloat("Horizontal", lookDir);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
-            //print(lookDir);
-            if (GetComponentInChildren<WeaponInteract>()) {
-                weapon = GetComponentInChildren<WeaponInteract>().gameObject;
-                /*if (lookDir < 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);
-                else if (lookDir > 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);*/
+
+            if (animator != null && (!GetComponentInChildren<WeaponInteract>() || GetComponentInChildren<WeaponInteract>().canFire)) {
+                animator.SetFloat("Horizontal", lookDir);
+                animator.SetFloat("Speed", movement.sqrMagnitude);
+                //print(lookDir);
+                if (GetComponentInChildren<WeaponInteract>()) {
+                    weapon = GetComponentInChildren<WeaponInteract>().gameObject;
+                    /*if (lookDir < 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);
+                    else if (lookDir > 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);*/
+                }
             }
+            else if (animator != null && !GetComponentInChildren<WeaponInteract>().canFire) {
+                animator.SetFloat("Horizontal", GetComponentInChildren<WeaponInteract>().lookDir.x);
+            }
+            cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
         }
-        else if (animator != null && !GetComponentInChildren<WeaponInteract>().canFire) {
-            animator.SetFloat("Horizontal", GetComponentInChildren<WeaponInteract>().lookDir.x);
-        }
-        cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
-        
     }
 
 }

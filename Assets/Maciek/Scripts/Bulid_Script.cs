@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Threading;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Bulid_Script : MonoBehaviour
 {
+    private AudioManager am;
+
     [Header("General")]
     [Space(0)]
     public GameObject player;
     public GameObject panelPart;
     public GameObject interaction;
     public GameObject exitScript;
+    public List<string> music;
     public event Action<int> OnColorChange;
 
     [Header("Room 1")]
@@ -63,12 +67,23 @@ public class Bulid_Script : MonoBehaviour
 
     void Start()
     {
-        
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        StopAll();
         BulidLevel();
 
         
 
     }
+
+    public void PlaySound(string soundName)
+    {
+        am.Play(soundName);
+    }
+    public void StopAll()
+    {
+        am.StopAll();
+    }
+
     public void BulidLevel() {
         if (PlayerPrefs.HasKey("GameId")) {
             room = PlayerPrefs.GetInt("GameId");
@@ -84,14 +99,19 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnBossLair(platforms1[0], bigPlatform1[0], corridors1);
                         AstarPath.active.Scan();
                         init.SpawnBoss(boss1);
+                        PlaySound(music[0]);
                         break;
                     case 2:
                         init.SpawnBossLair(platforms2[0], bigPlatform2[0], corridors2);
+                        AstarPath.active.Scan();
                         init.SpawnBoss(boss2);
+                        PlaySound(music[1]);
                         break;
                     case 3:
                         init.SpawnBossLair(platforms3[0], bigPlatform3[0], corridors3);
+                        AstarPath.active.Scan();
                         init.SpawnBoss(boss3);
+                        PlaySound(music[2]);
                         break;
                 }
                 break;
@@ -105,6 +125,7 @@ public class Bulid_Script : MonoBehaviour
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies1);
+                        PlaySound(music[UnityEngine.Random.Range(3,5)]);
                         break;
                     case 2:
                         init.PlacePlatforms(platforms2);
@@ -112,6 +133,7 @@ public class Bulid_Script : MonoBehaviour
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies2);
+                        PlaySound(music[UnityEngine.Random.Range(3, 5)]);
                         break;
                     case 3:
                         init.PlacePlatforms(platforms3);
@@ -119,6 +141,7 @@ public class Bulid_Script : MonoBehaviour
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies3);
+                        PlaySound(music[UnityEngine.Random.Range(3, 5)]);
                         break;
                 }
                 break;
@@ -128,19 +151,22 @@ public class Bulid_Script : MonoBehaviour
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, exit1, exitScript);
-                        StartCoroutine(WaveSpawner(enemies1,3, 10));
+                        StartCoroutine(WaveSpawner(enemies1,3, 30));
+                        PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         break;
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, exit1, exitScript);
                         StartCoroutine(WaveSpawner(enemies2, 3, 30));
+                        PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         break;
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, exit1, exitScript);
                         StartCoroutine(WaveSpawner(enemies3, 3, 30));
+                        PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         break;
                 }
                 

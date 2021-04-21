@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour {
     private Vector2 startingPos;
     private State state = State.Roaming;
     private float staticRandom;
+    private string hitEnemy;
 
     Path path;
     int currentWaypoint = 0;
@@ -62,12 +63,15 @@ public class EnemyAI : MonoBehaviour {
             switch (enemyType) {
                 case EnemyType.BigFish:
                     speed = Random.Range(400,500);
+                    hitEnemy = "hitEnemy1";
                     break;
                 case EnemyType.TallGuy:
                     speed = Random.Range(500, 600);
+                    hitEnemy = "hitEnemy2";
                     break;
                 case EnemyType.Sneaky:
                     speed = Random.Range(600, 700);
+                    hitEnemy = "hitEnemy3";
                     break;
             }
 
@@ -106,16 +110,28 @@ public class EnemyAI : MonoBehaviour {
             case State.ChaseTarget:
                 if (weapon.GetComponent<WeaponInteract>().IsGun) {
                     target = LerpByDistance(player.transform.position, gameObject.transform.position, staticRandom);
-                    if (Vector2.Distance(transform.position, player.transform.position) <= 5) {
+                    if (Vector2.Distance(transform.position, player.transform.position) <= 9) {
                         weapon.GetComponent<WeaponInteract>().aimAtPlayer = true;
                     }
-                    
-                    if (Vector2.Distance(transform.position, player.transform.position) <= 5) {
+                    else {
+                        weapon.GetComponent<WeaponInteract>().aimAtPlayer = false;
+                    }
+
+                    if (Vector2.Distance(transform.position, player.transform.position) <= staticRandom + 3) {
                         weapon.GetComponent<WeaponInteract>().Shoot();
                     }
                 }
 
-                else target = player.transform.position;
+                else {
+                    target = player.transform.position;
+                    if (Vector2.Distance(transform.position, player.transform.position) <= 2) {
+                        weapon.GetComponent<WeaponInteract>().aimAtPlayer = true;
+                        weapon.GetComponent<WeaponInteract>().Shoot();
+                    }
+                    else {
+                        weapon.GetComponent<WeaponInteract>().aimAtPlayer = false;
+                    }
+                }
 
                 break;
             case State.Rest:
@@ -137,7 +153,7 @@ public class EnemyAI : MonoBehaviour {
 
     public void TakeDamage(float dmg) {
         life -= dmg;
-        Debug.Log(life);
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play(hitEnemy);
         if (life <= 0) {
             StartCoroutine(die());
         }
