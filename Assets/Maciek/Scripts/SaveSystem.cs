@@ -8,24 +8,28 @@ public static class SaveSystem {
 
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.xd";
-        FileStream stream = new FileStream(path, FileMode.Create);
+        FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
 
         PlayerData data = new PlayerData(player);
+        //Debug.Log("saved");
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
-
+    
     public static PlayerData LoadPlayer() {
         string path = Application.persistentDataPath + "/player.xd";
         if (File.Exists(path)) {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
-
-            return data;
+            if (stream.Length <= 174) {
+                return null;
+            }
+            else {
+                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                stream.Close();
+                return data;
+            }
         }
         else {
             Debug.LogError("Save file not found in " + path);
@@ -43,13 +47,7 @@ public static class SaveSystem {
     }
     public static void ResetValues() {
 
-        BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.xd";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        PlayerData data = null;
-
-        formatter.Serialize(stream, data);
-        stream.Close();
+        File.Delete(path);
     }
 }

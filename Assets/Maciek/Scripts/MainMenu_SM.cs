@@ -76,6 +76,7 @@ public class MainMenu_SM : MonoBehaviour
         PlayerPrefs.DeleteKey("GameId");
         PlayerPrefs.DeleteKey("CharacterId");
         PlayerPrefs.DeleteKey("ModeCounter");
+        SaveSystem.ResetValues();
 
     }
 

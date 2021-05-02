@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFOV : MonoBehaviour
 {
+
     [HideInInspector]
     public bool inRange = false;
     [HideInInspector]
@@ -22,10 +23,15 @@ public class PlayerFOV : MonoBehaviour
             }
             else { 
                 player = GameObject.FindObjectOfType<Player>();
-                weapon.InPlayerHands = true;
-                weapon.transform.SetParent(player.transform);
-                weapon.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.3f);
-                weapon.inHand = true;
+                if (player.GetComponent<Player>().GetCurrentGunSlot() != 0) {
+                    player.GetComponent<Player>().SetWeaponInSlot(weapon.gameObject, player.GetComponent<Player>().GetCurrentGunSlot());
+                    GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("pickup_1");
+                }
+                else {
+                    Debug.LogError("No Gun slots found");
+                }
+                    
+
             }
         }
     }

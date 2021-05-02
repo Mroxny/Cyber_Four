@@ -161,9 +161,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7852809851374904613}
+  bulletColor: {r: 0, g: 0, b: 0, a: 0}
+  weaponName: Blade
   velocity: 0
   damage: 100
   fireRate: 0.5
+  soundName: hitMele
   firepoint: {fileID: 0}
   animator: {fileID: 4341270275872265473}
   IsGun: 0

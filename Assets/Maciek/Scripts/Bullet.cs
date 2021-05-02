@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.layer == 11) {
             //ciapak work here
-            GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("");
+            GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("hitWall");
             GameObject.Destroy(gameObject);
         }
         if (friendly) {

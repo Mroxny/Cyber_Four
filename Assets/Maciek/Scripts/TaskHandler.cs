@@ -34,7 +34,10 @@ public class TaskHandler : MonoBehaviour
     IEnumerator TurnOff(float t) {
         yield return new WaitForSeconds(t);
         gameObject.SetActive(false);
-        button.GetComponent<Button>().interactable = true;
-        button.GetComponent<CanvasGroup>().alpha = 1;
+        if (button.GetComponent<Button>() != null) {
+            button.GetComponent<Button>().interactable = true;
+            button.GetComponent<CanvasGroup>().alpha = 1;
+        }
+        
     }
 }

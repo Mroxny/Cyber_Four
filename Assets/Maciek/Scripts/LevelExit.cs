@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class LevelExit : MonoBehaviour
 {
+
     void Start()
     {
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("teleport");
+
         if (PlayerPrefs.GetInt("ModeId") == 1) {
             PlayerPrefs.SetInt("ModeId", 2);
             GameObject.Find("SceneMenager").GetComponent<LevelLoader>().LoadLevel(2);

@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponInteract : MonoBehaviour
 {
     public GameObject bullet;
+    public Color bulletColor;
+    public string weaponName;
     public float velocity;
     public float damage;
     public float fireRate;
@@ -100,7 +102,7 @@ public class WeaponInteract : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if (player == null) {
             player = GameObject.Find("Player(Clone)");
             am = GameObject.Find("AudioManager").GetComponent<AudioManager>();

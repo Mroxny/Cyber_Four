@@ -16,6 +16,10 @@ public class Player : MonoBehaviour {
     private float MoveSpeed;
     private int ability;
     public int cyberCoin;
+    public int[] unlockedWeapons;
+    public int[] currentWeapons;
+    public GameObject gunSlot1;
+    public GameObject gunSlot2;
     public Camera camera = new Camera();
     public Rigidbody2D rb;
     public List<GameObject> disabledInHome;
@@ -33,7 +37,8 @@ public class Player : MonoBehaviour {
     public Vector2 movement;
     public Vector2 mouse;
     private float lookDir;
-    private GameObject weapon;
+    private GameObject gunSlotButton1;
+    private GameObject gunSlotButton2;
 
     GameObject pauseMenuHandler;
     GameObject taskNotifierHandler;
@@ -51,14 +56,23 @@ public class Player : MonoBehaviour {
             }
         }
         taskNotifierHandler = Instantiate(taskNotifier, new Vector2(0, 0), Quaternion.identity);
-        if (!SaveSystem.IsValid()) {
+        if (!SaveSystem.IsValid() || SaveSystem.LoadPlayer() == null) {
+            currentWeapons = new int[2];
+            unlockedWeapons = new int[2];
+            currentWeapons[0] = 0;
+            currentWeapons[1] = 1;
+            unlockedWeapons[0] = 0;
+            unlockedWeapons[1] = 1;
             SaveSystem.SavePlayer(this);
         }
-            taskNotifierHandler.SetActive(false);
+        currentWeapons = SaveSystem.LoadPlayer().cw;
+        unlockedWeapons = SaveSystem.LoadPlayer().uw;
         cyberCoin = SaveSystem.LoadPlayer().cyberCoin;
+        taskNotifierHandler.SetActive(false);
+        gunSlotButton1 = transform.Find("Canvas").transform.Find("GunSlotButton_1").gameObject;
+        gunSlotButton2 = transform.Find("Canvas").transform.Find("GunSlotButton_2").gameObject;
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         SetChar();
-
     }
 
 
@@ -71,16 +85,16 @@ public class Player : MonoBehaviour {
         int health = 0;
         switch (PlayerPrefs.GetInt("CharacterId")) {
             case 1:
-                health = 6;
+                health = 8;
                 break;
             case 2:
-                health = 4;
+                health = 12;
                 break;
             case 3:
-                health = 4;
+                health = 8;
                 break;
             case 4:
-                health = 4;
+                health = 16;
                 break;
         }
 
@@ -95,8 +109,13 @@ public class Player : MonoBehaviour {
             slider.value = slider.value - 1;
             gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HP").GetComponent<TextMeshProUGUI>().text = slider.value.ToString();
             PlaySound("hit_player");
+            StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.1f, 0.1f, transform));
+            if (PlayerPrefs.GetInt("Vibrations") == 1) {
+                Handheld.Vibrate();
+            }
             if (slider.value <= 0) {
                 StartCoroutine(Die());
+                return;
             }
             canDamage = false;
             StartCoroutine(DamageCooldown(.5f));
@@ -111,6 +130,8 @@ public class Player : MonoBehaviour {
     }
     public IEnumerator Die() {
         canMove = false;
+        canDamage = false;
+        animator.SetTrigger("Die");
         animator.SetFloat("Speed", 0);
         yield return new WaitForSeconds(2);
         GameObject.Find("SceneMenager").GetComponent<LevelLoader>().LoadLevel(1);
@@ -137,7 +158,7 @@ public class Player : MonoBehaviour {
                 GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(2 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender2");
                 GameObject.Find("CharProf2").SetActive(true);
-                MoveSpeed = 0.1f;
+                MoveSpeed = 0.09f;
                 ability = 2;
                 //weaponRender = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
@@ -147,7 +168,7 @@ public class Player : MonoBehaviour {
                 GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(3 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender3");
                 GameObject.Find("CharProf3").SetActive(true);
-                MoveSpeed = 0.1f;
+                MoveSpeed = 0.11f;
                 ability = 3;
                 //weaponRender = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
@@ -157,15 +178,19 @@ public class Player : MonoBehaviour {
                 GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(4 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender4");
                 GameObject.Find("CharProf4").SetActive(true);
-                MoveSpeed = 0.1f;
+                MoveSpeed = 0.07f;
                 ability = 4;
                 //weaponRender = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
                 
         }
         Instantiate(spawnDust, transform.position, Quaternion.identity);
+        PlaySound("spawn");
         StartCoroutine(cam.GetComponent<CameraShake>().Shake(0.15f,0.2f,transform));
-        
+        InventoryDataBase db = GameObject.Find("Inventory").GetComponent<InventoryDataBase>();
+        SetWeaponInSlot(Instantiate(db.GetWeapon(SaveSystem.LoadPlayer().cw[0])), 1);
+        SetWeaponInSlot(Instantiate(db.GetWeapon(SaveSystem.LoadPlayer().cw[1])), 2);
+        ChangeCurrentGunSlot(1);
     }
 
     void isDodging() {
@@ -224,6 +249,91 @@ public class Player : MonoBehaviour {
 
     public void PlaySound(string soundName) {
         am.Play(soundName);
+    }
+
+    public int GetCurrentGunSlot() {
+        if (gunSlot1.activeSelf) {
+            return 1;
+        }
+        else if (gunSlot2.activeSelf) {
+            return 2;
+        }
+        else {
+            return 0;
+        }
+    }
+
+
+    public void SetWeaponInSlot(GameObject weapon,int slot) {
+        
+        if (slot == 1 && weapon.GetComponent<WeaponInteract>() != null) {
+            if (gunSlot1 != null) {
+                gunSlot1.transform.SetParent(null);
+                gunSlot1.transform.position = weapon.transform.position;
+                gunSlot1.GetComponent<WeaponInteract>().InPlayerHands = false;
+                gunSlot1.GetComponent<WeaponInteract>().inHand = false;
+            }
+            weapon.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f);
+            weapon.transform.SetParent(gameObject.transform);
+            weapon.GetComponent<WeaponInteract>().InPlayerHands = true;
+            weapon.GetComponent<WeaponInteract>().inHand = true;
+            weapon.GetComponent<WeaponInteract>().canFire = true;
+            gunSlot1 = weapon;
+            currentWeapons[0] = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponId(gunSlot1);
+            GameObject icon = gunSlotButton1.transform.Find("WeaponIcon").gameObject;
+            icon.GetComponent<Image>().sprite = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponIcon(currentWeapons[0]);
+            float iconWidth = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponIcon(currentWeapons[0]).rect.width;
+            float iconHeight = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponIcon(currentWeapons[0]).rect.height;
+            icon.GetComponent<RectTransform>().sizeDelta = new Vector2(ExtensionMethods.Remap(iconWidth, 0, 20, 0, 50), ExtensionMethods.Remap(iconHeight, 0, 20, 0, 50));
+        }
+        else if (slot == 2 && weapon.GetComponent<WeaponInteract>() != null) {
+            if (gunSlot2 != null) {
+                gunSlot2.transform.SetParent(null);
+                gunSlot2.transform.position = weapon.transform.position;
+                gunSlot2.GetComponent<WeaponInteract>().InPlayerHands = false;
+                gunSlot2.GetComponent<WeaponInteract>().inHand = false;
+            }
+            weapon.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f);
+            weapon.transform.SetParent(gameObject.transform);
+            weapon.GetComponent<WeaponInteract>().InPlayerHands = true;
+            weapon.GetComponent<WeaponInteract>().inHand = true;
+            weapon.GetComponent<WeaponInteract>().canFire = true;
+            gunSlot2 = weapon;
+            currentWeapons[1] = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponId(gunSlot2);
+            GameObject icon = gunSlotButton2.transform.Find("WeaponIcon").gameObject;
+            icon.GetComponent<Image>().sprite = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponIcon(currentWeapons[1]);
+            float iconWidth = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponIcon(currentWeapons[1]).rect.width ;
+            float iconHeight = GameObject.Find("Inventory").GetComponent<InventoryDataBase>().GetWeaponIcon(currentWeapons[1]).rect.height ;
+            icon.GetComponent<RectTransform>().sizeDelta=new Vector2(ExtensionMethods.Remap(iconWidth, 0, 20, 0, 50), ExtensionMethods.Remap(iconHeight, 0, 20, 0, 50)); 
+        }
+        SaveSystem.SavePlayer(this);
+    }
+    public void ChangeCurrentGunSlot(int slot) {
+        if (slot == 1) {
+            gunSlot1.SetActive(true);
+            gunSlot2.SetActive(false);
+        }
+        else if (slot == 2) {
+            gunSlot1.SetActive(false);
+            gunSlot2.SetActive(true);
+        }
+    }
+
+    public void test() {
+
+        SaveSystem.ResetValues();
+
+        /*currentWeapons = new int[2];
+        unlockedWeapons = new int[2];
+        currentWeapons[0] = 0;
+        currentWeapons[1] = 1;
+        unlockedWeapons[0] = 0;
+        unlockedWeapons[1] = 1;
+        SaveSystem.SavePlayer(this);*/
+
+        //print(SaveSystem.LoadPlayer().uw[0] + " " + SaveSystem.LoadPlayer().uw[1]);
+
+
     }
 
     void FPS() {
@@ -296,7 +406,6 @@ public class Player : MonoBehaviour {
                 animator.SetFloat("Speed", movement.sqrMagnitude);
                 //print(lookDir);
                 if (GetComponentInChildren<WeaponInteract>()) {
-                    weapon = GetComponentInChildren<WeaponInteract>().gameObject;
                     /*if (lookDir < 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);
                     else if (lookDir > 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);*/
                 }

@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2325824214476225457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 641.8557}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 5479807484466448922}
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.9916716, y: -0.45763814}
   m_SizeDelta: {x: 0.32, y: 0.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781138324999554696
@@ -52,9 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 13993696069608544, guid: 0251cce0a06836b4a9892a03b028b94c, type: 3}
+  bulletColor: {r: 0, g: 0, b: 0, a: 0}
+  weaponName: Industor 112x
   velocity: 15
   damage: 20
   fireRate: 0.4
+  soundName: gun1_Shoot
   firepoint: {fileID: 748338482627609493}
   animator: {fileID: 4241131522048116550}
   IsGun: 1

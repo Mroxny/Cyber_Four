@@ -54,33 +54,6 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
-  - name: MainTheme
-    clip: {fileID: 8300000, guid: 2f24864c0775cfe44b550fe5d1979c80, type: 3}
-    volume: 0.25
-    volumeVariance: 0.3
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
-    source: {fileID: 0}
-  - name: HomeTheme
-    clip: {fileID: 8300000, guid: 202b1a9acb82761488061e986a3a2a7f, type: 3}
-    volume: 0.12
-    volumeVariance: 0.3
-    pitch: 0.99
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
-    source: {fileID: 0}
-  - name: TestGunShoot
-    clip: {fileID: 8300000, guid: 97b4b80fb9263eb48a3fa429abb99868, type: 3}
-    volume: 0.08
-    volumeVariance: 0.4
-    pitch: 0.5
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
-    source: {fileID: 0}
   - name: Footstep_Player
     clip: {fileID: 8300000, guid: ca57be2dc95528b43b7ae99b710756aa, type: 3}
     volume: 0.1
@@ -88,15 +61,6 @@ MonoBehaviour:
     pitch: 1.1
     pitchVariance: 0.03
     loop: 1
-    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
-    source: {fileID: 0}
-  - name: hit_player
-    clip: {fileID: 8300000, guid: 871fbf6e367b7654bafeb37ab2ccad11, type: 3}
-    volume: 0.2
-    volumeVariance: 0.5
-    pitch: 1
-    pitchVariance: 0.01
-    loop: 0
     mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
   - name: boss_1_sound
@@ -123,6 +87,33 @@ MonoBehaviour:
     volumeVariance: 0.3
     pitch: 1.1
     pitchVariance: 0.03
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: spawn
+    clip: {fileID: 8300000, guid: 6e527aadd44f3974a977dc23ed9a0e00, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 0.7
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: teleport
+    clip: {fileID: 8300000, guid: 10afa7d808577384db4320a3d0986359, type: 3}
+    volume: 0.3
+    volumeVariance: 0.1
+    pitch: 1.1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: hit_player
+    clip: {fileID: 8300000, guid: 871fbf6e367b7654bafeb37ab2ccad11, type: 3}
+    volume: 0.2
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0.01
     loop: 0
     mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
@@ -153,8 +144,71 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
+  - name: hitWall
+    clip: {fileID: 8300000, guid: a3fffe8829af78e40b04e9d9896bd852, type: 3}
+    volume: 0.1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: hitMele
+    clip: {fileID: 8300000, guid: 490790c369b4e9f4393aa16b5be29a7e, type: 3}
+    volume: 0.08
+    volumeVariance: 0.4
+    pitch: 1.05
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: TestGunShoot
+    clip: {fileID: 8300000, guid: 97b4b80fb9263eb48a3fa429abb99868, type: 3}
+    volume: 0.08
+    volumeVariance: 0.4
+    pitch: 0.5
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: gun1_Shoot
+    clip: {fileID: 8300000, guid: 654b362122d8d6f408666aff1ab99025, type: 3}
+    volume: 0.08
+    volumeVariance: 0.4
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: gun2_Shoot
+    clip: {fileID: 8300000, guid: 3d077e09ea36bcc4a9108073288b55fc, type: 3}
+    volume: 0.08
+    volumeVariance: 0.4
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 2f24864c0775cfe44b550fe5d1979c80, type: 3}
+    volume: 0.25
+    volumeVariance: 0.3
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: HomeTheme
+    clip: {fileID: 8300000, guid: 202b1a9acb82761488061e986a3a2a7f, type: 3}
+    volume: 0.12
+    volumeVariance: 0.3
+    pitch: 0.99
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
   - name: song1
-    clip: {fileID: 8300000, guid: 041889fdcc8c58542828861b44ffceb1, type: 3}
+    clip: {fileID: 8300000, guid: 4bc33ead6cffbab47a348ab3e8f496c1, type: 3}
     volume: 0.12
     volumeVariance: 0.2
     pitch: 1
@@ -181,7 +235,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
   - name: song4
-    clip: {fileID: 8300000, guid: 4bc33ead6cffbab47a348ab3e8f496c1, type: 3}
+    clip: {fileID: 8300000, guid: 041889fdcc8c58542828861b44ffceb1, type: 3}
     volume: 0.12
     volumeVariance: 0.2
     pitch: 1
@@ -190,7 +244,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
   - name: song5
-    clip: {fileID: 8300000, guid: 60a9ecd9ec555864b8cce62221778012, type: 3}
+    clip: {fileID: 8300000, guid: 7f472daa13422fd48b4e64769b84ca1d, type: 3}
     volume: 0.12
     volumeVariance: 0.2
     pitch: 1
@@ -200,6 +254,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: song6
     clip: {fileID: 8300000, guid: c49aca84114a1a248af8f187394f9c61, type: 3}
+    volume: 0.12
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: -4115699742843393613, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: song7
+    clip: {fileID: 8300000, guid: 60a9ecd9ec555864b8cce62221778012, type: 3}
     volume: 0.12
     volumeVariance: 0.2
     pitch: 1

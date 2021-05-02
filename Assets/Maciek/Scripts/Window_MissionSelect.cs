@@ -23,13 +23,9 @@ public class Window_MissionSelect : MonoBehaviour
     {
         am.StopPlaying(soundName);
     }
-    public void Start()
-    {
-        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-    }
+
     public void Initiate() {
-        // GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("Click");
-        //am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         cam = Camera.main;
         gameObject.transform.Find("Canvas").GetComponent<Canvas>().worldCamera = cam;
         GameObject.Find("Player(Clone)").GetComponent<Player>().DisableHUD();
@@ -52,14 +48,7 @@ public class Window_MissionSelect : MonoBehaviour
        // GameObject.Find("AudioManager").GetComponent<AudioManager>().StopPlaying("HomeTheme");
        // GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("Click");
     }
-    public void LoadMainMenu() {
-        sceneMenager.GetComponent<LevelLoader>().LoadLevel(0);
-        Time.timeScale = 1;
-        //GameObject.Find("AudioManager").GetComponent<AudioManager>().StopPlaying("HomeTheme");
-       // GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("Click");
-
-
-    }
+    
     public void Close() {
         animator.SetTrigger("close");
         StartCoroutine(DisableAfterTime(1.4f));

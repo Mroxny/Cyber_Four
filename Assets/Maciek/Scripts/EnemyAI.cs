@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour {
     private State state = State.Roaming;
     private float staticRandom;
     private string hitEnemy;
+    private bool canDie=true;
 
     Path path;
     int currentWaypoint = 0;
@@ -53,6 +54,7 @@ public class EnemyAI : MonoBehaviour {
         weapon = Instantiate(weapons[Random.Range(0, weapons.Count)],weaponRender.transform.position,Quaternion.identity);
         weapon.transform.SetParent(weaponRender.transform);
         weapon.GetComponent<WeaponInteract>().friendly = false;
+        weapon.GetComponent<WeaponInteract>().fireRate *= Random.Range(2f,3.5f);
         staticRandom = Random.Range(3f,6f);
         InvokeRepeating("UpdatePath", 0.11f, 0.5f);
 
@@ -106,6 +108,7 @@ public class EnemyAI : MonoBehaviour {
                     canChangePos = false;
                     StartCoroutine(WaitTime(Random.Range(3,11)));
                 }
+                MoveTo();
                 break;
             case State.ChaseTarget:
                 if (weapon.GetComponent<WeaponInteract>().IsGun) {
@@ -132,13 +135,15 @@ public class EnemyAI : MonoBehaviour {
                         weapon.GetComponent<WeaponInteract>().aimAtPlayer = false;
                     }
                 }
-
+                MoveTo();
                 break;
             case State.Rest:
 
+                target = gameObject.transform.position;
+                animator.SetFloat("Speed", 0);
                 break;
         }
-        MoveTo();
+        
     }
 
     public Vector3 LerpByDistance(Vector3 A, Vector3 B, float x) {
@@ -154,19 +159,26 @@ public class EnemyAI : MonoBehaviour {
     public void TakeDamage(float dmg) {
         life -= dmg;
         GameObject.Find("AudioManager").GetComponent<AudioManager>().Play(hitEnemy);
-        if (life <= 0) {
-            StartCoroutine(die());
+        if (canDie) {
+            if (state != State.ChaseTarget) {
+                TargetPlayer();
+            }
+            if (life <= 0) {
+                StartCoroutine(die());
+            }
         }
     }
 
     private IEnumerator die() {
+        canDie = false;
+        noticedIcon.SetActive(false);
         state = State.Rest;
-        transform.rotation = new Quaternion(0, 0, -90,0);
-        Destroy(weapon);
+        transform.Rotate(0, 0, -90);
+        weapon.GetComponent<WeaponInteract>().aimAtPlayer = false;
         yield return new WaitForSeconds(1);
         animator.SetTrigger("Die");
         transform.Find("MinimapIcon").gameObject.SetActive(false);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
 

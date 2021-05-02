@@ -7,7 +7,13 @@ using UnityEngine;
 public class PlayerData {
 
     public int cyberCoin;
+    public int[] uw;
+    public int[] cw;
     public PlayerData(Player player) {
-        cyberCoin = player.cyberCoin;
+        if (player != null) {
+            cyberCoin = player.cyberCoin;
+            uw = player.unlockedWeapons;
+            cw = player.currentWeapons;
+        }
     }
 }
