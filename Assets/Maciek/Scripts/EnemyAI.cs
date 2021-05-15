@@ -162,6 +162,7 @@ public class EnemyAI : MonoBehaviour {
         if (canDie) {
             if (state != State.ChaseTarget) {
                 TargetPlayer();
+                life += dmg;
             }
             if (life <= 0) {
                 StartCoroutine(die());

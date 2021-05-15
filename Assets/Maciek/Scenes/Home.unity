@@ -663,25 +663,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &149623861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1001273294349438531, guid: 5a7abfb6f7d029c45b30309f15cfcc24, type: 3}
-  m_PrefabInstance: {fileID: 585453950}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &149623863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149623861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed4b7b2810573240891fddb607d9a6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  tekst: 
 --- !u!1001 &149763973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3443,6 +3424,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 387325369652146913, guid: 194c6036fa38f7049b74e830fd37aa1c, type: 3}
+    - target: {fileID: 8476997674648650522, guid: 5a7abfb6f7d029c45b30309f15cfcc24, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 387325369652146913, guid: 12991c44fb897924b90b6b5deaae2caf, type: 3}
     - target: {fileID: 8913731210450624376, guid: 5a7abfb6f7d029c45b30309f15cfcc24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10498,6 +10483,7 @@ MonoBehaviour:
   - {fileID: 553141432}
   - {fileID: 999161626}
   cloud: {fileID: 229698487807122526, guid: 3f005132bd374a94caac81973c454793, type: 3}
+  intro: {fileID: 387325369652146913, guid: 5788d187fdb0427478b7412e8f568b8a, type: 3}
 --- !u!114 &1965493290
 MonoBehaviour:
   m_ObjectHideFlags: 0

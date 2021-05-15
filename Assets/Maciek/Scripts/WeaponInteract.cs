@@ -52,12 +52,8 @@ public class WeaponInteract : MonoBehaviour
     }
 
     private IEnumerator trigger() {
-        //Vector2 lookDir = mouse - new Vector2(player.transform.position.x, player.transform.position.y); -- na potrzeby joysticka zmieniłem ~Maciek
         
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-
-        //firepoint.rotation = Quaternion.Euler(new Vector3(mouse.x,mouse.y,angle));
-        
 
         canFire = false;
         if (IsGun) {
@@ -109,23 +105,28 @@ public class WeaponInteract : MonoBehaviour
         }
         if (friendly) {
             if (InPlayerHands) {
-                lookDir = player.GetComponent<Player>().aimJoystick.Direction;
-                playerLookDir = player.GetComponent<Player>().movement;
+                if (player.GetComponent<Player>().aimJoystick.Direction.sqrMagnitude > 0) {
+                    lookDir = player.GetComponent<Player>().aimJoystick.Direction;
+                }
+                else{
+                    lookDir = new Vector2(Mathf.Ceil(player.GetComponent<Player>().lookDir),0);
+                }
+                //print(player.GetComponent<Player>().lookDir);
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-                if (angle < 90 && angle > -90) {
-                    //Debug.Log(angle);
-                    if (transform.localScale.x < 0) transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
-                    transform.rotation = Quaternion.Euler(new Vector3(lookDir.x, lookDir.y, angle));
-                }
-                else {
-                    if (transform.localScale.x > 0) transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
-                    transform.rotation = Quaternion.Euler(new Vector3(lookDir.x, lookDir.y, angle - 180f));
-                }
-                if ((lookDir.x != 0 || lookDir.y != 0) && canFire) {                         //(Input.GetMouseButtonDown(0)) {
-                    if (inHand) {
-                        Shoot();
+                
+                    if (angle < 90 && angle > -90) {
+                        //Debug.Log(angle);
+                        if (transform.localScale.x < 0) transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
+                        transform.rotation = Quaternion.Euler(new Vector3(lookDir.x, lookDir.y, angle));
                     }
-                    
+                    else {
+                        if (transform.localScale.x > 0) transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
+                        transform.rotation = Quaternion.Euler(new Vector3(lookDir.x, lookDir.y, angle - 180f));
+                    }
+                
+                
+                if (player.GetComponent<Player>().aimJoystick.Direction.sqrMagnitude > 0 && canFire && inHand) {
+                      Shoot();                    
                 }
             }
         }

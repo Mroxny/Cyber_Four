@@ -20,6 +20,7 @@ public class Home_SM : MonoBehaviour {
     public GameObject playerPrefab;
     public List<GameObject> backgrounds;
     public GameObject cloud;
+    public GameObject intro;
 
 
 
@@ -46,9 +47,12 @@ public class Home_SM : MonoBehaviour {
         for (int i=0;i<=randRange;i++) {
             Instantiate(cloud,new Vector2(75,0), Quaternion.identity);
         }
-
+        StartCoroutine(StartIntro(2f));
     }
-
+    private IEnumerator StartIntro(float time) {
+        yield return new WaitForSeconds(time);
+        Instantiate(intro);
+    }
     // Update is called once per frame
     void Update() {
 

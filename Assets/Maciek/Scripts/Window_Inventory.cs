@@ -121,9 +121,16 @@ public class Window_Inventory : MonoBehaviour
 
     public void Close() {
         animator.SetTrigger("close");
+        StartCoroutine(TurnOffList(.5f));
         StartCoroutine(DisableAfterTime(1.4f));
     }
-    IEnumerator DisableAfterTime(float time) {
+    IEnumerator TurnOffList(float time) {
+        yield return new WaitForSecondsRealtime(time);
+        foreach (Transform child in button.transform.parent) {
+            child.gameObject.SetActive(false);
+        }
+    }
+        IEnumerator DisableAfterTime(float time) {
         yield return new WaitForSecondsRealtime(time);
         gameObject.SetActive(false);
         Time.timeScale = 1;

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour {
 
     public Vector2 movement;
     public Vector2 mouse;
-    private float lookDir;
+    public float lookDir;
     private GameObject gunSlotButton1;
     private GameObject gunSlotButton2;
 
@@ -343,33 +343,7 @@ public class Player : MonoBehaviour {
     bool oneTime = true;
     void Update() {
 
-        if (canMove) {
-            
-            if (movementJoystick.Direction.sqrMagnitude == 0) {
-                movement.x = Input.GetAxisRaw("Horizontal");
-                movement.y = Input.GetAxisRaw("Vertical");
-                am.StopPlaying("Footstep_Player");
-                oneTime = true;
-            }
-            else {
-                if (oneTime) {
-                    PlaySound("Footstep_Player");
-                    oneTime = false;
-                }
-                movement.x = movementJoystick.Horizontal;
-                movement.y = movementJoystick.Vertical;
-
-            }
-            mouse = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-            if (movement.x != 0) {
-                if (aimJoystick.Horizontal == 0) {
-                    lookDir = movement.x;
-                }
-                else {
-                    lookDir = aimJoystick.Horizontal;
-                }
-            }
-        }
+        
 
         
         if (GameObject.Find("CC_Count") != null) {
@@ -399,22 +373,36 @@ public class Player : MonoBehaviour {
     private void FixedUpdate()
     {
         if (canMove) {
-            rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
-
-            if (animator != null && (!GetComponentInChildren<WeaponInteract>() || GetComponentInChildren<WeaponInteract>().canFire)) {
-                animator.SetFloat("Horizontal", lookDir);
-                animator.SetFloat("Speed", movement.sqrMagnitude);
-                //print(lookDir);
-                if (GetComponentInChildren<WeaponInteract>()) {
-                    /*if (lookDir < 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);
-                    else if (lookDir > 0) weapon.gameObject.transform.localScale = new Vector3(weapon.transform.localScale.x * -1f, weapon.transform.localScale.y, weapon.transform.localScale.z);*/
+            if (movementJoystick.Direction.sqrMagnitude == 0) {
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
+                am.StopPlaying("Footstep_Player");
+                oneTime = true;
+            }
+            else {
+                if (oneTime) {
+                    PlaySound("Footstep_Player");
+                    oneTime = false;
                 }
+                movement.x = movementJoystick.Horizontal;
+                movement.y = movementJoystick.Vertical;
+
             }
-            else if (animator != null && !GetComponentInChildren<WeaponInteract>().canFire) {
-                animator.SetFloat("Horizontal", GetComponentInChildren<WeaponInteract>().lookDir.x);
+            if (movement.x != 0) {
+                lookDir = movement.x;
             }
-            cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
+            if (aimJoystick.Direction.sqrMagnitude>0) {
+                lookDir = aimJoystick.Direction.x;
+            }
+
+            
+            rb.position = new Vector2(transform.position.x + movement.x * MoveSpeed, transform.position.y + movement.y * MoveSpeed);
         }
+        if (animator !=null) {
+            animator.SetFloat("Horizontal", lookDir);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+        }
+        cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
     }
 
 }
