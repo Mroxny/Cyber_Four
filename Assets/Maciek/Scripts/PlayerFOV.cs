@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerFOV : MonoBehaviour
 {
-
     [HideInInspector]
     public bool inRange = false;
     [HideInInspector]
@@ -13,6 +13,8 @@ public class PlayerFOV : MonoBehaviour
     public WeaponInteract weapon;
     [HideInInspector]
     private Player player;
+
+   
 
     public void DoInteract() {
         if (inRange)

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRaycast : MonoBehaviour
 {
+    public GameObject button;
     public float viewRadius;
     [Range(0,360)]
     public float viewAngle;
@@ -24,7 +26,7 @@ public class PlayerRaycast : MonoBehaviour
     {
         prevTarget = this.gameObject;
         originalTarget = this.gameObject;
-        StartCoroutine("FindTargetsWithDelay", 1f);
+        StartCoroutine("FindTargetsWithDelay", 0.8f);
     }
     IEnumerator FindTargetsWithDelay(float delay) {
         while (true) {
@@ -76,6 +78,7 @@ public class PlayerRaycast : MonoBehaviour
         if (originalTarget != this.gameObject && gotowy)
         {
             Debug.Log(originalTarget.name);
+            button.GetComponent<Button>().interactable = true;
             this.GetComponent<PlayerFOV>().inRange = true;
             if (originalTarget.GetComponent<Interactable>())
             {
@@ -101,6 +104,7 @@ public class PlayerRaycast : MonoBehaviour
 
         //sprawdza czy celem jest gracz, zeby nie bylo bledow z znajdywaniem componentow itd.
         else if (originalTarget == this.gameObject && gotowy) {
+            button.GetComponent<Button>().interactable = false;
             this.GetComponent<PlayerFOV>().inRange = false;
             this.GetComponent<PlayerFOV>().interakcja = null;
             if (prevTarget.GetComponent<Interactable>()) prevTarget.GetComponent<Interactable>().DestroyInteract();

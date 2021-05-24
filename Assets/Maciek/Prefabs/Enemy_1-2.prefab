@@ -372,8 +372,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 1.107
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca8534b7ea4169488f890ef8a70b6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 100
   staticSpeed: 0
   speed: 450
   nextWaypointDistance: 2
@@ -403,6 +404,7 @@ MonoBehaviour:
   spawnDust: {fileID: 1859343781036784604, guid: 3e81e4464eb9b7546933ab822897ba1e, type: 3}
   weapons:
   - {fileID: 2325824214476225457, guid: dfeec460c3b7c7c4080455255b4b377d, type: 3}
+  - {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
   - {fileID: 7852809851799366464, guid: 92cd5f72752680b4982e5a9d7eb4c53c, type: 3}
 --- !u!114 &7373393566602175917
 MonoBehaviour:

@@ -71,12 +71,13 @@ public class MainMenu_SM : MonoBehaviour
         am.StopAll();
     }
     public void NewGame() {
-        Start();
+
         PlayerPrefs.DeleteKey("ModeId");
         PlayerPrefs.DeleteKey("GameId");
         PlayerPrefs.DeleteKey("CharacterId");
         PlayerPrefs.DeleteKey("ModeCounter");
         SaveSystem.ResetValues();
+        Start();
 
     }
 

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a772fa48f6320646a275c17990a8b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 100
+  Life: 2500
   speed: 400
   nextWaypointDistance: 3
   animator: {fileID: 1981646221309276543}

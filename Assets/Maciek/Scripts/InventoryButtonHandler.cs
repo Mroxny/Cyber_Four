@@ -19,6 +19,15 @@ public class InventoryButtonHandler : MonoBehaviour
     public void SetDmg(string dmg) {
         transform.Find("Dmg").GetComponent<TextMeshProUGUI>().text = dmg;
     }
+    public void SetAmmo(int ammo) {
+        if (ammo == 0) {
+            transform.Find("Ammo").gameObject.SetActive(false);
+            transform.Find("AmmoText").gameObject.SetActive(false);
+        }
+        else {
+            transform.Find("Ammo").GetComponent<TextMeshProUGUI>().text = ammo.ToString();
+        }
+    }
     public void SetName(string name) {
         transform.Find("Name").GetComponent<TextMeshProUGUI>().text = name;
     }

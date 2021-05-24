@@ -20,7 +20,6 @@ public class TimerHandler : MonoBehaviour
             InvokeRepeating("UpdateTime", 1f, 1f);
             string text;
             text = PlayerPrefs.GetInt("GameId").ToString() + "-";
-            print(PlayerPrefs.GetInt("ModeId"));
             if (PlayerPrefs.GetInt("ModeId") == 2) {
                 int num = 2 + PlayerPrefs.GetInt("ModeCounter");
                 text += num.ToString();

@@ -52,8 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 13993696069608544, guid: 0251cce0a06836b4a9892a03b028b94c, type: 3}
-  bulletColor: {r: 0, g: 0, b: 0, a: 0}
+  bulletColor: {r: 0.512994, g: 0.8301887, b: 0.71242774, a: 1}
   weaponName: Alpha Destructor
+  ammo: 30
+  reloadTime: 3
   velocity: 30
   damage: 30
   fireRate: 0.1
@@ -66,6 +68,7 @@ MonoBehaviour:
   inHand: 0
   aimAtPlayer: 0
   lookDir: {x: 0, y: 0}
+  currentAmmo: 0
   canFire: 1
   collider: {fileID: 0}
   InPlayerHands: 0

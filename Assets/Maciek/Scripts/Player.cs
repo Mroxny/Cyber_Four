@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     public int[] currentWeapons;
     public GameObject gunSlot1;
     public GameObject gunSlot2;
+    public GameObject reloadButton;
     public Camera camera = new Camera();
     public Rigidbody2D rb;
     public List<GameObject> disabledInHome;
@@ -69,8 +70,8 @@ public class Player : MonoBehaviour {
         unlockedWeapons = SaveSystem.LoadPlayer().uw;
         cyberCoin = SaveSystem.LoadPlayer().cyberCoin;
         taskNotifierHandler.SetActive(false);
-        gunSlotButton1 = transform.Find("Canvas").transform.Find("GunSlotButton_1").gameObject;
-        gunSlotButton2 = transform.Find("Canvas").transform.Find("GunSlotButton_2").gameObject;
+        gunSlotButton1 = transform.Find("Canvas").transform.Find("GunSlots").transform.Find("GunSlotButton_1").gameObject;
+        gunSlotButton2 = transform.Find("Canvas").transform.Find("GunSlots").transform.Find("GunSlotButton_2").gameObject;
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         SetChar();
     }
@@ -311,13 +312,50 @@ public class Player : MonoBehaviour {
     public void ChangeCurrentGunSlot(int slot) {
         if (slot == 1) {
             gunSlot1.SetActive(true);
+            gunSlotButton1.transform.Find("Border").gameObject.SetActive(true);
             gunSlot2.SetActive(false);
+            gunSlotButton2.transform.Find("Border").gameObject.SetActive(false);
+            if (!gunSlot1.GetComponent<WeaponInteract>().IsGun) reloadButton.GetComponent<Button>().interactable = false;
+            else {
+                reloadButton.GetComponent<Button>().interactable = true;
+                if (gunSlot1.GetComponent<WeaponInteract>().currentAmmo <=0) {
+                    gunSlot1.GetComponent<WeaponInteract>().canFire = true;
+                    Reload();
+                }
+            }
         }
         else if (slot == 2) {
             gunSlot1.SetActive(false);
+            gunSlotButton1.transform.Find("Border").gameObject.SetActive(false);
             gunSlot2.SetActive(true);
+            gunSlotButton2.transform.Find("Border").gameObject.SetActive(true);
+            if (!gunSlot2.GetComponent<WeaponInteract>().IsGun) reloadButton.GetComponent<Button>().interactable = false;
+            else {
+                reloadButton.GetComponent<Button>().interactable = true;
+                if (gunSlot2.GetComponent<WeaponInteract>().currentAmmo <= 0) {
+                    gunSlot2.GetComponent<WeaponInteract>().canFire = true;
+                    Reload();
+                }
+            }
         }
     }
+
+    public void Reload() {
+        if (gunSlot1.activeSelf == true) {
+            gunSlot1.GetComponent<WeaponInteract>().Reload();
+            StartCoroutine(DisableButtonForTime(reloadButton.GetComponent<Button>(), gunSlot1.GetComponent<WeaponInteract>().reloadTime));
+        }
+        else if (gunSlot2.activeSelf == true) {
+            gunSlot2.GetComponent<WeaponInteract>().Reload();
+            StartCoroutine(DisableButtonForTime(reloadButton.GetComponent<Button>(), gunSlot2.GetComponent<WeaponInteract>().reloadTime));
+        }
+    }
+    private IEnumerator DisableButtonForTime(Button button,float time) {
+        button.interactable = false;
+        yield return new WaitForSeconds(time);
+        button.interactable = true;
+    }
+
 
     public void test() {
 
@@ -403,6 +441,24 @@ public class Player : MonoBehaviour {
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(transform.position.x, transform.position.y, -10f), Time.deltaTime * 5f);
+
+        string text="";
+        if (gunSlot1.GetComponent<WeaponInteract>().IsGun) {
+            text = gunSlot1.GetComponent<WeaponInteract>().currentAmmo + "/" + gunSlot1.GetComponent<WeaponInteract>().ammo;
+        }
+        else {
+            text = "-";
+        }
+        gunSlotButton1.transform.Find("Ammo").GetComponent<TextMeshProUGUI>().text = text;
+
+
+        if (gunSlot2.GetComponent<WeaponInteract>().IsGun) {
+            text = gunSlot2.GetComponent<WeaponInteract>().currentAmmo + "/" + gunSlot2.GetComponent<WeaponInteract>().ammo;
+        }
+        else {
+            text = "-";
+        }
+        gunSlotButton2.transform.Find("Ammo").GetComponent<TextMeshProUGUI>().text = text;
     }
 
 }

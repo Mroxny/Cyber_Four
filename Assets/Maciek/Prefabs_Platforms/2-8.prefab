@@ -2506,7 +2506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3894050773045430000}
   - component: {fileID: 9112430563365552743}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

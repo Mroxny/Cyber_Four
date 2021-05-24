@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -7936617645665922096}
   - component: {fileID: 3888828582686720111}
   - component: {fileID: 5844937356792589637}
-  - component: {fileID: 4068034978379057263}
+  - component: {fileID: 4661334769508831022}
   m_Layer: 12
   m_Name: Enemy_1-1
   m_TagString: Untagged
@@ -107,7 +107,8 @@ MonoBehaviour:
   spawnDust: {fileID: 1859343781036784604, guid: 3e81e4464eb9b7546933ab822897ba1e, type: 3}
   weapons:
   - {fileID: 2325824214476225457, guid: dfeec460c3b7c7c4080455255b4b377d, type: 3}
---- !u!114 &4068034978379057263
+  - {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
+--- !u!114 &4661334769508831022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

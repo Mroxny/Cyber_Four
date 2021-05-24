@@ -68,6 +68,7 @@ public class Window_Inventory : MonoBehaviour
             b.SetActive(true);
             b.GetComponent<InventoryButtonHandler>().SetName(db.GetWeapon(i).GetComponent<WeaponInteract>().weaponName);
             b.GetComponent<InventoryButtonHandler>().SetDmg(db.GetWeapon(i).GetComponent<WeaponInteract>().damage.ToString());
+            b.GetComponent<InventoryButtonHandler>().SetAmmo(db.GetWeapon(i).GetComponent<WeaponInteract>().ammo);
             b.GetComponent<InventoryButtonHandler>().SetIcon(db.GetWeaponIcon(i));
             b.GetComponent<InventoryButtonHandler>().id = i;
             b.transform.SetParent(button.transform.parent, false);
