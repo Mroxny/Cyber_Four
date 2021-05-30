@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed4b7b2810573240891fddb607d9a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 387325369652146913, guid: 12991c44fb897924b90b6b5deaae2caf, type: 3}
+  prefab: {fileID: 387325369652146913, guid: 2048596c3aaa91848bff8d7fcdc503e8, type: 3}
   tekst: 
 --- !u!1 &170931825488939383
 GameObject:
@@ -12366,6 +12366,10 @@ PrefabInstance:
     - target: {fileID: 9076494056828469147, guid: 52df1b88678a5244bb70fc2a7ec79749, type: 3}
       propertyPath: m_Name
       value: Interactive
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076494056828469147, guid: 52df1b88678a5244bb70fc2a7ec79749, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52df1b88678a5244bb70fc2a7ec79749, type: 3}
