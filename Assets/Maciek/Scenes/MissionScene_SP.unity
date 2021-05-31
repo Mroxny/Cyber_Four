@@ -580,6 +580,7 @@ MonoBehaviour:
   - song4
   - song5
   - song6
+  - song7
   platforms1:
   - {fileID: 1539236688871127370, guid: 4aca2ba5611b57742b9d45c56ddf2942, type: 3}
   - {fileID: 1539236688871127370, guid: d9779219671b3f3419d540a33eb0f6f7, type: 3}

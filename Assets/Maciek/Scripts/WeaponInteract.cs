@@ -54,6 +54,7 @@ public class WeaponInteract : MonoBehaviour
     public void Reload() {
         if (currentAmmo != ammo) {
             currentAmmo = 0;
+            //am.Play("reload");
             Shoot();
         }
         else canFire = true;
@@ -85,7 +86,9 @@ public class WeaponInteract : MonoBehaviour
             StartCoroutine(BladeHurt(1));
         }
         if (IsGun && currentAmmo <= 0) {
+            
             yield return new WaitForSeconds(reloadTime);
+            am.Play("reload");
             currentAmmo = ammo;
             canFire = true;
         }

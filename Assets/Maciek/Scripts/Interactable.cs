@@ -5,6 +5,7 @@ using TMPro;
 
 public class Interactable : InteractFunc
 {
+    
     public string tekst;
     public override void GetText(string tekst)
     {
@@ -13,6 +14,7 @@ public class Interactable : InteractFunc
     public override void MainFunction()
     {
         base.MainFunction();
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("Click");
     }
 
 }
