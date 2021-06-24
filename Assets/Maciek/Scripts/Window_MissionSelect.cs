@@ -45,8 +45,6 @@ public class Window_MissionSelect : MonoBehaviour
         PlayerPrefs.DeleteKey("ModeCounter");
         sceneMenager.GetComponent<LevelLoader>().LoadLevel(2);
         Time.timeScale = 1;
-       // GameObject.Find("AudioManager").GetComponent<AudioManager>().StopPlaying("HomeTheme");
-       // GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("Click");
     }
     
     public void Close() {

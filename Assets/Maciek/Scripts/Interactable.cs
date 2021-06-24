@@ -6,11 +6,6 @@ using TMPro;
 public class Interactable : InteractFunc
 {
     
-    public string tekst;
-    public override void GetText(string tekst)
-    {
-        base.GetText(tekst);
-    }
     public override void MainFunction()
     {
         base.MainFunction();

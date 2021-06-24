@@ -40,6 +40,10 @@ public class Home_SM : MonoBehaviour {
         GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("engine");
         GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("engine");
         GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("engine");
+
+        PlayerPrefs.DeleteKey("ModeId");
+        PlayerPrefs.DeleteKey("ModeCounter");
+
         Vector2 spawnPos = new Vector2(12, 0);
         Instantiate(playerPrefab, spawnPos, Quaternion.identity);
         float color = Random.Range(100, 256);
@@ -51,7 +55,11 @@ public class Home_SM : MonoBehaviour {
         for (int i=0;i<=randRange;i++) {
             Instantiate(cloud,new Vector2(75,0), Quaternion.identity);
         }
-        StartCoroutine(StartIntro(2f));
+        if (!PlayerPrefs.HasKey("Intro")) {
+            PlayerPrefs.SetInt("Intro", 0);
+            StartCoroutine(StartIntro(1.3f));
+        }
+        
     }
     private IEnumerator StartIntro(float time) {
         yield return new WaitForSeconds(time);

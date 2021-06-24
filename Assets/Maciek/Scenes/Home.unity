@@ -3052,7 +3052,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 352932d77fcf8054c99e2d8bd2a2a1c3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3415,7 +3415,7 @@ PrefabInstance:
     - target: {fileID: 7288811993004320238, guid: 5a7abfb6f7d029c45b30309f15cfcc24, type: 3}
       propertyPath: prefab
       value: 
-      objectReference: {fileID: 387325369652146913, guid: 194c6036fa38f7049b74e830fd37aa1c, type: 3}
+      objectReference: {fileID: 387325369652146913, guid: 2048596c3aaa91848bff8d7fcdc503e8, type: 3}
     - target: {fileID: 7288811993004320238, guid: 5a7abfb6f7d029c45b30309f15cfcc24, type: 3}
       propertyPath: WhatAmI
       value: 1
@@ -6200,7 +6200,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 352932d77fcf8054c99e2d8bd2a2a1c3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8935,7 +8935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1571882577
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -132,13 +132,17 @@ public class Player : MonoBehaviour {
     public IEnumerator Die() {
         canMove = false;
         canDamage = false;
+        aimJoystick.enabled = false;
         animator.SetTrigger("Die");
         animator.SetFloat("Speed", 0);
+        PlayerPrefs.DeleteKey("ModeId");
+        PlayerPrefs.DeleteKey("ModeCounter");
         yield return new WaitForSeconds(2);
         GameObject.Find("SceneMenager").GetComponent<LevelLoader>().LoadLevel(1);
         
     }
     IEnumerator SpawnPlayer() {
+
         yield return new WaitForSecondsRealtime(1f);
         if (PlayerPrefs.GetInt("Vibrations") == 1) {
             Handheld.Vibrate();

@@ -82,12 +82,12 @@ public class PlayerRaycast : MonoBehaviour
             this.GetComponent<PlayerFOV>().inRange = true;
             if (originalTarget.GetComponent<Interactable>())
             {
-                originalTarget.GetComponent<Interactable>().GetText(originalTarget.GetComponent<Interactable>().tekst);
+                //originalTarget.GetComponent<Interactable>().GetText(originalTarget.GetComponent<Interactable>().tekst);
                 this.GetComponent<PlayerFOV>().interakcja = originalTarget.GetComponent<Interactable>();
             }
             else if (originalTarget.GetComponentInParent<Interactable>())
             {
-                originalTarget.GetComponentInParent<Interactable>().GetText(originalTarget.GetComponentInParent<Interactable>().tekst);
+                //originalTarget.GetComponentInParent<Interactable>().GetText(originalTarget.GetComponentInParent<Interactable>().tekst);
                 this.GetComponent<PlayerFOV>().interakcja = originalTarget.GetComponentInParent<Interactable>();
             }
             else if (originalTarget.GetComponent<WeaponInteract>())

@@ -17,6 +17,7 @@ public class MainMenu_SM : MonoBehaviour
     public GameObject playerSelect;
     public GameObject settings;
     public GameObject single_ContinuePanel;
+    public GameObject single_aus;
     public GameObject loadingScreen;
     int characterId;
     public GameObject[] objects;
@@ -48,6 +49,7 @@ public class MainMenu_SM : MonoBehaviour
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
         loadingScreen.gameObject.SetActive(false);
+        single_aus.gameObject.SetActive(false);
 
         if (oneTime) {
             if (PlayerPrefs.HasKey("Music_Volume")) {
@@ -76,30 +78,32 @@ public class MainMenu_SM : MonoBehaviour
         PlayerPrefs.DeleteKey("GameId");
         PlayerPrefs.DeleteKey("CharacterId");
         PlayerPrefs.DeleteKey("ModeCounter");
+        PlayerPrefs.DeleteKey("Garry");
+        PlayerPrefs.DeleteKey("Intro");
         SaveSystem.ResetValues();
         Start();
 
     }
 
+    public void AreYouSure() {
+        single_ContinuePanel.gameObject.SetActive(false);
+        single_aus.gameObject.SetActive(true);
+    }
+
     public void ContinueSingle() {
         GetComponent<LevelLoader>().LoadLevel(2);
-
-
     }
 
     public void LoadLevelSingle() {
-        if (!PlayerPrefs.HasKey("GameId")) {
+        if (!PlayerPrefs.HasKey("CharacterId")) {
             PlayerPrefs.SetInt("CharacterId", characterId);
-        }
-        else {
-
         }
         mainMenu.gameObject.SetActive(false);
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
+        single_aus.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
         loadingScreen.gameObject.SetActive(true);
-        PlayerPrefs.SetInt("ModeId", 1);
         GetComponent<LevelLoader>().LoadLevel(1);
     }
     public void LoadLevelMulti() {
@@ -107,6 +111,7 @@ public class MainMenu_SM : MonoBehaviour
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        single_aus.gameObject.SetActive(false);
         loadingScreen.gameObject.SetActive(true);
         GetComponent<LevelLoader>().LoadLevel(2);
     }
@@ -114,11 +119,15 @@ public class MainMenu_SM : MonoBehaviour
 
     public void PlaySingle() {
         
-        if (PlayerPrefs.HasKey("GameId")) {
+        if (PlayerPrefs.HasKey("CharacterId")) {
             mainMenu.gameObject.SetActive(false);
             playerSelect.gameObject.SetActive(false);
+            single_aus.gameObject.SetActive(false);
             single_ContinuePanel.gameObject.SetActive(true);
-            if (PlayerPrefs.GetInt("ModeId") == 1) {
+            if (PlayerPrefs.HasKey("ModeId")) {
+                single_ContinuePanel.transform.Find("Continue").gameObject.SetActive(true);
+            }
+            else {
                 single_ContinuePanel.transform.Find("Continue").gameObject.SetActive(false);
             }
             settings.gameObject.SetActive(false);
@@ -139,7 +148,7 @@ public class MainMenu_SM : MonoBehaviour
         LoadLevelMulti();
     }
     public void SetCharacter(int id) {
-        FindObjectOfType<MainMenu_SM>().characterId = id;
+        characterId = id;
         playerSelect.transform.GetChild(5).gameObject.SetActive(true); //GetComponent<Button>().interactable = true;
         switch (id) {
             case 1:
@@ -202,6 +211,7 @@ public class MainMenu_SM : MonoBehaviour
         mainMenu.gameObject.SetActive(false);
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);
+        single_aus.gameObject.SetActive(false);
         settings.gameObject.SetActive(true);
         if (PlayerPrefs.GetInt("Vibrations") == 1) {
             GameObject.Find("Vibrations_Toggle").GetComponent<Toggle>().SetIsOnWithoutNotify(true);
@@ -225,6 +235,5 @@ public class MainMenu_SM : MonoBehaviour
 
     void Update() {
 
-        ;
     }
 }

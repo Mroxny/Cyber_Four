@@ -163,8 +163,8 @@ MonoBehaviour:
     mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
   - name: engine
-    clip: {fileID: 8300000, guid: 57f6a33bff610ba45b74ac3d00debaee, type: 3}
-    volume: 0.06
+    clip: {fileID: 8300000, guid: 080ddf6724c62044e9d6f45d831c4d9a, type: 3}
+    volume: 0.015
     volumeVariance: 0.3
     pitch: 1
     pitchVariance: 0
