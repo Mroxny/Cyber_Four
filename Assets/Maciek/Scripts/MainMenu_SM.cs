@@ -62,6 +62,10 @@ public class MainMenu_SM : MonoBehaviour
             PlaySound("MainTheme");
             oneTime = false;
         }
+        if (!PlayerPrefs.HasKey("ColorId")) {
+            PlayerPrefs.SetInt("ColorId", 1);
+        }
+
 
     }
 
