@@ -78,7 +78,7 @@ public class Boss1 : MonoBehaviour
             case Mode.ChaseTarget:
 
                 if (canChange) {
-                    StartCoroutine(ChangeModeAfter(40, Mode.GrivMode));
+                    StartCoroutine(ChangeModeAfter(30, Mode.GrivMode));
                     StopHurting();
                     speed = 650;
                     animator.SetBool("GrivMode", false);
@@ -135,30 +135,43 @@ public class Boss1 : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-
-        if (canHurt) {
-            if (collision.tag == "Player") {
+        
+        if (canHurt)
+        {
+            print(collision.name);
+            if (collision.tag == "Player")
+            {
                 collision.GetComponent<Player>().DamagePlayer();
                 print("Bum");
             }
         }
-        if (collision.tag == "Bullet") {
-            if (mode == Mode.GrivMode) {
+        
+
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        print(collision.name);
+        if (collision.tag == "Bullet")
+        {
+            if (mode == Mode.GrivMode)
+            {
                 Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
                 collision.transform.Rotate(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180);
                 collision.GetComponent<Rigidbody2D>().AddForce(direction * 20, ForceMode2D.Impulse);
                 collision.GetComponent<Bullet>().friendly = false;
                 takeDamage(collision.GetComponent<Bullet>().damage * 0.1f);
             }
-            else {
+            else
+            {
                 GameObject.Destroy(collision.gameObject);
                 takeDamage(collision.GetComponent<Bullet>().damage);
             }
         }
     }
-    private void OnTriggerStay(Collider other) {
-        
-    }
+
+
     public void StartHurting() {
         canHurt = true;
     }

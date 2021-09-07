@@ -3257,6 +3257,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 387325369652146913, guid: f3898029b7b924642b04552452c0f2d7, type: 3}
   taskNotifier: {fileID: 3176854592807046373, guid: 7a323a76b39da5c4faa4bbc149b8fa7e, type: 3}
   spawnDust: {fileID: 1859343781036784604, guid: 3e81e4464eb9b7546933ab822897ba1e, type: 3}
+  diedWindow: {fileID: 387325369652146913, guid: eb6aff6422b4377419bbaafc5f72bf1a, type: 3}
   movementJoystick: {fileID: 263570017970336896}
   aimJoystick: {fileID: 5309664519072376037}
   movement: {x: 0, y: 0}

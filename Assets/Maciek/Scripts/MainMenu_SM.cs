@@ -35,7 +35,7 @@ public class MainMenu_SM : MonoBehaviour
         Advertisement.Initialize("3835252", false);
 #endif
         //objects = GameObject.FindGameObjectsWithTag("colorchange");
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = -1;
 
 
     }

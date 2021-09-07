@@ -171,6 +171,33 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
     source: {fileID: 0}
+  - name: background_1
+    clip: {fileID: 8300000, guid: f1d42b0e0b5db6a47b74000f66240947, type: 3}
+    volume: 0.015
+    volumeVariance: 0.3
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: background_2
+    clip: {fileID: 8300000, guid: cc45f4d027eaf2842bd395f0c1992f90, type: 3}
+    volume: 0.015
+    volumeVariance: 0.3
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
+  - name: background_3
+    clip: {fileID: 8300000, guid: 71250bd85e37c9a4695a09c9dfedeced, type: 3}
+    volume: 0.015
+    volumeVariance: 0.3
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: -4960029954913847789, guid: 7ec503ac15bf4344395b5847ae84064c, type: 2}
+    source: {fileID: 0}
   - name: TestGunShoot
     clip: {fileID: 8300000, guid: 97b4b80fb9263eb48a3fa429abb99868, type: 3}
     volume: 0.08

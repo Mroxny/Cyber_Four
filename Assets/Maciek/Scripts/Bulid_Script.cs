@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEngine.Advertisements;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -64,7 +65,16 @@ public class Bulid_Script : MonoBehaviour
     [Range(1, 3)]
     public int room;
 
+    void Awake()
+    {
+#if UNITY_IOS
+        Advertisement.Initialize("3835253", false);
+#elif UNITY_ANDROID
+        Advertisement.Initialize("3835252", false);
+#endif
+        Application.targetFrameRate = 60;
 
+    }
     void Start()
     {
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -100,18 +110,21 @@ public class Bulid_Script : MonoBehaviour
                         AstarPath.active.Scan();
                         init.SpawnBoss(boss1);
                         PlaySound(music[0]);
+                        PlaySound("background_1");
                         break;
                     case 2:
                         init.SpawnBossLair(platforms2[0], bigPlatform2[0], corridors2);
                         AstarPath.active.Scan();
                         init.SpawnBoss(boss2);
                         PlaySound(music[1]);
+                        PlaySound("background_2");
                         break;
                     case 3:
                         init.SpawnBossLair(platforms3[0], bigPlatform3[0], corridors3);
                         AstarPath.active.Scan();
                         init.SpawnBoss(boss3);
                         PlaySound(music[2]);
+                        PlaySound("background_3");
                         break;
                 }
                 break;
@@ -126,6 +139,7 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies1);
                         PlaySound(music[UnityEngine.Random.Range(3,5)]);
+                        PlaySound("background_1");
                         break;
                     case 2:
                         init.PlacePlatforms(platforms2);
@@ -134,6 +148,7 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies2);
                         PlaySound(music[UnityEngine.Random.Range(3, 5)]);
+                        PlaySound("background_2");
                         break;
                     case 3:
                         init.PlacePlatforms(platforms3);
@@ -142,6 +157,7 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnExit(interaction, exit1, exitScript);
                         init.SpawnEnemies(enemies3);
                         PlaySound(music[UnityEngine.Random.Range(3, 5)]);
+                        PlaySound("background_3");
                         break;
                 }
                 break;
@@ -153,6 +169,7 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnExit(interaction, exit1, exitScript);
                         StartCoroutine(WaveSpawner(enemies1,3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
+                        PlaySound("background_1");
                         break;
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
@@ -160,6 +177,7 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnExit(interaction, exit1, exitScript);
                         StartCoroutine(WaveSpawner(enemies2, 3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
+                        PlaySound("background_2");
                         break;
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
@@ -167,6 +185,7 @@ public class Bulid_Script : MonoBehaviour
                         init.SpawnExit(interaction, exit1, exitScript);
                         StartCoroutine(WaveSpawner(enemies3, 3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
+                        PlaySound("background_3");
                         break;
                 }
                 

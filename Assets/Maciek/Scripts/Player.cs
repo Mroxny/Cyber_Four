@@ -9,47 +9,50 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    public GameObject cam;
-    private Animator animator;
-    public GameObject weaponRender;
-    public bool canMove = true;
-    private float MoveSpeed;
-    private int ability;
-    public int cyberCoin;
-    public int[] unlockedWeapons;
-    public int[] currentWeapons;
-    public GameObject gunSlot1;
-    public GameObject gunSlot2;
     public GameObject reloadButton;
-    public Camera camera = new Camera();
     public Rigidbody2D rb;
     public List<GameObject> disabledInHome;
     public List<GameObject> HUDElements;
     public GameObject pauseMenu;
     public GameObject taskNotifier;
     public GameObject spawnDust;
-    private AudioManager am;
-
-
+    public GameObject diedWindow;
     public Joystick movementJoystick;
     public Joystick aimJoystick;
-    private bool canDamage = true;
+    public int[] unlockedWeapons;
+    public int[] currentWeapons;
 
+    public int cyberCoin;
+    [HideInInspector]
+    public GameObject cam;
+    [HideInInspector]
+    public bool canMove = true;
+    [HideInInspector]
+    public GameObject gunSlot1;
+    [HideInInspector]
+    public GameObject gunSlot2;
+    [HideInInspector]
     public Vector2 movement;
-    public Vector2 mouse;
+    [HideInInspector]
     public float lookDir;
+    [HideInInspector]
+    public GameObject weaponRender;
+    [HideInInspector]
+
+    private Animator animator;
+    private float MoveSpeed;
+    private int ability;
+    private AudioManager am;
+    private bool canDamage = true;
     private GameObject gunSlotButton1;
     private GameObject gunSlotButton2;
+    private GameObject pauseMenuHandler;
+    private GameObject taskNotifierHandler;
 
-    GameObject pauseMenuHandler;
-    GameObject taskNotifierHandler;
     void Start() {
 
         if (cam == null) {
             cam = GameObject.Find("Main Camera");
-        }
-        if (camera == null) {
-            camera = Camera.main;
         }
         if (SceneManager.GetActiveScene().buildIndex == 1) {
             foreach (GameObject j in disabledInHome) {
@@ -138,7 +141,7 @@ public class Player : MonoBehaviour {
         PlayerPrefs.DeleteKey("ModeId");
         PlayerPrefs.DeleteKey("ModeCounter");
         yield return new WaitForSeconds(2);
-        GameObject.Find("SceneMenager").GetComponent<LevelLoader>().LoadLevel(1);
+        Instantiate(diedWindow);
         
     }
     IEnumerator SpawnPlayer() {
