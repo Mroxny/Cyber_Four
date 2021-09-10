@@ -2944,7 +2944,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3221,16 +3221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf62f2879fc984d498beb63567ee2ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  weaponRender: {fileID: 0}
-  canMove: 1
-  cyberCoin: 0
-  unlockedWeapons: 
-  currentWeapons: 
-  gunSlot1: {fileID: 2325824214476225457, guid: 508e1b90f916e5d49a105b0e1aaa48ad, type: 3}
-  gunSlot2: {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
   reloadButton: {fileID: 630342106346830053}
-  camera: {fileID: 0}
   rb: {fileID: 4033826011533351026}
   disabledInHome:
   - {fileID: 8250270167163401701}
@@ -3260,9 +3251,16 @@ MonoBehaviour:
   diedWindow: {fileID: 387325369652146913, guid: eb6aff6422b4377419bbaafc5f72bf1a, type: 3}
   movementJoystick: {fileID: 263570017970336896}
   aimJoystick: {fileID: 5309664519072376037}
+  unlockedWeapons: 
+  currentWeapons: 
+  cyberCoin: 0
+  cam: {fileID: 0}
+  canMove: 1
+  gunSlot1: {fileID: 2325824214476225457, guid: 508e1b90f916e5d49a105b0e1aaa48ad, type: 3}
+  gunSlot2: {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
   movement: {x: 0, y: 0}
-  mouse: {x: 0, y: 0}
   lookDir: 0
+  weaponRender: {fileID: 0}
 --- !u!114 &3239994999131514132
 MonoBehaviour:
   m_ObjectHideFlags: 0

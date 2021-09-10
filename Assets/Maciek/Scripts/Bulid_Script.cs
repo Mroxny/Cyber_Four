@@ -16,6 +16,7 @@ public class Bulid_Script : MonoBehaviour
     public GameObject panelPart;
     public GameObject interaction;
     public GameObject exitScript;
+    public GameObject itemScript;
     public List<string> music;
     public event Action<int> OnColorChange;
 
@@ -26,6 +27,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> bigPlatform1;
     public GameObject boss1;
     public Sprite exit1;
+    public Sprite item1;
     public Color bgColor1;
 
     [Header("Room 2")]
@@ -36,6 +38,7 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> bigPlatform2;
     public GameObject boss2;
     public Sprite exit2;
+    public Sprite item2;
     public Color bgColor2;
 
     [Header("Room 3")]
@@ -46,7 +49,19 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> bigPlatform3;
     public GameObject boss3;
     public Sprite exit3;
+    public Sprite item3;
     public Color bgColor3;
+
+    [Header("Room 4")]
+    [Space(20)]
+    public List<GameObject> platforms4;
+    public List<GameObject> corridors4;
+    public List<GameObject> enemies4;
+    public List<GameObject> bigPlatform4;
+    public GameObject boss4;
+    public Sprite exit4;
+    public Sprite item4;
+    public Color bgColor4;
 
     [Header("Panel Size")]
     [Range(2, 9)]
@@ -126,6 +141,13 @@ public class Bulid_Script : MonoBehaviour
                         PlaySound(music[2]);
                         PlaySound("background_3");
                         break;
+                    case 4:
+                        init.SpawnBossLair(platforms4[0], bigPlatform4[0], corridors4);
+                        AstarPath.active.Scan();
+                        init.SpawnBoss(boss4);
+                        PlaySound(music[2]);
+                        PlaySound("background_3");
+                        break;
                 }
                 break;
             case 2:
@@ -145,7 +167,7 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms2);
                         init.PlaceCorridors(corridors2);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit1, exitScript);
+                        init.SpawnExit(interaction, exit2, exitScript);
                         init.SpawnEnemies(enemies2);
                         PlaySound(music[UnityEngine.Random.Range(3, 5)]);
                         PlaySound("background_2");
@@ -154,8 +176,24 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms3);
                         init.PlaceCorridors(corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit1, exitScript);
+                        init.SpawnExit(interaction, exit3, exitScript);
                         init.SpawnEnemies(enemies3);
+                        PlaySound(music[UnityEngine.Random.Range(3, 5)]);
+                        PlaySound("background_3");
+                        break;
+                    case 4:
+                        init.PlacePlatforms(platforms4);
+                        init.PlaceCorridors(corridors4);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, exit4, exitScript);
+
+                        List<GameObject> enemies = new List<GameObject>();
+                        enemies.AddRange(enemies1);
+                        enemies.AddRange(enemies2);
+                        enemies.AddRange(enemies3);
+                        enemies.AddRange(enemies4);
+
+                        init.SpawnEnemies(enemies);
                         PlaySound(music[UnityEngine.Random.Range(3, 5)]);
                         PlaySound("background_3");
                         break;
@@ -166,7 +204,7 @@ public class Bulid_Script : MonoBehaviour
                     case 1:
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit1, exitScript);
+                        init.SpawnExit(interaction, item1, itemScript);
                         StartCoroutine(WaveSpawner(enemies1,3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_1");
@@ -174,7 +212,7 @@ public class Bulid_Script : MonoBehaviour
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit1, exitScript);
+                        init.SpawnExit(interaction, item2, itemScript);
                         StartCoroutine(WaveSpawner(enemies2, 3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_2");
@@ -182,14 +220,30 @@ public class Bulid_Script : MonoBehaviour
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit1, exitScript);
+                        init.SpawnExit(interaction, item3, itemScript);
                         StartCoroutine(WaveSpawner(enemies3, 3, 30));
+                        PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
+                        PlaySound("background_3");
+                        break;
+                    case 4:
+                        init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
+                        AstarPath.active.Scan();
+                        init.SpawnExit(interaction, item4, itemScript);
+
+                        List<GameObject> enemies = new List<GameObject>();
+                        enemies.AddRange(enemies1);
+                        enemies.AddRange(enemies2);
+                        enemies.AddRange(enemies3);
+                        enemies.AddRange(enemies4);
+
+                        StartCoroutine(WaveSpawner(enemies, 3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_3");
                         break;
                 }
                 
                 break;
+
         }
         switch (room) {
             case 1:
@@ -200,6 +254,9 @@ public class Bulid_Script : MonoBehaviour
                 break;
             case 3:
                 init.SetBackground(bgColor3);
+                break;
+            case 4:
+                init.SetBackground(bgColor4);
                 break;
         }
 

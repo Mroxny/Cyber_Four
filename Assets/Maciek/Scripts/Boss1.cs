@@ -134,42 +134,40 @@ public class Boss1 : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        
+    public void OnTriggerEnter2D(Collider2D collision) {
+
+
         if (canHurt)
         {
-            print(collision.name);
             if (collision.tag == "Player")
             {
-                collision.GetComponent<Player>().DamagePlayer();
-                print("Bum");
+                player.GetComponent<Player>().DamagePlayer();
             }
         }
+        if (collision.tag == "Bullet")
+            {
+                if (mode == Mode.GrivMode)
+                {
+                    print("Dotykam gracza");
+
+                    Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                    collision.transform.Rotate(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180);
+                    collision.GetComponent<Rigidbody2D>().AddForce(direction * 20, ForceMode2D.Impulse);
+                    collision.GetComponent<Bullet>().friendly = false;
+                    takeDamage(collision.GetComponent<Bullet>().damage * 0.1f);
+                }
+                else
+                {
+                    GameObject.Destroy(collision.gameObject);
+                    takeDamage(collision.GetComponent<Bullet>().damage);
+                }
+            }
+        
         
 
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-
-        print(collision.name);
-        if (collision.tag == "Bullet")
-        {
-            if (mode == Mode.GrivMode)
-            {
-                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                collision.transform.Rotate(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180);
-                collision.GetComponent<Rigidbody2D>().AddForce(direction * 20, ForceMode2D.Impulse);
-                collision.GetComponent<Bullet>().friendly = false;
-                takeDamage(collision.GetComponent<Bullet>().damage * 0.1f);
-            }
-            else
-            {
-                GameObject.Destroy(collision.gameObject);
-                takeDamage(collision.GetComponent<Bullet>().damage);
-            }
-        }
-    }
+    
 
 
     public void StartHurting() {
@@ -200,7 +198,7 @@ public class Boss1 : MonoBehaviour
     IEnumerator ChangeModeAfter(float time, Mode newMode) {
         yield return new WaitForSeconds(time);
         speed = 100;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         mode = newMode;
         canChange = true;
     }
