@@ -426,7 +426,7 @@ public class Przepis : MonoBehaviour
                 platforms.Add(GameObject.Find("Platform_"+i));
                 Debug.Log(platforms[i - 1]);
             }
-            int enemiesNum = Random.Range(20, 31);
+            int enemiesNum = Random.Range(15, 26);
             for (int i = 0; i <= enemiesNum; i++) {
                 int platformId = Random.Range(0, platforms.Count);
                 GameObject enemy = Instantiate(

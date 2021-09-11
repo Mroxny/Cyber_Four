@@ -205,7 +205,7 @@ public class Bulid_Script : MonoBehaviour
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         AstarPath.active.Scan();
                         init.SpawnExit(interaction, item1, itemScript);
-                        StartCoroutine(WaveSpawner(enemies1,3, 30));
+                        StartCoroutine(WaveSpawner(enemies1,1, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_1");
                         break;
@@ -300,10 +300,25 @@ public class Bulid_Script : MonoBehaviour
             else if (i > 3) {
                 text = "Another wave is coming";
             }
+            if (i == waves) {
+            StartCoroutine(EnemiesCheck(3f));
+            }
             player.GetComponent<Player>().Notify(text, 4);
             StartCoroutine(init.StartFinalPhase(enemies));
         }
         
+    }
+
+    IEnumerator EnemiesCheck(float time) {
+        bool hasEnemies = true;
+        while (hasEnemies) {
+            yield return new WaitForSeconds(time);
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
+                hasEnemies = false;
+                string finalText = "Go to the item";
+                player.GetComponent<Player>().Notify(finalText, 4);
+            }
+        }
     }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;

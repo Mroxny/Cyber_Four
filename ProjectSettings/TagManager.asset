@@ -9,6 +9,7 @@ TagManager:
   - MissionSelect
   - Bullet
   - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX
