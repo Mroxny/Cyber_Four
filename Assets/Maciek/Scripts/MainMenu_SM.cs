@@ -9,6 +9,7 @@ using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class MainMenu_SM : MonoBehaviour
 {
@@ -35,7 +36,9 @@ public class MainMenu_SM : MonoBehaviour
         Advertisement.Initialize("3835252", false);
 #endif
         //objects = GameObject.FindGameObjectsWithTag("colorchange");
-        Application.targetFrameRate = -1;
+        Application.targetFrameRate = 60;
+        GraphicsSettings.transparencySortMode = TransparencySortMode.CustomAxis;
+        GraphicsSettings.transparencySortAxis = new Vector3(0.0f, 1.0f, 0.0f);
 
 
     }
