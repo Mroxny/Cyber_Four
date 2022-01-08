@@ -138,6 +138,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -147,8 +148,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -169,6 +170,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -1022,6 +1025,45 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      HomeTruck_walls_22: -4602652271474479525
+      HomeTruck_walls_33: 2849411179833436733
+      HomeTruck_walls_12: 3712429302073881099
+      HomeTruck_walls_15: 6216586168093530836
+      HomeTruck_walls_5: -8902582483332714265
+      HomeTruck_walls_27: -8020755936016137938
+      HomeTruck_walls_26: -3015057902473098724
+      HomeTruck_walls_25: -2612130639692131823
+      HomeTruck_walls_13: 4514693173118204251
+      HomeTruck_walls_7: -5711001174209807991
+      HomeTruck_walls_20: 437490659706254700
+      HomeTruck_walls_14: -8940759636092465934
+      HomeTruck_walls_4: 7356416599658420371
+      HomeTruck_walls_23: 7290125784404042311
+      HomeTruck_walls_17: 4724890389011132048
+      HomeTruck_walls_31: 8220931562940977032
+      HomeTruck_walls_8: -5145581218841259200
+      HomeTruck_walls_37: -7772611535950376783
+      HomeTruck_walls_19: 5200152090119011919
+      HomeTruck_walls_34: -8156635794921879921
+      HomeTruck_walls_18: -7125079992657390231
+      HomeTruck_walls_28: 7016936083592200001
+      HomeTruck_walls_11: 3451071185079051155
+      HomeTruck_walls_21: -3545762235664775202
+      HomeTruck_walls_32: -4694844818529185263
+      HomeTruck_walls_6: 2092380984154286111
+      HomeTruck_walls_10: 7573298575611625439
+      HomeTruck_walls_0: 1976242512979625775
+      HomeTruck_walls_2: 3220076743743421817
+      HomeTruck_walls_16: 2088536444650875338
+      HomeTruck_walls_24: -6476057996050358073
+      HomeTruck_walls_30: -1127356255922517023
+      HomeTruck_walls_3: -4802036625966124947
+      HomeTruck_walls_35: -7025426892164216522
+      HomeTruck_walls_29: 8948368120179208786
+      HomeTruck_walls_36: 7203213698157747259
+      HomeTruck_walls_1: -2215722444394486167
+      HomeTruck_walls_9: -825836356997605234
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

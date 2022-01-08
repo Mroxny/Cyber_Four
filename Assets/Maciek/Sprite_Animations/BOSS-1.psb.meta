@@ -25,6 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -79,7 +80,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -103,7 +103,6 @@ ScriptedImporter:
       width: 22
       height: 41
     spriteID: d4517241eb7946f4d8982e0089f51d4d
-    internalID: 0
     spriteBone:
     - name: bone_4
       guid: 
@@ -869,7 +868,6 @@ ScriptedImporter:
       width: 24
       height: 42
     spriteID: 5f2c9b8fd5cb4d84d9fbdd1b4cbb67f3
-    internalID: 0
     spriteBone:
     - name: bone_9
       guid: 
@@ -1539,7 +1537,6 @@ ScriptedImporter:
       width: 10
       height: 7
     spriteID: 1a699a664a7b5434098020daae9b6915
-    internalID: 0
     spriteBone:
     - name: bone_3
       guid: 
@@ -1721,7 +1718,6 @@ ScriptedImporter:
       width: 15
       height: 51
     spriteID: 951b6e128f2890049b8db14f47f73bf4
-    internalID: 0
     spriteBone:
     - name: bone_1
       guid: 
@@ -2225,7 +2221,6 @@ ScriptedImporter:
       width: 12
       height: 4
     spriteID: 170df6772f8b45b46bc88691ee2761bb
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices:
@@ -2597,16 +2592,13 @@ ScriptedImporter:
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 64
-  importedTextureHeight: 128
-  documentSize: {x: 64, y: 64}
+  layerMappingOption: 2
+  generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   skeletonAssetReferenceID: 
   spriteCategoryList:
     categories: []
-  textureActualWidth: 64
-  textureActualHeight: 128
   spritePackingTag: 
   resliceFromLayer: 0
   mosaicPSDLayers: []
@@ -2618,6 +2610,9 @@ ScriptedImporter:
     spriteID: d4517241eb7946f4d8982e0089f51d4d
     layerID: 5
     mosaicPosition: {x: 4, y: 54}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: LeftSide
     spriteName: LeftSide
     isGroup: 0
@@ -2625,6 +2620,9 @@ ScriptedImporter:
     spriteID: 5f2c9b8fd5cb4d84d9fbdd1b4cbb67f3
     layerID: 4
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Head
     spriteName: Head
     isGroup: 0
@@ -2632,6 +2630,9 @@ ScriptedImporter:
     spriteID: 1a699a664a7b5434098020daae9b6915
     layerID: 3
     mosaicPosition: {x: 4, y: 103}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Body
     spriteName: Body
     isGroup: 0
@@ -2639,6 +2640,9 @@ ScriptedImporter:
     spriteID: 951b6e128f2890049b8db14f47f73bf4
     layerID: 2
     mosaicPosition: {x: 36, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Shadow
     spriteName: Shadow
     isGroup: 0
@@ -2646,7 +2650,11 @@ ScriptedImporter:
     spriteID: 170df6772f8b45b46bc88691ee2761bb
     layerID: 7
     mosaicPosition: {x: 4, y: 118}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
   generateGOHierarchy: 0
   textureAssetName: BOSS-1 Texture
   prefabAssetName: BOSS-1 Prefab

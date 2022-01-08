@@ -36,6 +36,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -45,8 +46,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -67,6 +68,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -208,6 +211,11 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 3b2b9628b7e5cc64eadec11bb7e1c703, type: 3}
       name: _Emmision
+    nameFileIdTable:
+      HomeTruck_engine_anim_3: -2548783668221152146
+      HomeTruck_engine_anim_0: -9044843155073262627
+      HomeTruck_engine_anim_2: -5258372859213825075
+      HomeTruck_engine_anim_1: 3757013386212397593
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

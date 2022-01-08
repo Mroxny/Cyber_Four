@@ -444,11 +444,8 @@ public class Przepis : MonoBehaviour
         public GameObject SpawnPlayer(GameObject player) {
            return Instantiate(player, playerSpawnPoint,Quaternion.identity);
         }
-        public void SpawnExit(GameObject exit,Sprite sprite, GameObject script) {
+        public void SpawnExit(GameObject exit, GameObject script) {
             GameObject e = Instantiate(exit, exitSpawnPoint, Quaternion.identity);
-            e.AddComponent(typeof(SpriteRenderer));
-            e.transform.localScale = new Vector2(5, 5);
-            e.GetComponent<SpriteRenderer>().sprite = sprite;
             e.GetComponent<Interactable>().prefab = script;
         }
         public void SetBackground(Color  c) {

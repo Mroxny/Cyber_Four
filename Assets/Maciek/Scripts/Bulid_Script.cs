@@ -158,7 +158,7 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms1);
                         init.PlaceCorridors(corridors1);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit1, exitScript);
+                        init.SpawnExit(interaction, exitScript);
                         init.SpawnEnemies(enemies1);
                         PlaySound(music[UnityEngine.Random.Range(3,5)]);
                         PlaySound("background_1");
@@ -167,7 +167,7 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms2);
                         init.PlaceCorridors(corridors2);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit2, exitScript);
+                        init.SpawnExit(interaction, exitScript);
                         init.SpawnEnemies(enemies2);
                         PlaySound(music[UnityEngine.Random.Range(3, 5)]);
                         PlaySound("background_2");
@@ -176,7 +176,7 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms3);
                         init.PlaceCorridors(corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit3, exitScript);
+                        init.SpawnExit(interaction, exitScript);
                         init.SpawnEnemies(enemies3);
                         PlaySound(music[UnityEngine.Random.Range(3, 5)]);
                         PlaySound("background_3");
@@ -185,7 +185,7 @@ public class Bulid_Script : MonoBehaviour
                         init.PlacePlatforms(platforms4);
                         init.PlaceCorridors(corridors4);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, exit4, exitScript);
+                        init.SpawnExit(interaction, exitScript);
 
                         List<GameObject> enemies = new List<GameObject>();
                         enemies.AddRange(enemies1);
@@ -204,7 +204,7 @@ public class Bulid_Script : MonoBehaviour
                     case 1:
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, item1, itemScript);
+                        init.SpawnExit(interaction, itemScript);
                         StartCoroutine(WaveSpawner(enemies1,1, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_1");
@@ -212,7 +212,7 @@ public class Bulid_Script : MonoBehaviour
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, item2, itemScript);
+                        init.SpawnExit(interaction, itemScript);
                         StartCoroutine(WaveSpawner(enemies2, 3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_2");
@@ -220,7 +220,7 @@ public class Bulid_Script : MonoBehaviour
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, item3, itemScript);
+                        init.SpawnExit(interaction, itemScript);
                         StartCoroutine(WaveSpawner(enemies3, 3, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_3");
@@ -228,7 +228,7 @@ public class Bulid_Script : MonoBehaviour
                     case 4:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, item4, itemScript);
+                        init.SpawnExit(interaction, itemScript);
 
                         List<GameObject> enemies = new List<GameObject>();
                         enemies.AddRange(enemies1);
@@ -322,7 +322,7 @@ public class Bulid_Script : MonoBehaviour
     }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;
-        init.SpawnExit(interaction,exit1,exitScript);
+        init.SpawnExit(interaction,exitScript);
         StartCoroutine(Notify());
     }
 }

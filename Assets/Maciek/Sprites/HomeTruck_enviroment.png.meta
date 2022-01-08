@@ -81,6 +81,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -90,8 +91,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -112,6 +113,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -446,7 +449,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 69e3117c347f84bd0800000000000000
-      internalID: -2645592910605500778
+      internalID: -4632698343620978792
       vertices: []
       indices: 
       edges: []
@@ -545,6 +548,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      HomeTruck_enviroment_7: 8622331124674122688
+      HomeTruck_enviroment_8: 1674721417552582192
+      HomeTruck_enviroment_15: -7683208326207712188
+      HomeTruck_enviroment_9: 6032648070107473416
+      HomeTruck_enviroment_2: -4190207198850731127
+      HomeTruck_enviroment_14: 2371604395852421386
+      HomeTruck_enviroment_5: -5043897638048264425
+      HomeTruck_enviroment_11: 2075410962630154473
+      HomeTruck_enviroment_13: -469922335499551886
+      HomeTruck_enviroment_3: -6933467336048841978
+      HomeTruck_enviroment_16: -4216119280013306813
+      HomeTruck_enviroment_12: -803567638177282386
+      HomeTruck_enviroment_10: -8127778141598944232
+      HomeTruck_enviroment_0: -4632698343620978792
+      HomeTruck_enviroment_4: 7066460970727232433
+      HomeTruck_enviroment_6: 1446051635254294863
+      HomeTruck_enviroment_1: 4343716478978802464
+      HomeTruck_enviroment_17: 6190477468442192089
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
