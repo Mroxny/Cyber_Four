@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour {
     public GameObject noticedIcon;
     public GameObject spawnDust;
     public List<GameObject> weapons = new List<GameObject>();
+    public GameObject addHealthObj;
 
     private GameObject player;
     private GameObject weapon;
@@ -55,8 +56,10 @@ public class EnemyAI : MonoBehaviour {
         weapon.transform.SetParent(weaponRender.transform);
         weapon.GetComponent<WeaponInteract>().friendly = false;
         weapon.GetComponent<WeaponInteract>().fireRate *= Random.Range(2f,3.5f);
+        weapon.GetComponent<WeaponInteract>().velocity *= Random.Range(.5f, .7f);
+
         staticRandom = Random.Range(3f,6f);
-        InvokeRepeating("UpdatePath", 0.11f, 0.5f);
+        InvokeRepeating("UpdatePath", 0.11f, 0.6f);
 
         if (spawnDust != null) Instantiate(spawnDust, transform.position, Quaternion.identity);
 
@@ -170,6 +173,13 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
+    private void LeaveGoods() {
+        if (Random.Range(0, 101) <= 30) {
+            GameObject obj = Random.Range(0, 101) <= 50 ? weapons[Random.Range(0, weapons.Count)] : addHealthObj;
+            Instantiate(obj, transform.position, Quaternion.identity);
+        }
+    } 
+
     private IEnumerator die() {
         canDie = false;
         noticedIcon.SetActive(false);
@@ -179,6 +189,7 @@ public class EnemyAI : MonoBehaviour {
         yield return new WaitForSeconds(1);
         animator.SetTrigger("Die");
         transform.Find("MinimapIcon").gameObject.SetActive(false);
+        LeaveGoods();
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }

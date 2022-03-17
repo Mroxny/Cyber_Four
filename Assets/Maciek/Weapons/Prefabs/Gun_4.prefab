@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1781138324999554696}
   - component: {fileID: 4241131522048116550}
   m_Layer: 0
-  m_Name: TestGun
+  m_Name: Gun_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2325824214476225457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 641.8557}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53,14 +53,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 13993696069608544, guid: 0251cce0a06836b4a9892a03b028b94c, type: 3}
-  bulletColor: {r: 0.46293163, g: 0.5550704, b: 0.9716981, a: 1}
-  weaponName: Pistol
-  ammo: 20
-  reloadTime: 0.8
-  velocity: 15
-  damage: 30
-  fireRate: 0.3
-  soundName: TestGunShoot
+  bulletColor: {r: 1, g: 0.78899086, b: 0, a: 1}
+  weaponName: SmallBen 12
+  ammo: 6
+  reloadTime: 1.25
+  velocity: 30
+  damage: 100
+  fireRate: 0.7
+  soundName: gun1_Shoot
   firepoint: {fileID: 748338482627609493}
   animator: {fileID: 4241131522048116550}
   IsGun: 1
@@ -127,7 +127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0408, y: 0}
   m_SizeDelta: {x: 0.16, y: 0.16}
   m_Pivot: {x: 0.15855497, y: 0.5}
 --- !u!212 &9020985487688458510
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 17c06943ed58eb946b2263b80f7aab1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94603c807c024cd4f8dc44dec52fa2a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -207,11 +207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6793820980585294114, guid: 900fdd6f6e2d4d04f8f7f93fb8ecb392, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.131
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 6793820980585294114, guid: 900fdd6f6e2d4d04f8f7f93fb8ecb392, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.006000006
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6793820980585294114, guid: 900fdd6f6e2d4d04f8f7f93fb8ecb392, type: 3}
       propertyPath: m_LocalPosition.z

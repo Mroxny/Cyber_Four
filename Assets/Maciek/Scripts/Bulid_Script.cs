@@ -16,9 +16,10 @@ public class Bulid_Script : MonoBehaviour
     public GameObject panelPart;
     public GameObject interaction;
     public GameObject exitScript;
-    public GameObject itemScript;
     public List<string> music;
+    public string[] tasks;
     public event Action<int> OnColorChange;
+    
 
     [Header("Room 1")]
     public List<GameObject> platforms1;
@@ -72,9 +73,7 @@ public class Bulid_Script : MonoBehaviour
     [Header("Mode")]
     [Range(1, 3)]
     public int mode;
-    public string task1;
-    public string task2;
-    public string task3;
+    
 
     [Header("Room")]
     [Range(1, 3)]
@@ -108,6 +107,8 @@ public class Bulid_Script : MonoBehaviour
     {
         am.StopAll();
     }
+
+
 
     public void BulidLevel() {
         if (PlayerPrefs.HasKey("GameId")) {
@@ -204,31 +205,27 @@ public class Bulid_Script : MonoBehaviour
                     case 1:
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, itemScript);
-                        StartCoroutine(WaveSpawner(enemies1,1, 30));
+                        StartCoroutine(WaveSpawner(enemies1,1, 8));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_1");
                         break;
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, itemScript);
-                        StartCoroutine(WaveSpawner(enemies2, 3, 30));
+                        StartCoroutine(WaveSpawner(enemies2, 1, 8));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_2");
                         break;
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, itemScript);
-                        StartCoroutine(WaveSpawner(enemies3, 3, 30));
+                        StartCoroutine(WaveSpawner(enemies3, 1, 8));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_3");
                         break;
                     case 4:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
-                        init.SpawnExit(interaction, itemScript);
 
                         List<GameObject> enemies = new List<GameObject>();
                         enemies.AddRange(enemies1);
@@ -269,16 +266,16 @@ public class Bulid_Script : MonoBehaviour
         yield return new WaitForEndOfFrame();
         switch (mode) {
             case 1:
-                PlayerPrefs.SetString("CurrentTask", task1);
-                player.GetComponent<Player>().Notify(task1, 4);
+                PlayerPrefs.SetString("CurrentTask", tasks[0]);
+                player.GetComponent<Player>().Notify(tasks[0], 4);
                 break;
             case 2:
-                PlayerPrefs.SetString("CurrentTask", task2);
-                player.GetComponent<Player>().Notify(task2, 4);
+                PlayerPrefs.SetString("CurrentTask", tasks[0]);
+                player.GetComponent<Player>().Notify(tasks[0], 4);
                 break;
             case 3:
-                PlayerPrefs.SetString("CurrentTask", task3);
-                player.GetComponent<Player>().Notify(task3, 4);
+                PlayerPrefs.SetString("CurrentTask", tasks[1]);
+                player.GetComponent<Player>().Notify(tasks[1], 4);
                 break;
         }
     }
@@ -289,7 +286,7 @@ public class Bulid_Script : MonoBehaviour
         for (int i = 1; i <= waves; i++) {
             yield return new WaitForSeconds(delayTime);
             if (i == 1) {
-                text = "The first wave is coming";
+                text = "Survive!";
             }
             else if (i == 2) {
                 text = "The second wave is coming";
@@ -301,24 +298,27 @@ public class Bulid_Script : MonoBehaviour
                 text = "Another wave is coming";
             }
             if (i == waves) {
-            StartCoroutine(EnemiesCheck(3f));
+                InvokeRepeating("EnemiesCheck", .11f, 3f);
             }
+            PlayerPrefs.SetString("CurrentTask", text);
             player.GetComponent<Player>().Notify(text, 4);
             StartCoroutine(init.StartFinalPhase(enemies));
         }
         
     }
 
-    IEnumerator EnemiesCheck(float time) {
-        bool hasEnemies = true;
-        while (hasEnemies) {
-            yield return new WaitForSeconds(time);
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
-                hasEnemies = false;
+    void EnemiesCheck() {
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
+                CancelInvoke();
+
+                var init = GetComponent<Przepis>().init;
                 string finalText = "Go to the item";
+
+                PlayerPrefs.SetString("CurrentTask", finalText);
                 player.GetComponent<Player>().Notify(finalText, 4);
+                init.SpawnExit(interaction, exitScript);
+                
             }
-        }
     }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;

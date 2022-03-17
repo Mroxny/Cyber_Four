@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
                 health = 12;
                 break;
             case 3:
-                health = 8;
+                health = 4;
                 break;
             case 4:
                 health = 16;
@@ -129,7 +129,15 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(time);
         canDamage = true;
     }
-    public void HealPlayer(int healthPoints) {
+    public bool HealPlayer(int healthPoints) {
+        Slider slider = gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HealthBar").GetComponent<Slider>();
+        if (slider.value + healthPoints <= slider.maxValue) {
+            slider.value += healthPoints;
+            gameObject.transform.Find("Canvas").transform.Find("Health").transform.Find("HP").GetComponent<TextMeshProUGUI>().text = slider.value.ToString();
+            return true;
+        }
+        return false;
+
 
     }
     public IEnumerator Die() {
@@ -166,7 +174,7 @@ public class Player : MonoBehaviour {
                 GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(2 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender2");
                 GameObject.Find("CharProf2").SetActive(true);
-                MoveSpeed = 0.09f;
+                MoveSpeed = 0.08f;
                 ability = 2;
                 //weaponRender = transform.GetChild(2 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
@@ -176,7 +184,7 @@ public class Player : MonoBehaviour {
                 GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(3 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender3");
                 GameObject.Find("CharProf3").SetActive(true);
-                MoveSpeed = 0.11f;
+                MoveSpeed = 0.14f;
                 ability = 3;
                 //weaponRender = transform.GetChild(3 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;
@@ -186,7 +194,7 @@ public class Player : MonoBehaviour {
                 GameObject.Find("CharProf").transform.GetChild(0).transform.GetChild(4 - 1).gameObject.SetActive(true);
                 weaponRender = GameObject.Find("WeaponRender4");
                 GameObject.Find("CharProf4").SetActive(true);
-                MoveSpeed = 0.07f;
+                MoveSpeed = 0.06f;
                 ability = 4;
                 //weaponRender = transform.GetChild(4 - 1).transform.GetChild(0).GetComponent<GameObject>();
                 break;

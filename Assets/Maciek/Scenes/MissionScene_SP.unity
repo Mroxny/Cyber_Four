@@ -137,7 +137,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3521975742450811635, guid: e48681da222703e429a4ced675eca12a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3521975742450811635, guid: e48681da222703e429a4ced675eca12a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -331,7 +331,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &821463145
 GameObject:
@@ -368,7 +368,6 @@ MonoBehaviour:
   panelPart: {fileID: 7416794482536026525, guid: 4f95b3dccf35ee04c9ac4ae9d6a30efe, type: 3}
   interaction: {fileID: 3367942089932431679, guid: c2b11bb74af72204da4839be49e0f8ac, type: 3}
   exitScript: {fileID: 6912054034785855032, guid: adb852373b1a65f4fab86bcf36dd8395, type: 3}
-  itemScript: {fileID: 0}
   music:
   - song1
   - song2
@@ -377,6 +376,9 @@ MonoBehaviour:
   - song5
   - song6
   - song7
+  tasks:
+  - Find a way to the exit
+  - ...?
   platforms1:
   - {fileID: 1539236688871127370, guid: 4aca2ba5611b57742b9d45c56ddf2942, type: 3}
   - {fileID: 1539236688871127370, guid: d9779219671b3f3419d540a33eb0f6f7, type: 3}
@@ -485,7 +487,7 @@ MonoBehaviour:
   boss3: {fileID: 426513312050003032, guid: 6cdc11a5d3061784ca113d8965204da8, type: 3}
   exit3: {fileID: 860319447463240766, guid: 3d000c4d9ae803a41957af35a1c02c76, type: 3}
   item3: {fileID: 0}
-  bgColor3: {r: 0.2830189, g: 0.2309541, b: 0.2309541, a: 1}
+  bgColor3: {r: 0.16981131, g: 0.14017443, b: 0.14017443, a: 1}
   platforms4: []
   corridors4: []
   enemies4: []
@@ -497,9 +499,6 @@ MonoBehaviour:
   maxX: 4
   maxY: 4
   mode: 1
-  task1: Find way to the next level
-  task2: Find way to the next level
-  task3: Defend the Item
   room: 2
 --- !u!114 &821463147
 MonoBehaviour:
@@ -685,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8927129919862032174, guid: c941c978ec00d00439288630b5464378, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8927129919862032174, guid: c941c978ec00d00439288630b5464378, type: 3}
       propertyPath: m_LocalPosition.x
@@ -813,7 +812,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1421103385
 PrefabInstance:

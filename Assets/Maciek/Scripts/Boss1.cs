@@ -78,7 +78,7 @@ public class Boss1 : MonoBehaviour
             case Mode.ChaseTarget:
 
                 if (canChange) {
-                    StartCoroutine(ChangeModeAfter(30, Mode.GrivMode));
+                    StartCoroutine(ChangeModeAfter(15, Mode.GrivMode));
                     StopHurting();
                     speed = 650;
                     animator.SetBool("GrivMode", false);
@@ -107,7 +107,7 @@ public class Boss1 : MonoBehaviour
             case Mode.GrivMode:
 
                 if (canChange) {
-                    StartCoroutine(ChangeModeAfter(25, Mode.ChaseTarget));
+                    StartCoroutine(ChangeModeAfter(20, Mode.ChaseTarget));
                     StartHurting();
                     speed = 400;
                     animator.SetBool("GrivMode", true);

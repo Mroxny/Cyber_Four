@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPool:
-  - {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
-  - {fileID: 2325824214476225457, guid: 508e1b90f916e5d49a105b0e1aaa48ad, type: 3}
-  - {fileID: 7852809851799366464, guid: 92cd5f72752680b4982e5a9d7eb4c53c, type: 3}
   - {fileID: 2325824214476225457, guid: dfeec460c3b7c7c4080455255b4b377d, type: 3}
+  - {fileID: 2325824214476225457, guid: 508e1b90f916e5d49a105b0e1aaa48ad, type: 3}
+  - {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
+  - {fileID: 2325824214476225457, guid: b512328c27cded84190ce395f674e5e0, type: 3}
+  - {fileID: 2325824214476225457, guid: 3a393fdd8d293864da02e0ce05866492, type: 3}
+  - {fileID: 2325824214476225457, guid: d48d430e3dc766146abeffc4cc1a605e, type: 3}
+  - {fileID: 2325824214476225457, guid: c6a8d20a870c72c43b0dd7a585ed8606, type: 3}
+  - {fileID: 2325824214476225457, guid: 1ee61511b596aa043af519a6fc70528c, type: 3}
+  - {fileID: 2325824214476225457, guid: 08e018b7afb194249929f164f369d919, type: 3}
+  - {fileID: 7852809851799366464, guid: 92cd5f72752680b4982e5a9d7eb4c53c, type: 3}
