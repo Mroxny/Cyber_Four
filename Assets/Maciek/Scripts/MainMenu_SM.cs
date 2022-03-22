@@ -87,6 +87,10 @@ public class MainMenu_SM : MonoBehaviour
         PlayerPrefs.DeleteKey("ModeCounter");
         PlayerPrefs.DeleteKey("Garry");
         PlayerPrefs.DeleteKey("Intro");
+
+        PlayerPrefs.SetString("FinishedLevels", "");
+
+
         SaveSystem.ResetValues();
         Start();
 

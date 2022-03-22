@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -8,6 +9,8 @@ public class Window_MissionSelect : MonoBehaviour
 {
     public Animator animator;
     public GameObject sceneMenager;
+    public GameObject[] finishedMarks;
+
     private AudioManager am;
 
 
@@ -29,6 +32,9 @@ public class Window_MissionSelect : MonoBehaviour
         cam = Camera.main;
         gameObject.transform.Find("Canvas").GetComponent<Canvas>().worldCamera = cam;
         GameObject.Find("Player(Clone)").GetComponent<Player>().DisableHUD();
+
+        SetFinishedMissions();
+
         if (sceneMenager == null) {
             
             sceneMenager = GameObject.Find("/SceneMenager");
@@ -39,6 +45,19 @@ public class Window_MissionSelect : MonoBehaviour
         }
         Time.timeScale = 0;
     }
+
+    private void SetFinishedMissions()
+    {
+
+        if (PlayerPrefs.HasKey("FinishedLevels") && PlayerPrefs.GetString("FinishedLevels").Contains('1'))
+            finishedMarks[0].SetActive(true);
+        if (PlayerPrefs.HasKey("FinishedLevels") && PlayerPrefs.GetString("FinishedLevels").Contains('2'))
+            finishedMarks[1].SetActive(true);
+        if (PlayerPrefs.HasKey("FinishedLevels") && PlayerPrefs.GetString("FinishedLevels").Contains('3'))
+            finishedMarks[2].SetActive(true);
+
+    }
+
     public void LoadLevel(int gameId) {
         PlayerPrefs.SetInt("GameId", gameId);
         PlayerPrefs.SetInt("ModeId", 1);

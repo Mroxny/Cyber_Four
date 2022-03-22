@@ -113,6 +113,8 @@ public class Bulid_Script : MonoBehaviour
     public void BulidLevel() {
         if (PlayerPrefs.HasKey("GameId")) {
             room = PlayerPrefs.GetInt("GameId");
+            print(PlayerPrefs.GetString("FinishedLevels"));
+
         }
         if (PlayerPrefs.HasKey("ModeId")) {
             mode = PlayerPrefs.GetInt("ModeId");
@@ -317,8 +319,13 @@ public class Bulid_Script : MonoBehaviour
                 PlayerPrefs.SetString("CurrentTask", finalText);
                 player.GetComponent<Player>().Notify(finalText, 4);
                 init.SpawnExit(interaction, exitScript);
-                
-            }
+
+            //Add mark this level as finished
+            if (PlayerPrefs.HasKey("FinishedLevels") && !PlayerPrefs.GetString("FinishedLevels").Contains(PlayerPrefs.GetInt("GameId").ToString()))
+                PlayerPrefs.SetString("FinishedLevels", PlayerPrefs.GetString("FinishedLevels") + PlayerPrefs.GetInt("GameId"));
+
+
+        }
     }
     public void BossDied() {
         var init = GetComponent<Przepis>().init;
