@@ -379,6 +379,7 @@ MonoBehaviour:
   tasks:
   - Find a way to the exit
   - ...?
+  - You survived! Now run
   platforms1:
   - {fileID: 1539236688871127370, guid: 4aca2ba5611b57742b9d45c56ddf2942, type: 3}
   - {fileID: 1539236688871127370, guid: d9779219671b3f3419d540a33eb0f6f7, type: 3}
@@ -409,8 +410,6 @@ MonoBehaviour:
   - {fileID: 1539236688871127370, guid: e1d50f882ccb7464f89fa535af4069f7, type: 3}
   - {fileID: 1539236688871127370, guid: 103d5a389833f7048806b5a3d7ccc126, type: 3}
   boss1: {fileID: 426513312050003032, guid: 6cdc11a5d3061784ca113d8965204da8, type: 3}
-  exit1: {fileID: 860319447463240766, guid: 3d000c4d9ae803a41957af35a1c02c76, type: 3}
-  item1: {fileID: 0}
   bgColor1: {r: 0.04952831, g: 0, b: 0.13207549, a: 1}
   platforms2:
   - {fileID: 1539236688871127370, guid: 32b79d8fd473e0b4a9ce0e9aada640e6, type: 3}
@@ -446,9 +445,7 @@ MonoBehaviour:
   bigPlatform2:
   - {fileID: 1539236688871127370, guid: e45ef7e5a134f6a418cc747ef128741e, type: 3}
   - {fileID: 1539236688871127370, guid: 7f853cbae56d6a74db43d0141a8b03d6, type: 3}
-  boss2: {fileID: 426513312050003032, guid: 6cdc11a5d3061784ca113d8965204da8, type: 3}
-  exit2: {fileID: 860319447463240766, guid: 3d000c4d9ae803a41957af35a1c02c76, type: 3}
-  item2: {fileID: 0}
+  boss2: {fileID: 4996216605736617930, guid: e14019b63d8977a469bc8d6e21d17b17, type: 3}
   bgColor2: {r: 0.09803922, g: 0.11939785, b: 0.16862746, a: 0}
   platforms3:
   - {fileID: 1539236688871127370, guid: 372733dfd4a323042b8820c9cb18787e, type: 3}
@@ -484,17 +481,13 @@ MonoBehaviour:
   bigPlatform3:
   - {fileID: 1539236688871127370, guid: 7923d09f38e07dc4d959f334293d7648, type: 3}
   - {fileID: 1539236688871127370, guid: 0fbc5fe1f01ac5148ad576c4a4adae74, type: 3}
-  boss3: {fileID: 426513312050003032, guid: 6cdc11a5d3061784ca113d8965204da8, type: 3}
-  exit3: {fileID: 860319447463240766, guid: 3d000c4d9ae803a41957af35a1c02c76, type: 3}
-  item3: {fileID: 0}
+  boss3: {fileID: 9075852639277453512, guid: 0d4a695a99520f544a2be6510cb2c7a1, type: 3}
   bgColor3: {r: 0.16981131, g: 0.14017443, b: 0.14017443, a: 1}
   platforms4: []
   corridors4: []
   enemies4: []
   bigPlatform4: []
   boss4: {fileID: 0}
-  exit4: {fileID: 0}
-  item4: {fileID: 0}
   bgColor4: {r: 0, g: 0, b: 0, a: 0}
   maxX: 4
   maxY: 4

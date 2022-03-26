@@ -26,7 +26,6 @@ public class Bullet : MonoBehaviour
         }
         if (friendly) {
                 if (enemy != null) {
-                    print("Enemy Hit");
                     enemy.TakeDamage(damage);
                     GameObject.Destroy(gameObject);
                 }
@@ -38,11 +37,15 @@ public class Bullet : MonoBehaviour
                 }
         }
         else {
-                if (player != null) {
+            if (player != null) {
                     player.DamagePlayer();
                     GameObject.Destroy(gameObject);
-                }
-                if (enemy != null) {
+            }
+            if (collision.tag == "Boss")
+            {
+                return;
+            }
+            if (enemy != null) {
                     return;
                 }
         }

@@ -27,8 +27,6 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies1;
     public List<GameObject> bigPlatform1;
     public GameObject boss1;
-    public Sprite exit1;
-    public Sprite item1;
     public Color bgColor1;
 
     [Header("Room 2")]
@@ -38,8 +36,6 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies2;
     public List<GameObject> bigPlatform2;
     public GameObject boss2;
-    public Sprite exit2;
-    public Sprite item2;
     public Color bgColor2;
 
     [Header("Room 3")]
@@ -49,8 +45,6 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies3;
     public List<GameObject> bigPlatform3;
     public GameObject boss3;
-    public Sprite exit3;
-    public Sprite item3;
     public Color bgColor3;
 
     [Header("Room 4")]
@@ -60,8 +54,6 @@ public class Bulid_Script : MonoBehaviour
     public List<GameObject> enemies4;
     public List<GameObject> bigPlatform4;
     public GameObject boss4;
-    public Sprite exit4;
-    public Sprite item4;
     public Color bgColor4;
 
     [Header("Panel Size")]
@@ -113,7 +105,6 @@ public class Bulid_Script : MonoBehaviour
     public void BulidLevel() {
         if (PlayerPrefs.HasKey("GameId")) {
             room = PlayerPrefs.GetInt("GameId");
-            print(PlayerPrefs.GetString("FinishedLevels"));
 
         }
         if (PlayerPrefs.HasKey("ModeId")) {
@@ -207,21 +198,21 @@ public class Bulid_Script : MonoBehaviour
                     case 1:
                         init.BulidFinalPhase(platforms1, bigPlatform1[1], corridors1);
                         AstarPath.active.Scan();
-                        StartCoroutine(WaveSpawner(enemies1,1, 8));
+                        StartCoroutine(StartFinalPhaseDelay(enemies1, 8));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_1");
                         break;
                     case 2:
                         init.BulidFinalPhase(platforms2, bigPlatform2[1], corridors2);
                         AstarPath.active.Scan();
-                        StartCoroutine(WaveSpawner(enemies2, 1, 8));
+                        StartCoroutine(StartFinalPhaseDelay(enemies2, 15, boss2, 1, 10));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_2");
                         break;
                     case 3:
                         init.BulidFinalPhase(platforms3, bigPlatform3[1], corridors3);
                         AstarPath.active.Scan();
-                        StartCoroutine(WaveSpawner(enemies3, 1, 8));
+                        StartCoroutine(StartFinalPhaseDelay(enemies3, 20, boss3, 1, 10));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_3");
                         break;
@@ -235,7 +226,7 @@ public class Bulid_Script : MonoBehaviour
                         enemies.AddRange(enemies3);
                         enemies.AddRange(enemies4);
 
-                        StartCoroutine(WaveSpawner(enemies, 3, 30));
+                        StartCoroutine(StartFinalPhaseDelay(enemies, 30));
                         PlaySound(music[UnityEngine.Random.Range(5, music.Count)]);
                         PlaySound("background_3");
                         break;
@@ -282,45 +273,46 @@ public class Bulid_Script : MonoBehaviour
         }
     }
 
-    IEnumerator WaveSpawner(List<GameObject> enemies, int waves, float delayTime) {
-        var init = GetComponent<Przepis>().init;
-        string text = "";
-        for (int i = 1; i <= waves; i++) {
-            yield return new WaitForSeconds(delayTime);
-            if (i == 1) {
-                text = "Survive!";
-            }
-            else if (i == 2) {
-                text = "The second wave is coming";
-            }
-            else if (i == 3) {
-                text = "The third wave is coming";
-            }
-            else if (i > 3) {
-                text = "Another wave is coming";
-            }
-            if (i == waves) {
-                InvokeRepeating("EnemiesCheck", .11f, 3f);
-            }
-            PlayerPrefs.SetString("CurrentTask", text);
-            player.GetComponent<Player>().Notify(text, 4);
-            StartCoroutine(init.StartFinalPhase(enemies));
-        }
+    IEnumerator StartFinalPhaseDelay(List<GameObject> enemies, float delayTime) {
         
+        yield return new WaitForSeconds(delayTime);
+
+        var init = GetComponent<Przepis>().init;
+        string text = "Survive!";
+
+        InvokeRepeating("EnemiesCheck", .11f, 3f);
+        PlayerPrefs.SetString("CurrentTask", text);
+        player.GetComponent<Player>().Notify(text, 4);
+        StartCoroutine(init.StartFinalPhase(enemies));
+
+    }
+
+    IEnumerator StartFinalPhaseDelay(List<GameObject> enemies, int enemiesNum, GameObject boss, int bossNum, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        var init = GetComponent<Przepis>().init;
+        string text = "Survive!";
+
+        InvokeRepeating("EnemiesCheck", .11f, 3f);
+        PlayerPrefs.SetString("CurrentTask", text);
+        player.GetComponent<Player>().Notify(text, 4);
+        StartCoroutine(init.StartFinalPhase(enemies, enemiesNum, boss, bossNum));
+
     }
 
     void EnemiesCheck() {
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0 && GameObject.FindGameObjectsWithTag("Boss").Length <= 0)
+        {
                 CancelInvoke();
 
                 var init = GetComponent<Przepis>().init;
-                string finalText = "Go to the item";
 
-                PlayerPrefs.SetString("CurrentTask", finalText);
-                player.GetComponent<Player>().Notify(finalText, 4);
+                PlayerPrefs.SetString("CurrentTask", tasks[2]);
+                player.GetComponent<Player>().Notify(tasks[2], 4);
                 init.SpawnExit(interaction, exitScript);
 
-            //Add mark this level as finished
+            // mark this level as finished
             if (PlayerPrefs.HasKey("FinishedLevels") && !PlayerPrefs.GetString("FinishedLevels").Contains(PlayerPrefs.GetInt("GameId").ToString()))
                 PlayerPrefs.SetString("FinishedLevels", PlayerPrefs.GetString("FinishedLevels") + PlayerPrefs.GetInt("GameId"));
 
@@ -328,8 +320,11 @@ public class Bulid_Script : MonoBehaviour
         }
     }
     public void BossDied() {
-        var init = GetComponent<Przepis>().init;
-        init.SpawnExit(interaction,exitScript);
-        StartCoroutine(Notify());
+        if (mode == 1) {
+            var init = GetComponent<Przepis>().init;
+            init.SpawnExit(interaction, exitScript);
+            StartCoroutine(Notify());
+        }
+        
     }
 }

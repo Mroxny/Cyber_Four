@@ -67,10 +67,7 @@ public class Boss1 : MonoBehaviour
         if (player == null) player = GameObject.Find("Player(Clone)");
         if (oneTime) {
             if (Vector2.Distance(transform.position, player.transform.position) < 7f) {
-                GetComponent<Animator>().SetTrigger("TurnOn");
-                GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("boss_1_sound");
-                StartCoroutine(WakeUp(1.5f));
-                oneTime = false;
+                
             }
         }
 
@@ -121,6 +118,13 @@ public class Boss1 : MonoBehaviour
 
     }
 
+
+    public void TurnOn() {
+        GetComponent<Animator>().SetTrigger("TurnOn");
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("boss_1_sound");
+        StartCoroutine(WakeUp(1.5f));
+        oneTime = false;
+    }
 
 
     public void takeDamage(float damage) {

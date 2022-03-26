@@ -109,6 +109,11 @@ public class MainMenu_SM : MonoBehaviour
         if (!PlayerPrefs.HasKey("CharacterId")) {
             PlayerPrefs.SetInt("CharacterId", characterId);
         }
+        if (!PlayerPrefs.HasKey("FinishedLevels")){
+            PlayerPrefs.SetString("FinishedLevels", "");
+        }
+
+
         mainMenu.gameObject.SetActive(false);
         playerSelect.gameObject.SetActive(false);
         single_ContinuePanel.gameObject.SetActive(false);

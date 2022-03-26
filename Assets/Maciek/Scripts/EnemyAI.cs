@@ -190,6 +190,7 @@ public class EnemyAI : MonoBehaviour {
         animator.SetTrigger("Die");
         transform.Find("MinimapIcon").gameObject.SetActive(false);
         LeaveGoods();
+
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }

@@ -431,15 +431,55 @@ public class Przepis : MonoBehaviour
                 int platformId = Random.Range(0, platforms.Count);
                 GameObject enemy = Instantiate(
                     enemies[Random.Range(0,enemies.Count)],
-                    new Vector2(platforms[platformId].transform.position.x + Random.Range(-5,5)
-                                ,platforms[platformId].transform.position.y + Random.Range(-5, 5)),
+                    new Vector2(platforms[platformId].transform.position.x + Random.Range(-4,4)
+                                ,platforms[platformId].transform.position.y + Random.Range(-4, 4)),
                     Quaternion.identity
                     );
                 enemy.GetComponent<EnemyAI>().TargetPlayer();
                 yield return new WaitForSeconds(Random.Range(.1f,.3f));
             }
         }
-       
+
+        public IEnumerator StartFinalPhase(List<GameObject> enemies, int enemiesNum, GameObject boss, int bossNum)
+        {
+            List<GameObject> platforms = new List<GameObject>();
+            for (int i = 1; i <= 3; i++)
+            {
+                platforms.Add(GameObject.Find("Platform_" + i));
+                Debug.Log(platforms[i - 1]);
+            }
+
+            for (int i = 0; i < bossNum; i++)
+            {
+                int platformId = Random.Range(0, platforms.Count);
+                GameObject b = Instantiate(
+                    boss,
+                    platforms[platformId].transform.position,
+                    Quaternion.identity
+                    );
+
+                if(b.GetComponent<Boss1>() != null) b.GetComponent<Boss1>().TurnOn();
+                else if (b.GetComponent<Boss2>() != null) b.GetComponent<Boss2>().TurnOn();
+                else if (b.GetComponent<Boss3>() != null) b.GetComponent<Boss3>().TurnOn();
+
+
+                yield return new WaitForSeconds(Random.Range(.1f, .3f));
+            }
+
+            for (int i = 0; i < enemiesNum; i++)
+            {
+                int platformId = Random.Range(0, platforms.Count);
+                GameObject enemy = Instantiate(
+                    enemies[Random.Range(0, enemies.Count)],
+                    new Vector2(platforms[platformId].transform.position.x + Random.Range(-4, 4)
+                                , platforms[platformId].transform.position.y + Random.Range(-4, 4)),
+                    Quaternion.identity
+                    );
+                enemy.GetComponent<EnemyAI>().TargetPlayer();
+                yield return new WaitForSeconds(Random.Range(.1f, .3f));
+            }
+        }
+
 
         public GameObject SpawnPlayer(GameObject player) {
            return Instantiate(player, playerSpawnPoint,Quaternion.identity);
