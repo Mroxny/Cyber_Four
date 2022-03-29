@@ -360,6 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels:
   - {fileID: 885365340285675820}
+  - {fileID: 6487783172582569659}
+  - {fileID: 879481437882813614}
   - {fileID: 6740133408895535390}
   - {fileID: 4805599812861421486}
   dot: {fileID: 1005096384512308049}
@@ -1176,8 +1178,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use this device to connect to your local store. Buy new weapons and get
-    additional bonuses. You can also upgrade your weapons here.
+  m_text: Weapons as well as hearts are dropped by random enemies. Different weapons
+    have different stats. Collect them all!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 531b7864361d16845bb1724751150fdc, type: 2}
   m_sharedMaterial: {fileID: -4569053158837268009, guid: 531b7864361d16845bb1724751150fdc, type: 2}
@@ -1493,8 +1495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This chest stores your weapons. To add a new weapon to it, you need to
-    bring it here. Here you can decide what to put in your weapon slot
+  m_text: Collect hearts to heal your character. Hearts are dropped by random enemies.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 531b7864361d16845bb1724751150fdc, type: 2}
   m_sharedMaterial: {fileID: -4569053158837268009, guid: 531b7864361d16845bb1724751150fdc, type: 2}
@@ -2695,7 +2696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b779bfce9a0ba84e818dc9615ee6438, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7ee46b391e499443a61de55f89ca4ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3550,7 +3551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eff3b3e2a29c4df499aba636ea50b5a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f02967943ef27614abdbe658e471a4cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

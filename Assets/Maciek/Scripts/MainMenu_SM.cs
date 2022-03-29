@@ -24,6 +24,7 @@ public class MainMenu_SM : MonoBehaviour
     public GameObject[] objects;
     public AudioMixer audioMixer;
     public Animator animator;
+    public TextMeshProUGUI version;
     private AudioManager am;
 
     public event Action<int> OnColorChange;
@@ -37,8 +38,7 @@ public class MainMenu_SM : MonoBehaviour
 #endif
         //objects = GameObject.FindGameObjectsWithTag("colorchange");
         Application.targetFrameRate = 60;
-        GraphicsSettings.transparencySortMode = TransparencySortMode.CustomAxis;
-        GraphicsSettings.transparencySortAxis = new Vector3(0.0f, 1.0f, 0.0f);
+        version.text = Application.version;
 
 
     }
@@ -87,6 +87,8 @@ public class MainMenu_SM : MonoBehaviour
         PlayerPrefs.DeleteKey("ModeCounter");
         PlayerPrefs.DeleteKey("Garry");
         PlayerPrefs.DeleteKey("Intro");
+        PlayerPrefs.DeleteKey("FinishedGame");
+
 
         PlayerPrefs.SetString("FinishedLevels", "");
 

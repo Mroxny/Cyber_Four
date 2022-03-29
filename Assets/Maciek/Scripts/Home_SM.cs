@@ -59,7 +59,11 @@ public class Home_SM : MonoBehaviour {
             PlayerPrefs.SetInt("Intro", 0);
             StartCoroutine(StartIntro(1.3f));
         }
-        
+        if (!PlayerPrefs.HasKey("FinishedGame") && PlayerPrefs.GetString("FinishedLevels").Contains('1') && PlayerPrefs.GetString("FinishedLevels").Contains('2') && PlayerPrefs.GetString("FinishedLevels").Contains('3'))
+        {
+            PlayerPrefs.SetInt("FinishedGame", 1);
+        }
+
     }
     private IEnumerator StartIntro(float time) {
         yield return new WaitForSeconds(time);

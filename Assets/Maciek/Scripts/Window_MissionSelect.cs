@@ -9,6 +9,8 @@ public class Window_MissionSelect : MonoBehaviour
 {
     public Animator animator;
     public GameObject sceneMenager;
+    public GameObject mainPanel;
+    public GameObject finishedPanel;
     public GameObject[] finishedMarks;
 
     private AudioManager am;
@@ -43,6 +45,12 @@ public class Window_MissionSelect : MonoBehaviour
         if (GameObject.Find("TaskNotifier(Clone)") != null) {
             GameObject.Find("TaskNotifier(Clone)").GetComponent<TaskHandler>().HideNote();
         }
+
+        if (PlayerPrefs.HasKey("FinishedGame") && PlayerPrefs.GetInt("FinishedGame") == 1) {
+            mainPanel.SetActive(false);
+            finishedPanel.SetActive(true);
+        }
+
         Time.timeScale = 0;
     }
 
@@ -56,6 +64,12 @@ public class Window_MissionSelect : MonoBehaviour
         if (PlayerPrefs.HasKey("FinishedLevels") && PlayerPrefs.GetString("FinishedLevels").Contains('3'))
             finishedMarks[2].SetActive(true);
 
+    }
+
+    public void FinishGame() {
+        PlayerPrefs.SetInt("FinishedGame", 0);
+        finishedPanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
     public void LoadLevel(int gameId) {

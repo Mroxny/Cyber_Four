@@ -106,10 +106,13 @@ public class WeaponInteract : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (canHurt) {
             if (friendly) {
-                EnemyAI enemy = collision.GetComponent<EnemyAI>();
-                if (enemy != null) {
+                //print(collision.GetComponentInParent<EnemyAI>);
+                EnemyAI enemy = collision.GetComponentInParent<EnemyAI>();
+                if (enemy != null)
+                {
                     enemy.TakeDamage(damage);
                 }
+                else return;
             }
             else {
                 Player player = collision.GetComponent<Player>();

@@ -67,7 +67,7 @@ public class Boss1 : MonoBehaviour
         if (player == null) player = GameObject.Find("Player(Clone)");
         if (oneTime) {
             if (Vector2.Distance(transform.position, player.transform.position) < 7f) {
-                
+                TurnOn();
             }
         }
 

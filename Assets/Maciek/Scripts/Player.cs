@@ -51,6 +51,9 @@ public class Player : MonoBehaviour {
 
     void Start() {
 
+        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = Application.version;
+
+
         if (cam == null) {
             cam = GameObject.Find("Main Camera");
         }
@@ -83,7 +86,6 @@ public class Player : MonoBehaviour {
    public void SetChar() {
         SetLife();
         StartCoroutine(SpawnPlayer());
-        InvokeRepeating("FPS", 0.1f, 0.5f);
     }
     public void SetLife() {
         int health = 0;
@@ -389,10 +391,6 @@ public class Player : MonoBehaviour {
 
     }
 
-    void FPS() {
-        int fps = (int)(1f / Time.unscaledDeltaTime); ;
-        GameObject.Find("FPS").GetComponent<TextMeshProUGUI>().text = fps.ToString();
-    }
     bool oneTime = true;
     void Update() {
 

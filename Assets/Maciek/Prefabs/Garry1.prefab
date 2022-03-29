@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3279844194129605318}
   - component: {fileID: 8235500960124256219}
   - component: {fileID: 6381814330483928005}
+  - component: {fileID: 4836818675594610985}
   - component: {fileID: 1097018724420532929}
   - component: {fileID: 1103391092810950273}
-  - component: {fileID: 4836818675594610985}
   m_Layer: 0
   m_Name: Garry1
   m_TagString: Untagged
@@ -109,6 +109,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4836818675594610985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268748311019427609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2fc40645829214f83ff6af049d20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog: {fileID: 387325369652146913, guid: 2048596c3aaa91848bff8d7fcdc503e8, type: 3}
+  d1:
+  - 'Hi Boss, we have a new quest from a Corporation '
+  - I know you dont like working for those guys from corpo but they offered us a
+    really great price
+  - After that mission we dont have to work anymore and finally upgrade our truck
+    to space traveller.
+  - We just need to destroy the three gangs that are ruining corpo's business
+  d2:
+  - Oh wow! You actually did it!
+  - Now I can start improving our truck
+  - We'll need weapons now. If you want, you can collect more by fighting gangs again
 --- !u!114 &1097018724420532929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,17 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed4b7b2810573240891fddb607d9a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 387325369652146913, guid: 2048596c3aaa91848bff8d7fcdc503e8, type: 3}
-  dialogue: 1
-  text:
-  - 'Hi Boss, we have a new quest from a Corporation '
-  - I know you dont like working for those guys from corpo but they offered us a
-    really great price
-  - After that mission we dont have to work anymore and finally upgrade our truck
-    to space traveller.
-  - We just need to destroy the three gangs that are ruining corpo's business
-  playSecondPrefab: 1
-  prefab2: {fileID: 387325369652146913, guid: 194c6036fa38f7049b74e830fd37aa1c, type: 3}
+  prefab: {fileID: 387325369652146913, guid: 194c6036fa38f7049b74e830fd37aa1c, type: 3}
+  dialogue: 0
+  playSecondPrefab: 0
+  prefab2: {fileID: 0}
+  text: []
 --- !u!61 &1103391092810950273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,19 +176,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17, y: 0.19}
   m_EdgeRadius: 0
---- !u!114 &4836818675594610985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268748311019427609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2fc40645829214f83ff6af049d20ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secondOption: {fileID: 387325369652146913, guid: 194c6036fa38f7049b74e830fd37aa1c, type: 3}
 --- !u!1001 &4502560737129005852
 PrefabInstance:
   m_ObjectHideFlags: 0

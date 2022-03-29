@@ -117,6 +117,7 @@ public class Bulid_Script : MonoBehaviour
                     case 1:
                         init.SpawnBossLair(platforms1[0], bigPlatform1[0], corridors1);
                         AstarPath.active.Scan();
+                        
                         init.SpawnBoss(boss1);
                         PlaySound(music[0]);
                         PlaySound("background_1");
@@ -280,7 +281,7 @@ public class Bulid_Script : MonoBehaviour
         var init = GetComponent<Przepis>().init;
         string text = "Survive!";
 
-        InvokeRepeating("EnemiesCheck", .11f, 3f);
+        InvokeRepeating("EnemiesCheck", .6f, 3f);
         PlayerPrefs.SetString("CurrentTask", text);
         player.GetComponent<Player>().Notify(text, 4);
         StartCoroutine(init.StartFinalPhase(enemies));
@@ -294,7 +295,7 @@ public class Bulid_Script : MonoBehaviour
         var init = GetComponent<Przepis>().init;
         string text = "Survive!";
 
-        InvokeRepeating("EnemiesCheck", .11f, 3f);
+        InvokeRepeating("EnemiesCheck", .6f, 3f);
         PlayerPrefs.SetString("CurrentTask", text);
         player.GetComponent<Player>().Notify(text, 4);
         StartCoroutine(init.StartFinalPhase(enemies, enemiesNum, boss, bossNum));

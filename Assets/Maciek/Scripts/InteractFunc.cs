@@ -8,9 +8,12 @@ public abstract class InteractFunc : MonoBehaviour
     public GameObject prefab;
     private GameObject clone;
     public bool dialogue = false;
-    public string[] text;
     public bool playSecondPrefab = false;
     public GameObject prefab2;
+
+    [HideInInspector]
+    public string[] text;
+
     public virtual void GetText(string tekst) {
         TextMeshProUGUI text = gameObject.AddComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
         text.text = tekst;

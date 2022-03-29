@@ -56,7 +56,7 @@ MonoBehaviour:
   bulletColor: {r: 1, g: 0.9649889, b: 0.0141509175, a: 1}
   weaponName: Beta Destructor
   ammo: 30
-  reloadTime: 1
+  reloadTime: 1.8
   velocity: 28
   damage: 40
   fireRate: 0.2

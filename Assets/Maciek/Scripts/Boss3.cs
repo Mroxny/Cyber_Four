@@ -7,25 +7,24 @@ using Pathfinding;
 public class Boss3 : MonoBehaviour
 {
     public float Life;
-    public float speed = 400f;
+    public float speed = 500f;
+    public float nextWaypointDistance = 3f;
     public Animator animator;
     public GameObject healthbar;
 
-    [HideInInspector]
-    public float nextWaypointDistance = 3f;
 
     private GameObject player;
-    private Bulid_Script bs;
     private float maxLife;
     private Vector2 target;
-    private Vector2 startingPos;
     private Direction dir = Direction.Right;
     private AudioManager am;
+    private float damageMultiplier = 1;
 
-    private bool isOn = false;
     private bool canDie = false;
     private bool canHurt = true;
+    private bool canShoot = true;
     private bool oneTime = true;
+    private bool isOn = false;
 
     private bool reachedEndOfPath = false;
     private Path path;
@@ -44,14 +43,12 @@ public class Boss3 : MonoBehaviour
     {
 
         GameObject sceneMenager = GameObject.FindWithTag("SceneMenager");
-        bs = sceneMenager.GetComponent<Bulid_Script>();
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        startingPos = transform.position;
-        target = startingPos;
+        target = transform.position;
         maxLife = Life;
-        InvokeRepeating("UpdatePath", 0.1f, 0.3f);
+        InvokeRepeating("UpdatePath", 0.1f, 0.11f);
 
 
     }
@@ -90,7 +87,7 @@ public class Boss3 : MonoBehaviour
 
                 target = player.transform.position - new Vector3(0, 2, 0);
 
-                if (Vector2.Distance(transform.position, player.transform.position) <= 3f)
+                if (Vector2.Distance(transform.position + new Vector3(0, 2, 0), player.transform.position) <= 3.5f)
                 {
                     switch (Random.Range(1, 6))
                     {
@@ -125,9 +122,11 @@ public class Boss3 : MonoBehaviour
     public void TurnOn()
     {
         animator.SetTrigger("TurnOn");
-        am.Play("boss_1_sound");
         StartCoroutine(WakeUp(2f));
+        StartHurting();
         oneTime = false;
+        if (am != null) am.Play("boss_1_sound");
+
     }
 
 
@@ -155,7 +154,7 @@ public class Boss3 : MonoBehaviour
 
         if (collision.tag == "Bullet" && collision.GetComponent<Bullet>().friendly == true)
         {
-            takeDamage(collision.GetComponent<Bullet>().damage);
+            takeDamage(collision.GetComponent<Bullet>().damage * damageMultiplier);
 
             GameObject.Destroy(collision.gameObject);
 
@@ -176,6 +175,16 @@ public class Boss3 : MonoBehaviour
     public void StopHurting()
     {
         canHurt = false;
+    }
+
+    public void EnableMultiplier()
+    {
+        damageMultiplier = Random.Range(.3f, .5f);
+    }
+
+    public void DisableMultiplier()
+    {
+        damageMultiplier = 1;
     }
 
     private Vector3 LerpByDistance(Vector3 A, Vector3 B, float x)
@@ -215,6 +224,7 @@ public class Boss3 : MonoBehaviour
         string text = "Defeat Opponent";
         PlayerPrefs.SetString("CurrentTask", text);
         player.GetComponent<Player>().Notify(text, 3);
+        StopHurting();
 
     }
 
