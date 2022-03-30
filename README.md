@@ -2,6 +2,7 @@
 
 "Cyber Four" is a simple Roguelike game for mobile platforms (iPhones coming soon).
 
+
 Description
 ====
 In "Cyber Four", you can become one of the four bounty hunters of the future. Fight gangsters and members of evil organizations to survive in a world corrupted by technology. Use all kinds of weapons to destroy your enemies
@@ -12,6 +13,7 @@ All levels are procedurally generated, which means no mission will be the same. 
 
 Enjoy!
 
+
 Images
 =====
 
@@ -19,7 +21,6 @@ Images
 ![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-3.png)
 ![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-4.png)
 ![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-5.png)
-
 
 
 Links
@@ -39,7 +40,6 @@ You can do whatever you want with this stuff.
 If we meet some day, and you think this stuff is worth it, you can buy us a beer (or basically anything else) in return.
 </pre>
 
-Coffeware
 
 Credits
 -------
@@ -47,6 +47,7 @@ Credits
 * Graphics and Animations: [Mroxny](https://mroxny.github.io/about.html)
 * Music and SFX: Ciapak
 * Code: [Mroxny](https://mroxny.github.io/about.html)
+
 
 Thanks
 ------
