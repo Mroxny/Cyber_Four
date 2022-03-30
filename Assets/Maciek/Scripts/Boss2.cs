@@ -13,7 +13,9 @@ public class Boss2 : MonoBehaviour
     public float nextWaypointDistance = 3f;
     public Animator animator;
     public GameObject healthbar;
+    public GameObject[] weaponsToLeave;
     public Transform shootFrom;
+
 
 
     private GameObject player;
@@ -254,6 +256,9 @@ public class Boss2 : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
         GameObject.Find("SceneMenager").GetComponent<Bulid_Script>().BossDied();
+
+        Instantiate(weaponsToLeave[Random.Range(0, weaponsToLeave.Length)], transform.position, Quaternion.identity);
+
 
         yield return new WaitForSeconds(10);
         Destroy(gameObject);

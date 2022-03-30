@@ -193,9 +193,9 @@ MonoBehaviour:
   spawnDust: {fileID: 1859343781036784604, guid: 3e81e4464eb9b7546933ab822897ba1e, type: 3}
   weapons:
   - {fileID: 2325824214476225457, guid: dfeec460c3b7c7c4080455255b4b377d, type: 3}
-  - {fileID: 2325824214476225457, guid: ac6fbc35465449c4da6efdec0fa049c6, type: 3}
   - {fileID: 2325824214476225457, guid: 1ee61511b596aa043af519a6fc70528c, type: 3}
   - {fileID: 2325824214476225457, guid: 08e018b7afb194249929f164f369d919, type: 3}
+  - {fileID: 2325824214476225457, guid: c6a8d20a870c72c43b0dd7a585ed8606, type: 3}
   addHealthObj: {fileID: 2478107564820504383, guid: 9167f982cd2e74241a5ef5d015ed86cb, type: 3}
 --- !u!114 &2009467416937263630
 MonoBehaviour:

@@ -52,13 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84bbfacd98bbd54fadf25fa597e69aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 13993696069608544, guid: 0251cce0a06836b4a9892a03b028b94c, type: 3}
+  bullet: {fileID: 13993696069608544, guid: a7e0b41eae9b0dd42abd9650ca5c73e5, type: 3}
   bulletColor: {r: 0.6313726, g: 0.26666668, b: 0.91372555, a: 1}
   weaponName: Dominator XS
   ammo: 50
   reloadTime: 1
-  velocity: 10
-  damage: 15
+  velocity: 15
+  damage: 20
   fireRate: 0.07
   soundName: gun2_Shoot
   firepoint: {fileID: 748338482627609493}

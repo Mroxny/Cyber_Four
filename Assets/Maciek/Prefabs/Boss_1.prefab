@@ -75,6 +75,9 @@ MonoBehaviour:
   nextWaypointDistance: 3
   animator: {fileID: 1981646221309276543}
   healthbar: {fileID: 6194763601793829790}
+  weaponsToLeave:
+  - {fileID: 2325824214476225457, guid: 508e1b90f916e5d49a105b0e1aaa48ad, type: 3}
+  - {fileID: 2325824214476225457, guid: b512328c27cded84190ce395f674e5e0, type: 3}
 --- !u!114 &5606409787871961763
 MonoBehaviour:
   m_ObjectHideFlags: 0

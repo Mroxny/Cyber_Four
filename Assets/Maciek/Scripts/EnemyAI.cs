@@ -154,17 +154,14 @@ public class EnemyAI : MonoBehaviour {
         return P;
     }
 
-    public void TargetPlayer() {
-        state = State.ChaseTarget;
-        StartCoroutine(NoticePlayer(1.5f));
-    }
+    
 
     public void TakeDamage(float dmg) {
         life -= dmg;
         GameObject.Find("AudioManager").GetComponent<AudioManager>().Play(hitEnemy);
         if (canDie) {
             if (state != State.ChaseTarget) {
-                TargetPlayer();
+                NoticePlayer();
                 life += dmg;
             }
             if (life <= 0) {
@@ -199,11 +196,48 @@ public class EnemyAI : MonoBehaviour {
         yield return new WaitForSeconds(time);
         canChangePos = true;
     }
-    private IEnumerator NoticePlayer(float time) {
-        noticedIcon.SetActive(true);
-        yield return new WaitForSeconds(time);
-        noticedIcon.SetActive(false);
+
+    #region Noticing Player
+
+    public void NoticePlayer() {
+        StartCoroutine(NoticePlayer(2f));
     }
+
+    private IEnumerator NoticePlayer(float time) {
+
+        if(state != State.ChaseTarget && canDie == true){
+            noticedIcon.SetActive(true);
+            state = State.Rest;
+            yield return new WaitForSeconds(time / 2);
+
+            state = State.ChaseTarget;
+
+
+            yield return new WaitForSeconds(time / 2);
+            AlarmOthers(transform.position, 8);
+            noticedIcon.SetActive(false);
+        }
+        
+    }
+
+    private void AlarmOthers(Vector3 center, float radius)
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            print(hitCollider.name);
+            EnemyAI otherEnemy = hitCollider.GetComponent<EnemyAI>();
+            if (otherEnemy == null) otherEnemy = hitCollider.GetComponentInParent<EnemyAI>();
+            if (otherEnemy == null) otherEnemy = hitCollider.GetComponentInChildren<EnemyAI>();
+
+            if (otherEnemy != null) otherEnemy.NoticePlayer();
+
+
+        }
+    }
+
+    #endregion
+
     private void MoveTo() {
         if (path == null)
             return;
@@ -238,7 +272,7 @@ public class EnemyAI : MonoBehaviour {
     private void FindTarget() {
         if (Vector2.Distance(transform.position, player.transform.position) < Random.Range(9.5f,11f)) {
             //player in range
-            TargetPlayer();
+            NoticePlayer();
         }
     }
 

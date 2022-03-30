@@ -108,11 +108,12 @@ public class WeaponInteract : MonoBehaviour
             if (friendly) {
                 //print(collision.GetComponentInParent<EnemyAI>);
                 EnemyAI enemy = collision.GetComponentInParent<EnemyAI>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(damage);
-                }
+                if (enemy != null) enemy.TakeDamage(damage);
+
+                else if (collision.tag == "Bullet") Destroy(collision.gameObject);
+
                 else return;
+
             }
             else {
                 Player player = collision.GetComponent<Player>();

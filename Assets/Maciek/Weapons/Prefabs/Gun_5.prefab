@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84bbfacd98bbd54fadf25fa597e69aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 13993696069608544, guid: 0251cce0a06836b4a9892a03b028b94c, type: 3}
+  bullet: {fileID: 13993696069608544, guid: a7e0b41eae9b0dd42abd9650ca5c73e5, type: 3}
   bulletColor: {r: 0.42021182, g: 0.6698113, b: 0.58504164, a: 1}
   weaponName: QualK Mec
   ammo: 12

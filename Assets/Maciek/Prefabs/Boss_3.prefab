@@ -799,11 +799,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e863f07791e7dc94ab7c2d25b176f973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 450
+  Life: 4500
   speed: 1000
   nextWaypointDistance: 3
   animator: {fileID: 415077636680852871}
   healthbar: {fileID: 29238665056097601}
+  weaponsToLeave:
+  - {fileID: 7852809851799366464, guid: 174e0be119d697647a1586ede59a165c, type: 3}
 --- !u!95 &415077636680852871
 Animator:
   serializedVersion: 4

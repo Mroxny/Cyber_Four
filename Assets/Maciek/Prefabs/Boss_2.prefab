@@ -394,6 +394,10 @@ MonoBehaviour:
   nextWaypointDistance: 3
   animator: {fileID: 7861111065864680693}
   healthbar: {fileID: 6278853926027083317}
+  weaponsToLeave:
+  - {fileID: 7852809851799366464, guid: 294ce6c2e81cd004a8c53bfbc351e4d1, type: 3}
+  - {fileID: 2325824214476225457, guid: c6a8d20a870c72c43b0dd7a585ed8606, type: 3}
+  - {fileID: 2325824214476225457, guid: 1ee61511b596aa043af519a6fc70528c, type: 3}
   shootFrom: {fileID: 7648303452821714380}
 --- !u!114 &3632555103374541577
 MonoBehaviour:

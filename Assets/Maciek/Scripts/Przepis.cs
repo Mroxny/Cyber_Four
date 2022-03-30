@@ -435,7 +435,7 @@ public class Przepis : MonoBehaviour
                                 ,platforms[platformId].transform.position.y + Random.Range(-4, 4)),
                     Quaternion.identity
                     );
-                enemy.GetComponent<EnemyAI>().TargetPlayer();
+                enemy.GetComponent<EnemyAI>().NoticePlayer();
                 yield return new WaitForSeconds(Random.Range(.1f,.3f));
             }
         }
@@ -475,7 +475,7 @@ public class Przepis : MonoBehaviour
                                 , platforms[platformId].transform.position.y + Random.Range(-4, 4)),
                     Quaternion.identity
                     );
-                enemy.GetComponent<EnemyAI>().TargetPlayer();
+                enemy.GetComponent<EnemyAI>().NoticePlayer();
                 yield return new WaitForSeconds(Random.Range(.1f, .3f));
             }
         }
