@@ -1,3 +1,51 @@
-# Cyber Four
-Simple RogueLike mobile game created by me and my friend
+# Cyber Four (Alpha)
+
+"Cyber Four" is a simple Roguelike game for mobile platforms (iPhones coming soon).
+
+Description
+====
+In "Cyber Four", you can become one of the four bounty hunters of the future. Fight gangsters and members of evil organizations to survive a world corrupted by technology. Use all kinds of weapons to destroy your enemies
+
+To start the game, you must choose one of the four characters. Each character has different skills. The character you choose will have to complete several missions to complete the game. Each mission has five stages. You will use portals hidden on the level to move between the stages. Collect weapons and manage your inventory.
+
+All levels are procedurally generated, which means no mission will be the same. Enemies have different classes and behaviors. Each class has a separate set of weapons that they can use
+
+Enjoy!
+
+Images
+-----
+
+
+
+Links
+-----
+
+* [Project Website](https://mroxny.github.io/projects/project_cf)
+* [Project Source](https://github.com/Mroxny/Cyber_Four/)
+
+
+License
+-------
+
+Licensed under the Beerware License:
+
+<pre>
+You can do whatever you want with this stuff.
+If we meet some day, and you think this stuff is worth it, you can buy us a beer (or basically anything else) in return.
+</pre>
+
+Coffeware
+
+Credits
+-------
+
+* Graphics and Animations: [Mroxny](https://mroxny.github.io/about.html)
+* Music and SFX: Ciapak
+* Code: [Mroxny](https://mroxny.github.io/about.html)
+
+Thanks
+------
+
+Many thanks to friends and family supporting us
+
 
