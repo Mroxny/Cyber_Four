@@ -15,10 +15,10 @@ Enjoy!
 Images
 =====
 
-![Cyber Four Screenshot](static/img_3.png)
-![Cyber Four Screenshot](static/img_4.png)
-![Cyber Four Screenshot](static/img_2.png)
-![Cyber Four Screenshot](static/img_1.png)
+![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-2.png)
+![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-3.png)
+![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-4.png)
+![Cyber Four Screenshot](https://mroxny.github.io/assets/images/project_cf-5.png)
 
 
 
