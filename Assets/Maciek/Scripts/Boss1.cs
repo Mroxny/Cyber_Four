@@ -192,6 +192,7 @@ public class Boss1 : MonoBehaviour
         mode = Mode.Rest;
         healthbar.SetActive(false);
         animator.SetTrigger("Die");
+        speed = 0;
         transform.Find("MinimapIcon").gameObject.SetActive(false);
         GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("boss_1_sound");
         yield return new WaitForSeconds(.5f);
