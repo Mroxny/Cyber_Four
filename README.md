@@ -33,12 +33,8 @@ Links
 License
 -------
 
-Licensed under the Beerware License:
-
-<pre>
-You can do whatever you want with this stuff.
-If we meet some day, and you think this stuff is worth it, you can buy us a beer (or basically anything else) in return.
-</pre>
+"THE BEERWARE LICENSE" (Revision 42): <br/>
+Mroxny wrote this code. As long as you retain this notice, you can do whatever you want with this stuff. If we meet someday, and you think this stuff is worth it, you can buy me a beer (or basically anything else) in return.
 
 
 Credits
