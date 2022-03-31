@@ -41,7 +41,7 @@ Credits
 -------
 
 * Graphics and Animations: [Mroxny](https://mroxny.github.io/about.html)
-* Music and SFX: Ciapak
+* Music and SFX: VanitaSS
 * Code: [Mroxny](https://mroxny.github.io/about.html)
 
 
