@@ -7,6 +7,7 @@
 
 Description
 ====
+
 In "Cyber Four", you can become one of the four bounty hunters of the future. Fight gangsters and members of evil organizations to survive in a world corrupted by technology. Use all kinds of weapons to destroy your enemies
 
 To start the game, you must choose one of the four characters. Each character has different skills. The character you choose will have to complete several missions to complete the game. Each mission has five stages. Use portals hidden on the level to move between the stages. Collect weapons and manage your inventory.
