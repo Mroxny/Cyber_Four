@@ -49,12 +49,13 @@ Credits
 -------
 
 * Graphics and Animations: [Mroxny](https://mroxny.github.io/about.html)
-* Music and SFX: VanitaSS
+* Music and SFX: [VanitaSS](https://www.youtube.com/watch?v=vBI4X7BMXZc&list=PL_Z4BX-mRQr4Z075ppla6wUWbVBL0Xn99)
 * Code: [Mroxny](https://mroxny.github.io/about.html)
 
 
 Thanks
 ------
+Special thanks to **VanitaSS** who made this awesome [soundtrack](https://www.youtube.com/watch?v=vBI4X7BMXZc&list=PL_Z4BX-mRQr4Z075ppla6wUWbVBL0Xn99) and helped with level design and many other things.
 
 Many thanks to friends and family supporting us.
 
