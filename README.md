@@ -1,12 +1,14 @@
 # Cyber Four (Alpha)
 
-"Cyber Four" is a simple Roguelike game for mobile platforms (iPhones coming soon).
+"Cyber Four" is a simple Roguelike game for mobile platforms (iPhones coming soon).<br/>
 
 [![Google Play Store](https://mroxny.github.io/assets/images/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.mroxny.CyberFour&gl=PL)
 
 
 Description
 ====
+***`BAD PRACTICE WARNING. The source code was written by me a long time ago, when I was still learning how to code.`***
+
 
 In "Cyber Four", you can become one of the four bounty hunters of the future. Fight gangsters and members of evil organizations to survive in a world corrupted by technology. Use all kinds of weapons to destroy your enemies.
 
@@ -59,7 +61,7 @@ Credits
 
 Thanks
 ------
-Special thanks to **VanitaSS** who made this awesome [soundtrack](https://www.youtube.com/watch?v=vBI4X7BMXZc&list=PL_Z4BX-mRQr4Z075ppla6wUWbVBL0Xn99) and helped with level design and many other things.
+Special thanks to **VanitaSS** who made this awesome [soundtrack](https://www.youtube.com/watch?v=vBI4X7BMXZc&list=PL_Z4BX-mRQr4Z075ppla6wUWbVBL0Xn99) and helped me with level design and many other things.
 
 Many thanks to friends and family supporting us.
 
