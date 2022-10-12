@@ -1,6 +1,6 @@
 # Cyber Four (Alpha)
 
-"Cyber Four" is a simple Roguelike game for mobile platforms (iPhones coming soon).<br/>
+"Cyber Four" is a simple Roguelike game for mobile platforms.<br/>
 
 [![Google Play Store](https://mroxny.github.io/assets/images/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.mroxny.CyberFour&gl=PL)
 
