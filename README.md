@@ -37,7 +37,7 @@ Images
 Links
 -----
 
-* [Google Play Store](https://play.google.com/store/apps/details?id=com.mroxny.CyberFour&gl=PL)
+* [Google Play Store](https://play.google.com/store/apps/details?id=com.mroxny.CyberFour&gl=PL) *(currently unavailable)*
 * [Project Website](https://mroxny.github.io/projects/project_cf)
 * [Project Source](https://github.com/Mroxny/Cyber_Four/)
 
