@@ -7,7 +7,8 @@
 
 Description
 ====
-***`BAD PRACTICE WARNING. The source code was written by me a long time ago, when I was still learning how to code.`***
+> [!WARNING]\
+> *BAD PRACTICE WARNING. The source code was written by me a long time ago, when I was still learning how to code. Surely I will fix it when I find some time*
 
 
 In "Cyber Four", you can become one of the four bounty hunters of the future. Fight gangsters and members of evil organizations to survive in a world corrupted by technology. Use all kinds of weapons to destroy your enemies.
